@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "brainstorm-governor-acceptance-report-v1",
+  "title": "Brainstorm Governor Acceptance Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "suite_id",
+    "criterion_id",
+    "test_id",
+    "implementation_status",
+    "version_fingerprint",
+    "started_at",
+    "finished_at",
+    "result",
+    "failure_reason",
+    "artifact_paths",
+    "trace_path"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "suite_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "criterion_id": {
+      "type": "string",
+      "pattern": "^AC-0[1-8]$"
+    },
+    "test_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "implementation_status": {
+      "enum": [
+        "SCAFFOLDED",
+        "IMPLEMENTED"
+      ]
+    },
+    "version_fingerprint": {
+      "type": "string",
+      "minLength": 1
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "finished_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "result": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "ERROR",
+        "SKIP",
+        "NOT_IMPLEMENTED"
+      ]
+    },
+    "failure_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "artifact_paths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "trace_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

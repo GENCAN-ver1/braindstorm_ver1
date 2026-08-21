@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "governor_prompt_paths": [
+    ".agents/skills/brainstorm-governor/SKILL.md",
+    ".agents/skills/brainstorm-governor/references/p1-core-loop.md",
+    ".agents/skills/brainstorm-governor/assets/CONCEPT_BRIEF.template.md"
+  ],
+  "evaluator_prompt_paths": [
+    ".agents/skills/brainstorm-governor/references/p6-evaluator-tracing.md"
+  ],
+  "model": {
+    "provider": "local-runtime",
+    "model_id": "brainstorm-governor-p0-p6",
+    "reasoning_mode": "deterministic-contract"
+  },
+  "provider_adapter": {
+    "version": "fv06-adapters-v1",
+    "paths": [
+      "adapters/research_runtime.py",
+      "adapters/worker_runtime.py",
+      "adapters/evaluator_runtime.py"
+    ]
+  },
+  "citation_checker": {
+    "version": "provider-neutral-v1",
+    "paths": [
+      ".agents/skills/brainstorm-governor/scripts/p4_research.py"
+    ]
+  },
+  "output_schema": {
+    "version": "config-v1+checkpoint-v1+handoff-v1",
+    "paths": [
+      "config/brainstorm-governor.schema.json",
+      "acceptance/report.schema.json",
+      "artifacts/manifest.py"
+    ]
+  },
+  "pricing_table_path": "config/provider-pricing.json"
+}

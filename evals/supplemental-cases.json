@@ -1,0 +1,18 @@
+[
+  {
+    "id": "provider-failure",
+    "test_id": "tests.acceptance.test_research_worker_isolation.ResearchWorkerIsolationAcceptanceTests.test_ac_03_research_and_worker_failures_do_not_pollute_main_state"
+  },
+  {
+    "id": "resume",
+    "test_id": "tests.acceptance.test_ac02_resume_matrix.ResumeMatrixAcceptanceTests.test_ac_02_every_stage_resumes_to_equivalent_main_state"
+  },
+  {
+    "id": "every-stage-park",
+    "test_id": "tests.acceptance.test_budget_park_matrix.BudgetParkMatrixAcceptanceTests.test_ac_05_every_stage_parks_before_work"
+  },
+  {
+    "id": "artifact-tamper",
+    "test_id": "tests.acceptance.test_evaluator_artifact_gates.ArtifactGateAcceptanceTests.test_ac_08_only_current_hash_matched_approved_artifact_can_handoff"
+  }
+]

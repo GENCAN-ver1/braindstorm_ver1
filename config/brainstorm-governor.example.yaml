@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "runtime": {
+    "mode": "auto",
+    "parallelism": 1,
+    "budget": {
+      "max_steps": 32,
+      "max_parallelism": 1
+    }
+  },
+  "persistence": {
+    "brief_path": "./CONCEPT_BRIEF.md"
+  },
+  "features": {
+    "research": false,
+    "workers": false,
+    "council": false,
+    "evaluator": false
+  },
+  "evaluation": {
+    "max_rounds": 2
+  }
+}

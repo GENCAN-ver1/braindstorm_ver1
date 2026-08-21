@@ -1,0 +1,291 @@
+{
+  "clean_room": {
+    "legal_exit_status": "NEEDS_INPUT",
+    "prior_brief": false,
+    "root": "tests/acceptance/cleanroom",
+    "transcript_sha256": "76c9b94981994b7e81bbbe76504636a1188cbb3f8dc65cd27ea34367429eb59e"
+  },
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\lenovo\\AppData\\Local\\Python\\pythoncore-3.13-64\\python.exe",
+        "scripts/brainstorm.py",
+        "run",
+        "--request",
+        "tests/acceptance/fixtures/ac01_one_command.json",
+        "--config",
+        "config/brainstorm-governor.example.yaml",
+        "--brief",
+        "D:\\personal_projects\\projects\\brainstorm\\tests\\acceptance\\cleanroom\\.fv08-3e243c3a994c4027862316e9930b5a8b-CONCEPT_BRIEF.md"
+      ],
+      "duration_ms": 520.745,
+      "name": "clean-room-one-command",
+      "return_code": 0,
+      "transcript_sha256": "76c9b94981994b7e81bbbe76504636a1188cbb3f8dc65cd27ea34367429eb59e"
+    },
+    {
+      "command": [
+        "C:\\Users\\lenovo\\AppData\\Local\\Python\\pythoncore-3.13-64\\python.exe",
+        "-m",
+        "unittest",
+        "tests.acceptance.test_ac01_one_command.OneCommandAcceptanceTests.test_ac_01_single_command_reaches_legal_stop",
+        "tests.acceptance.test_ac02_resume_matrix.ResumeMatrixAcceptanceTests.test_ac_02_every_stage_resumes_to_equivalent_main_state",
+        "tests.acceptance.test_research_worker_isolation.ResearchWorkerIsolationAcceptanceTests.test_ac_03_research_and_worker_failures_do_not_pollute_main_state",
+        "tests.acceptance.test_evaluator_artifact_gates.EvaluatorCapAcceptanceTests.test_ac_04_evaluator_calls_never_exceed_two_across_resume",
+        "tests.acceptance.test_budget_park_matrix.BudgetParkMatrixAcceptanceTests.test_ac_05_every_stage_parks_before_work",
+        "tests.acceptance.test_trace_usage.TraceUsageAcceptanceTests.test_ac_06_automatic_activation_and_real_usage_cost_trace",
+        "tests.acceptance.test_version_upgrade.VersionUpgradeAcceptanceTests.test_ac_07_version_changes_require_non_mocked_live_regression",
+        "tests.acceptance.test_evaluator_artifact_gates.ArtifactGateAcceptanceTests.test_ac_08_only_current_hash_matched_approved_artifact_can_handoff",
+        "-q"
+      ],
+      "duration_ms": 9758.545,
+      "name": "ac-01-through-ac-08",
+      "return_code": 0,
+      "transcript_sha256": "c0769346c2cb1e953711c70df83b901550d80811ef33d50777829f84b2383946"
+    },
+    {
+      "command": [
+        "C:\\Users\\lenovo\\AppData\\Local\\Python\\pythoncore-3.13-64\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".agents/skills/brainstorm-governor/tests",
+        "-q"
+      ],
+      "duration_ms": 1426.048,
+      "name": "p0-p6-contract-regression",
+      "return_code": 0,
+      "transcript_sha256": "fd44e2ad0c5adbdd4c8a7a8a94c4562ee5ff8281495d30e353e2176a59f81e12"
+    },
+    {
+      "command": [
+        "C:\\Users\\lenovo\\AppData\\Local\\Python\\pythoncore-3.13-64\\python.exe",
+        "ci/regression_gate.py",
+        "check"
+      ],
+      "duration_ms": 1505.826,
+      "name": "fv07-regression-gate",
+      "return_code": 0,
+      "transcript_sha256": "593bd8c5d2fe692552d4ebe25bdceeb6763cdce582fa5c36a7477b062a4d5512"
+    },
+    {
+      "command": [
+        "C:\\Users\\lenovo\\AppData\\Local\\Python\\pythoncore-3.13-64\\python.exe",
+        "ci/validate_skill.py",
+        "D:\\personal_projects\\projects\\brainstorm\\.agents\\skills\\brainstorm-governor"
+      ],
+      "duration_ms": 65.366,
+      "name": "skill-validation",
+      "return_code": 0,
+      "transcript_sha256": "db349825903d66adffea3ecf1bd8e1803043e8a71cf1a051235dabc5371f5bb0"
+    }
+  ],
+  "criteria": [
+    {
+      "evidence": [
+        {
+          "path": "tests/acceptance/test_ac01_one_command.py",
+          "sha256": "dea0514c8e4bfbfdcaecaaf8e2208c9f8b241d0ee180e187017413c2ead96743"
+        },
+        {
+          "path": "tests/acceptance/fixtures/ac01_one_command.json",
+          "sha256": "bb61e6945623f20120bd45dab1500ca9f154285f7ad9ba086710a65002c5a4a5"
+        }
+      ],
+      "expected_artifacts": [
+        "machine-readable terminal summary",
+        "Living Brief checkpoint"
+      ],
+      "id": "AC-01",
+      "result": "PASS",
+      "test_id": "tests.acceptance.test_ac01_one_command.OneCommandAcceptanceTests.test_ac_01_single_command_reaches_legal_stop"
+    },
+    {
+      "evidence": [
+        {
+          "path": "tests/acceptance/test_ac02_resume_matrix.py",
+          "sha256": "778eb19f48585edac9c5fadf1ef7880852cf0f2e36294ea98dbda1683d6c6f8d"
+        },
+        {
+          "path": "tests/acceptance/fixtures/ac02_resume_matrix.json",
+          "sha256": "eb5adc986e27e6155d201139313d31ec092ea015f1afad18a452bfd41d73ca16"
+        }
+      ],
+      "expected_artifacts": [
+        "checkpoint envelope",
+        "recovery trace"
+      ],
+      "id": "AC-02",
+      "result": "PASS",
+      "test_id": "tests.acceptance.test_ac02_resume_matrix.ResumeMatrixAcceptanceTests.test_ac_02_every_stage_resumes_to_equivalent_main_state"
+    },
+    {
+      "evidence": [
+        {
+          "path": "tests/acceptance/test_research_worker_isolation.py",
+          "sha256": "c1a3f5be39aff13e91b8bd41da0996243b285b0ca1cc1fe503ba98a2990aa796"
+        },
+        {
+          "path": "tests/acceptance/fixtures/ac03_isolation_failure.json",
+          "sha256": "da61500b8e6a55e66206d8b5a851d0d9891676964e77e198dc26ee1f7e2519fa"
+        }
+      ],
+      "expected_artifacts": [
+        "failure ledger",
+        "discarded staging transaction"
+      ],
+      "id": "AC-03",
+      "result": "PASS",
+      "test_id": "tests.acceptance.test_research_worker_isolation.ResearchWorkerIsolationAcceptanceTests.test_ac_03_research_and_worker_failures_do_not_pollute_main_state"
+    },
+    {
+      "evidence": [
+        {
+          "path": "tests/acceptance/test_evaluator_artifact_gates.py",
+          "sha256": "59875a81b19c43b1a7ccf9d7e32f0ee5305b66b07e6c368a6025aee0ccafa1a6"
+        },
+        {
+          "path": "tests/acceptance/fixtures/ac04_evaluator_cap.json",
+          "sha256": "73cca9ca8b0d89f3e7340193d2a2e19127ba739ead4de37c3f3f09cfc6a01731"
+        }
+      ],
+      "expected_artifacts": [
+        "persisted evaluator_rounds_used",
+        "evaluator call trace"
+      ],
+      "id": "AC-04",
+      "result": "PASS",
+      "test_id": "tests.acceptance.test_evaluator_artifact_gates.EvaluatorCapAcceptanceTests.test_ac_04_evaluator_calls_never_exceed_two_across_resume"
+    },
+    {
+      "evidence": [
+        {
+          "path": "tests/acceptance/test_budget_park_matrix.py",
+          "sha256": "00763305877e576b0f6dae61e6f510f8c0357b6c90772460c886a30273c56cca"
+        },
+        {
+          "path": "tests/acceptance/fixtures/ac05_budget_exhaustion.json",
+          "sha256": "d9bae9b3e00b3291dbcb9a09dce2055f72cf5c6c4443afbfc35cec49f7b13373"
+        }
+      ],
+      "expected_artifacts": [
+        "valid Living Brief",
+        "budget exhaustion trace"
+      ],
+      "id": "AC-05",
+      "result": "PASS",
+      "test_id": "tests.acceptance.test_budget_park_matrix.BudgetParkMatrixAcceptanceTests.test_ac_05_every_stage_parks_before_work"
+    },
+    {
+      "evidence": [
+        {
+          "path": "tests/acceptance/test_trace_usage.py",
+          "sha256": "af962dc35206c90beedd769be6fd9799a7a70fc29e4415b1cea9bd59e9fea0ab"
+        },
+        {
+          "path": "tests/acceptance/fixtures/ac06_trace_usage.json",
+          "sha256": "dec8f2673e27e104adb356430febd233c8a0d027c33efb4249f834008f249be5"
+        }
+      ],
+      "expected_artifacts": [
+        "append-only trace",
+        "usage receipts",
+        "cost ledger"
+      ],
+      "id": "AC-06",
+      "result": "PASS",
+      "test_id": "tests.acceptance.test_trace_usage.TraceUsageAcceptanceTests.test_ac_06_automatic_activation_and_real_usage_cost_trace"
+    },
+    {
+      "evidence": [
+        {
+          "path": "tests/acceptance/test_version_upgrade.py",
+          "sha256": "59004337c5eb47043cb88097b7bb885b8c2a5494ff739f907344c156fbb48cc9"
+        },
+        {
+          "path": "tests/acceptance/fixtures/ac07_version_upgrade.json",
+          "sha256": "4773412bd5d28532fab70a40368b46fd7f41045e770352cd4730f97e7ca23d86"
+        }
+      ],
+      "expected_artifacts": [
+        "version fingerprint",
+        "live regression report"
+      ],
+      "id": "AC-07",
+      "result": "PASS",
+      "test_id": "tests.acceptance.test_version_upgrade.VersionUpgradeAcceptanceTests.test_ac_07_version_changes_require_non_mocked_live_regression"
+    },
+    {
+      "evidence": [
+        {
+          "path": "tests/acceptance/test_evaluator_artifact_gates.py",
+          "sha256": "59875a81b19c43b1a7ccf9d7e32f0ee5305b66b07e6c368a6025aee0ccafa1a6"
+        },
+        {
+          "path": "tests/acceptance/fixtures/ac08_artifact_gate.json",
+          "sha256": "6582c65ac23c7d66cb20e748718f1c881bd8016124b209c9399fa28782cce5d6"
+        }
+      ],
+      "expected_artifacts": [
+        "artifact manifest",
+        "restricted final handoff"
+      ],
+      "id": "AC-08",
+      "result": "PASS",
+      "test_id": "tests.acceptance.test_evaluator_artifact_gates.ArtifactGateAcceptanceTests.test_ac_08_only_current_hash_matched_approved_artifact_can_handoff"
+    }
+  ],
+  "failure_reasons": [],
+  "finished_at": "2026-08-21T03:23:38.961580Z",
+  "gates": {
+    "all_acceptance_criteria": true,
+    "clean_room": true,
+    "p0_p6_regression": true,
+    "skill_validation": true,
+    "version_regression_gate": true,
+    "xfail_xpass_zero": true
+  },
+  "release_evidence": [
+    {
+      "path": "acceptance/manifest.json",
+      "sha256": "440450c1ace3884674a91688f8eaddc05baff0747ff9bd73803506d9d7133033"
+    },
+    {
+      "path": "evals/baseline-manifest.json",
+      "sha256": "f07352b038c5e889cb9ccd57190512a2dc5834dd03938b4cf4790bb013f926b6"
+    },
+    {
+      "path": "evals/live-report.json",
+      "sha256": "0b9fb3341d7fa74bb972d136fce6f929ce84ec9feec8dcaf9f6ec4e1b1d48f17"
+    },
+    {
+      "path": "evals/gate-report.json",
+      "sha256": "20482a7ec709569f761f892b1bba70420e32dbbc6c25fe05ed96f30ac17ce372"
+    },
+    {
+      "path": ".agents/skills/brainstorm-governor/SKILL.md",
+      "sha256": "822028a4da6a74e8799692385343add091c2a387ab478a170df0f967a9f19795"
+    }
+  ],
+  "result": "PASS",
+  "schema_version": 1,
+  "started_at": "2026-08-21T03:23:25.676213Z",
+  "status": "FULL_VERSION",
+  "suite_id": "brainstorm-governor-full-version",
+  "version_fingerprint": {
+    "aggregate": "version:v1:sha256:ac6dbed763e5a66115d8cc255db3747427206edec56ac2fe7421477fbb8cd26c",
+    "dimensions": {
+      "adapter": "version:v1:sha256:ae9a9968bfde13cb810fd356abf36735e8ec076997f1be46d6868a3a565d4b9b",
+      "citation_checker": "version:v1:sha256:b73d4b6150e3cd3bf258067c39a90ff751386702d79cd30052f3047511a2b00a",
+      "evaluator_prompt": "version:v1:sha256:7d31b82f9d8eadaf8450c7beec8f67e831740a3009eab0e2b24a30c6b2d5869d",
+      "governor_prompt": "version:v1:sha256:638f6dcbf223293afe6cd3a85029a4714ea5b9eae9b9ad520bb2655ffbb95efa",
+      "model": "version:v1:sha256:5e968013fd79da020df4bf75e2d45f2c4ae59357143dd99832a57371824509d0",
+      "pricing": "version:v1:sha256:5ca82fd3702d316d1116688ce2ba16332117b48d1317427b40ad34593764f602",
+      "provider": "version:v1:sha256:a8d87d2bc646c99b683dbb9659e339ec2826bf796467fc3b0e1cd31c27813fae",
+      "schema": "version:v1:sha256:64cae8166170b7cb5000f39f1cc7221f4aed455e6e47f6006332c30c39fa347a"
+    },
+    "schema_version": 1
+  },
+  "xfail_xpass_count": 0
+}

@@ -1,0 +1,10 @@
+{
+  "matrix_source": "acceptance/manifest.json#/stage_matrix",
+  "budget_position": "immediately_before_stage_work",
+  "assertions": {
+    "exit_status": "PARK",
+    "brief_valid": true,
+    "resume_point_present": true,
+    "external_calls_after_exhaustion": 0
+  }
+}

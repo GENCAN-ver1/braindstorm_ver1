@@ -1,0 +1,23 @@
+{
+  "cases": [
+    "approved_existing_hash_match",
+    "quality_gate_failed",
+    "artifact_missing",
+    "artifact_tampered",
+    "artifact_from_other_run",
+    "artifact_from_other_revision"
+  ],
+  "required_manifest_fields": [
+    "artifact_path",
+    "sha256",
+    "run_id",
+    "brief_revision",
+    "quality_gate_id",
+    "quality_status",
+    "created_at"
+  ],
+  "assertions": {
+    "handoff_success_cases": 1,
+    "handoff_rejected_cases": 5
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "activation_scenarios": [
+    "P4_RESEARCH",
+    "P5_WORKER",
+    "P6_EVALUATOR"
+  ],
+  "provider_receipt_fields": [
+    "run_id",
+    "stage",
+    "provider",
+    "model",
+    "request_id",
+    "prompt_tokens",
+    "completion_tokens",
+    "cached_tokens",
+    "tool_calls",
+    "latency_ms",
+    "price_table_version",
+    "calculated_cost",
+    "currency",
+    "usage_source"
+  ],
+  "assertions": {
+    "activation_automatic": true,
+    "unavailable_usage_is_zero": false,
+    "retry_receipts_are_distinct": true
+  }
+}

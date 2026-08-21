@@ -1,0 +1,54 @@
+{
+  "baseline_fingerprint": {
+    "aggregate": "version:v1:sha256:ac6dbed763e5a66115d8cc255db3747427206edec56ac2fe7421477fbb8cd26c",
+    "dimensions": {
+      "adapter": "version:v1:sha256:ae9a9968bfde13cb810fd356abf36735e8ec076997f1be46d6868a3a565d4b9b",
+      "citation_checker": "version:v1:sha256:b73d4b6150e3cd3bf258067c39a90ff751386702d79cd30052f3047511a2b00a",
+      "evaluator_prompt": "version:v1:sha256:7d31b82f9d8eadaf8450c7beec8f67e831740a3009eab0e2b24a30c6b2d5869d",
+      "governor_prompt": "version:v1:sha256:638f6dcbf223293afe6cd3a85029a4714ea5b9eae9b9ad520bb2655ffbb95efa",
+      "model": "version:v1:sha256:5e968013fd79da020df4bf75e2d45f2c4ae59357143dd99832a57371824509d0",
+      "pricing": "version:v1:sha256:5ca82fd3702d316d1116688ce2ba16332117b48d1317427b40ad34593764f602",
+      "provider": "version:v1:sha256:a8d87d2bc646c99b683dbb9659e339ec2826bf796467fc3b0e1cd31c27813fae",
+      "schema": "version:v1:sha256:64cae8166170b7cb5000f39f1cc7221f4aed455e6e47f6006332c30c39fa347a"
+    },
+    "schema_version": 1
+  },
+  "changed_dimensions": [],
+  "cost_delta": null,
+  "current_fingerprint": {
+    "aggregate": "version:v1:sha256:ac6dbed763e5a66115d8cc255db3747427206edec56ac2fe7421477fbb8cd26c",
+    "dimensions": {
+      "adapter": "version:v1:sha256:ae9a9968bfde13cb810fd356abf36735e8ec076997f1be46d6868a3a565d4b9b",
+      "citation_checker": "version:v1:sha256:b73d4b6150e3cd3bf258067c39a90ff751386702d79cd30052f3047511a2b00a",
+      "evaluator_prompt": "version:v1:sha256:7d31b82f9d8eadaf8450c7beec8f67e831740a3009eab0e2b24a30c6b2d5869d",
+      "governor_prompt": "version:v1:sha256:638f6dcbf223293afe6cd3a85029a4714ea5b9eae9b9ad520bb2655ffbb95efa",
+      "model": "version:v1:sha256:5e968013fd79da020df4bf75e2d45f2c4ae59357143dd99832a57371824509d0",
+      "pricing": "version:v1:sha256:5ca82fd3702d316d1116688ce2ba16332117b48d1317427b40ad34593764f602",
+      "provider": "version:v1:sha256:a8d87d2bc646c99b683dbb9659e339ec2826bf796467fc3b0e1cd31c27813fae",
+      "schema": "version:v1:sha256:64cae8166170b7cb5000f39f1cc7221f4aed455e6e47f6006332c30c39fa347a"
+    },
+    "schema_version": 1
+  },
+  "failing_cases": [],
+  "live_regression_required": false,
+  "live_report_accepted": true,
+  "offline_contract": {
+    "passed": true,
+    "return_code": 0,
+    "test_count": 108,
+    "transcript_sha256": "04e2d5b4caaa285f11a3f5dcdd8dfd298e6c53ecee1444f6ccaf935fbd261aca"
+  },
+  "quality_delta": {
+    "average_rounds": 0.0,
+    "average_token_cost": null,
+    "average_tool_cost": null,
+    "candidate_duplication": 0.0,
+    "constraint_adherence": 0.0,
+    "critical_assumption_discovery": 0.0,
+    "exploration_coverage": 0.0,
+    "fact_inference_mislabel_rate": 0.0
+  },
+  "reasons": [],
+  "result": "ALLOW",
+  "schema_version": 1
+}

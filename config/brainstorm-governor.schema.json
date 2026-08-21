@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "brainstorm-governor-config-v1",
+  "title": "Brainstorm Governor Runtime Configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "runtime",
+    "persistence",
+    "features",
+    "evaluation"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "parallelism",
+        "budget"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "auto",
+            "Spark",
+            "Shape",
+            "Stress",
+            "Decide"
+          ]
+        },
+        "parallelism": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "budget": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "max_steps",
+            "max_parallelism"
+          ],
+          "properties": {
+            "max_steps": {
+              "type": "integer",
+              "minimum": 4
+            },
+            "max_parallelism": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        }
+      }
+    },
+    "persistence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "brief_path"
+      ],
+      "properties": {
+        "brief_path": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "features": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "research",
+        "workers",
+        "council",
+        "evaluator"
+      ],
+      "properties": {
+        "research": {
+          "type": "boolean",
+          "default": false
+        },
+        "workers": {
+          "type": "boolean",
+          "default": false
+        },
+        "council": {
+          "type": "boolean",
+          "default": false
+        },
+        "evaluator": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "evaluation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "max_rounds"
+      ],
+      "properties": {
+        "max_rounds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "version": "builtin-fixture-v1",
+  "currency": "USD",
+  "providers": {
+    "fixture-research": {
+      "models": {
+        "fixture-model": {
+          "prompt_per_million": 1.0,
+          "completion_per_million": 2.0,
+          "cached_per_million": 0.25,
+          "prompt_tokens_include_cached": true
+        }
+      }
+    },
+    "fixture-workers": {
+      "models": {
+        "fixture-model": {
+          "prompt_per_million": 1.0,
+          "completion_per_million": 2.0,
+          "cached_per_million": 0.25,
+          "prompt_tokens_include_cached": true
+        }
+      }
+    },
+    "fixture-evaluator": {
+      "models": {
+        "fixture-model": {
+          "prompt_per_million": 1.0,
+          "completion_per_million": 2.0,
+          "cached_per_million": 0.25,
+          "prompt_tokens_include_cached": true
+        }
+      }
+    }
+  }
+}

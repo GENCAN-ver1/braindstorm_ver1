@@ -1,0 +1,13 @@
+{
+  "matrix_sources": {
+    "stages": "acceptance/manifest.json#/stage_matrix",
+    "fault_points": "acceptance/manifest.json#/fault_points"
+  },
+  "fault_action": "interrupt",
+  "assertions": {
+    "canonical_source": "Living Brief",
+    "same_main_state_fingerprint": true,
+    "duplicate_side_effects": 0,
+    "locked_decisions_preserved": true
+  }
+}

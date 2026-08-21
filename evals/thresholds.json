@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "minimum_constraint_adherence": 1.0,
+  "maximum_candidate_duplication": 0.05,
+  "minimum_exploration_coverage": 0.95,
+  "minimum_critical_assumption_discovery": 1.0,
+  "maximum_fact_inference_mislabel_rate": 0.0,
+  "maximum_average_rounds": 1.0,
+  "maximum_calculated_cost": null
+}

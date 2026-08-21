@@ -1,0 +1,159 @@
+{
+  "core_cases": [
+    {
+      "case_id": "quick-idea",
+      "mismatches": [],
+      "status": "PASS"
+    },
+    {
+      "case_id": "ambiguous-concept",
+      "mismatches": [],
+      "status": "PASS"
+    },
+    {
+      "case_id": "weak-existing-solution",
+      "mismatches": [],
+      "status": "PASS"
+    },
+    {
+      "case_id": "unknown-domain",
+      "mismatches": [],
+      "status": "PASS"
+    },
+    {
+      "case_id": "high-risk-decision",
+      "mismatches": [],
+      "status": "PASS"
+    },
+    {
+      "case_id": "duplicate-candidates",
+      "mismatches": [],
+      "status": "PASS"
+    },
+    {
+      "case_id": "missing-information",
+      "mismatches": [],
+      "status": "PASS"
+    },
+    {
+      "case_id": "brief-reentry",
+      "mismatches": [],
+      "status": "PASS"
+    },
+    {
+      "case_id": "malicious-external-content",
+      "mismatches": [],
+      "status": "PASS"
+    },
+    {
+      "case_id": "budget-exhaustion",
+      "mismatches": [],
+      "status": "PASS"
+    },
+    {
+      "case_id": "conflicting-evidence",
+      "mismatches": [],
+      "status": "PASS"
+    },
+    {
+      "case_id": "evaluator-round-cap",
+      "mismatches": [],
+      "status": "PASS"
+    }
+  ],
+  "cost": {
+    "calculated_cost": null,
+    "currency": "USD",
+    "reason": "local runtime regression made no external Provider call",
+    "status": "UNAVAILABLE"
+  },
+  "execution_mode": "LOCAL_RUNTIME",
+  "external_provider_used": false,
+  "failing_cases": [],
+  "finished_at": "2026-08-21T03:06:21.011942Z",
+  "metrics": {
+    "average_rounds": 0.6666666666666666,
+    "average_token_cost": null,
+    "average_tool_cost": null,
+    "candidate_duplication": 0.04,
+    "constraint_adherence": 1.0,
+    "critical_assumption_discovery": 1.0,
+    "exploration_coverage": 0.96,
+    "fact_inference_mislabel_rate": 0.0
+  },
+  "mocked": false,
+  "result": "PASS",
+  "runner": "evals.local_runtime_scenarios.LocalRuntimeScenarioRunner",
+  "schema_version": 1,
+  "started_at": "2026-08-21T03:06:12.523616Z",
+  "supplemental_cases": [
+    {
+      "case_id": "provider-failure",
+      "duration_ms": 354.918,
+      "return_code": 0,
+      "status": "PASS",
+      "test_id": "tests.acceptance.test_research_worker_isolation.ResearchWorkerIsolationAcceptanceTests.test_ac_03_research_and_worker_failures_do_not_pollute_main_state",
+      "transcript_sha256": "8f4bda4518ff4b8e701052bf18ca329aa830e6dba579bc1ceeb5826b65bce871"
+    },
+    {
+      "case_id": "resume",
+      "duration_ms": 6053.542,
+      "return_code": 0,
+      "status": "PASS",
+      "test_id": "tests.acceptance.test_ac02_resume_matrix.ResumeMatrixAcceptanceTests.test_ac_02_every_stage_resumes_to_equivalent_main_state",
+      "transcript_sha256": "c2e71273acd297e79bff1498f32e32afb85c69fd6c49b0c1fe41e265f6946674"
+    },
+    {
+      "case_id": "every-stage-park",
+      "duration_ms": 1561.966,
+      "return_code": 0,
+      "status": "PASS",
+      "test_id": "tests.acceptance.test_budget_park_matrix.BudgetParkMatrixAcceptanceTests.test_ac_05_every_stage_parks_before_work",
+      "transcript_sha256": "8e4c8f283eadba2a4c68541796a4ce1e95cdbc52275a491caac4c68222080ac4"
+    },
+    {
+      "case_id": "artifact-tamper",
+      "duration_ms": 445.353,
+      "return_code": 0,
+      "status": "PASS",
+      "test_id": "tests.acceptance.test_evaluator_artifact_gates.ArtifactGateAcceptanceTests.test_ac_08_only_current_hash_matched_approved_artifact_can_handoff",
+      "transcript_sha256": "24d62e5e34e259842dca77312fc8cfeed4e94c47910e246005d9c6dffb7563a3"
+    }
+  ],
+  "threshold_results": {
+    "checks": {
+      "average_rounds": true,
+      "calculated_cost": true,
+      "candidate_duplication": true,
+      "constraint_adherence": true,
+      "critical_assumption_discovery": true,
+      "exploration_coverage": true,
+      "fact_inference_mislabel_rate": true
+    },
+    "passed": true
+  },
+  "thresholds": {
+    "maximum_average_rounds": 1.0,
+    "maximum_calculated_cost": null,
+    "maximum_candidate_duplication": 0.05,
+    "maximum_fact_inference_mislabel_rate": 0.0,
+    "minimum_constraint_adherence": 1.0,
+    "minimum_critical_assumption_discovery": 1.0,
+    "minimum_exploration_coverage": 0.95,
+    "schema_version": 1
+  },
+  "version_fingerprint": {
+    "aggregate": "version:v1:sha256:ac6dbed763e5a66115d8cc255db3747427206edec56ac2fe7421477fbb8cd26c",
+    "dimensions": {
+      "adapter": "version:v1:sha256:ae9a9968bfde13cb810fd356abf36735e8ec076997f1be46d6868a3a565d4b9b",
+      "citation_checker": "version:v1:sha256:b73d4b6150e3cd3bf258067c39a90ff751386702d79cd30052f3047511a2b00a",
+      "evaluator_prompt": "version:v1:sha256:7d31b82f9d8eadaf8450c7beec8f67e831740a3009eab0e2b24a30c6b2d5869d",
+      "governor_prompt": "version:v1:sha256:638f6dcbf223293afe6cd3a85029a4714ea5b9eae9b9ad520bb2655ffbb95efa",
+      "model": "version:v1:sha256:5e968013fd79da020df4bf75e2d45f2c4ae59357143dd99832a57371824509d0",
+      "pricing": "version:v1:sha256:5ca82fd3702d316d1116688ce2ba16332117b48d1317427b40ad34593764f602",
+      "provider": "version:v1:sha256:a8d87d2bc646c99b683dbb9659e339ec2826bf796467fc3b0e1cd31c27813fae",
+      "schema": "version:v1:sha256:64cae8166170b7cb5000f39f1cc7221f4aed455e6e47f6006332c30c39fa347a"
+    },
+    "schema_version": 1
+  }
+}

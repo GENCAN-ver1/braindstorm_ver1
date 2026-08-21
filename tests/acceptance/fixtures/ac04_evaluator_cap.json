@@ -1,0 +1,16 @@
+{
+  "configured_max_rounds": 2,
+  "sequence": [
+    "evaluate_round_1",
+    "checkpoint",
+    "interrupt",
+    "resume",
+    "evaluate_round_2",
+    "attempt_round_3"
+  ],
+  "assertions": {
+    "provider_calls": 2,
+    "third_call_blocked_before_provider": true,
+    "counter_persisted_across_resume": true
+  }
+}

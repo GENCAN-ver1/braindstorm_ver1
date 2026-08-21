@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "suite_id": "brainstorm-governor-full-version",
+  "plan": "FULL_VERSION_ACCEPTANCE_PLAN.md",
+  "report_schema": "acceptance/report.schema.json",
+  "criterion_status_values": [
+    "SCAFFOLDED",
+    "IMPLEMENTED"
+  ],
+  "stage_matrix": [
+    "INITIALIZE",
+    "ROUTE",
+    "CONTEXT",
+    "FRAME",
+    "DIVERGE",
+    "NORMALIZE",
+    "CHALLENGE",
+    "RESEARCH",
+    "CONVERGE",
+    "EVALUATE",
+    "COMMIT"
+  ],
+  "fault_points": [
+    "before_enter",
+    "after_checkpoint",
+    "before_external_call",
+    "after_external_call",
+    "before_commit"
+  ],
+  "state_fingerprint_fields": [
+    "frame",
+    "candidates",
+    "assumptions",
+    "unknowns",
+    "evidence",
+    "decisions",
+    "result"
+  ],
+  "criteria": [
+    {
+      "id": "AC-01",
+      "title": "One-command legal completion",
+      "requirement": "A single command runs a user request to a legal stop or COMMIT.",
+      "implementation_module": "FV-01",
+      "status": "IMPLEMENTED",
+      "test_id": "tests.acceptance.test_ac01_one_command.OneCommandAcceptanceTests.test_ac_01_single_command_reaches_legal_stop",
+      "fixtures": [
+        "tests/acceptance/fixtures/ac01_one_command.json"
+      ],
+      "expected_states": [
+        "EXPLORE",
+        "RESEARCH_REQUIRED",
+        "ITERATE",
+        "COMMIT",
+        "PARK",
+        "NEEDS_INPUT"
+      ],
+      "expected_artifacts": [
+        "machine-readable terminal summary",
+        "Living Brief checkpoint"
+      ]
+    },
+    {
+      "id": "AC-02",
+      "title": "Resume from any stage",
+      "requirement": "Every interrupted stage resumes from the canonical Brief without duplicate side effects.",
+      "implementation_module": "FV-02",
+      "status": "IMPLEMENTED",
+      "test_id": "tests.acceptance.test_ac02_resume_matrix.ResumeMatrixAcceptanceTests.test_ac_02_every_stage_resumes_to_equivalent_main_state",
+      "fixtures": [
+        "tests/acceptance/fixtures/ac02_resume_matrix.json"
+      ],
+      "expected_states": [
+        "resumed equivalent state"
+      ],
+      "expected_artifacts": [
+        "checkpoint envelope",
+        "recovery trace"
+      ]
+    },
+    {
+      "id": "AC-03",
+      "title": "Research and Worker isolation",
+      "requirement": "Research or Worker failure cannot mutate or partially commit main state.",
+      "implementation_module": "FV-04",
+      "status": "IMPLEMENTED",
+      "test_id": "tests.acceptance.test_research_worker_isolation.ResearchWorkerIsolationAcceptanceTests.test_ac_03_research_and_worker_failures_do_not_pollute_main_state",
+      "fixtures": [
+        "tests/acceptance/fixtures/ac03_isolation_failure.json"
+      ],
+      "expected_states": [
+        "pre-operation main-state fingerprint"
+      ],
+      "expected_artifacts": [
+        "failure ledger",
+        "discarded staging transaction"
+      ]
+    },
+    {
+      "id": "AC-04",
+      "title": "Evaluator hard cap",
+      "requirement": "Evaluator provider calls never exceed two, including across resume.",
+      "implementation_module": "FV-06",
+      "status": "IMPLEMENTED",
+      "test_id": "tests.acceptance.test_evaluator_artifact_gates.EvaluatorCapAcceptanceTests.test_ac_04_evaluator_calls_never_exceed_two_across_resume",
+      "fixtures": [
+        "tests/acceptance/fixtures/ac04_evaluator_cap.json"
+      ],
+      "expected_states": [
+        "COMMIT",
+        "ITERATE",
+        "NEEDS_INPUT",
+        "PARK"
+      ],
+      "expected_artifacts": [
+        "persisted evaluator_rounds_used",
+        "evaluator call trace"
+      ]
+    },
+    {
+      "id": "AC-05",
+      "title": "Budget exhaustion parks safely",
+      "requirement": "Budget exhaustion at every stage saves a valid PARK checkpoint and stops external calls.",
+      "implementation_module": "FV-03",
+      "status": "IMPLEMENTED",
+      "test_id": "tests.acceptance.test_budget_park_matrix.BudgetParkMatrixAcceptanceTests.test_ac_05_every_stage_parks_before_work",
+      "fixtures": [
+        "tests/acceptance/fixtures/ac05_budget_exhaustion.json"
+      ],
+      "expected_states": [
+        "PARK"
+      ],
+      "expected_artifacts": [
+        "valid Living Brief",
+        "budget exhaustion trace"
+      ]
+    },
+    {
+      "id": "AC-06",
+      "title": "Automatic activation and real cost trace",
+      "requirement": "Trace automatically records P4/P5/P6 activation and provider-reported usage with calculated real cost.",
+      "implementation_module": "FV-05",
+      "status": "IMPLEMENTED",
+      "test_id": "tests.acceptance.test_trace_usage.TraceUsageAcceptanceTests.test_ac_06_automatic_activation_and_real_usage_cost_trace",
+      "fixtures": [
+        "tests/acceptance/fixtures/ac06_trace_usage.json"
+      ],
+      "expected_states": [
+        "trace-complete terminal state"
+      ],
+      "expected_artifacts": [
+        "append-only trace",
+        "usage receipts",
+        "cost ledger"
+      ]
+    },
+    {
+      "id": "AC-07",
+      "title": "Version upgrade runs real regression",
+      "requirement": "Prompt, model, or Provider fingerprint changes trigger a non-mocked regression gate.",
+      "implementation_module": "FV-07",
+      "status": "IMPLEMENTED",
+      "test_id": "tests.acceptance.test_version_upgrade.VersionUpgradeAcceptanceTests.test_ac_07_version_changes_require_non_mocked_live_regression",
+      "fixtures": [
+        "tests/acceptance/fixtures/ac07_version_upgrade.json"
+      ],
+      "expected_states": [
+        "release allowed",
+        "release blocked"
+      ],
+      "expected_artifacts": [
+        "version fingerprint",
+        "live regression report"
+      ]
+    },
+    {
+      "id": "AC-08",
+      "title": "Artifact-gated handoff",
+      "requirement": "Only an existing, hash-matched artifact approved by the current quality gate can produce handoff.",
+      "implementation_module": "FV-06",
+      "status": "IMPLEMENTED",
+      "test_id": "tests.acceptance.test_evaluator_artifact_gates.ArtifactGateAcceptanceTests.test_ac_08_only_current_hash_matched_approved_artifact_can_handoff",
+      "fixtures": [
+        "tests/acceptance/fixtures/ac08_artifact_gate.json"
+      ],
+      "expected_states": [
+        "COMMIT"
+      ],
+      "expected_artifacts": [
+        "artifact manifest",
+        "restricted final handoff"
+      ]
+    }
+  ]
+}

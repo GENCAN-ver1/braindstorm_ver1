@@ -1,0 +1,115 @@
+{
+  "boundaries": {
+    "council_http_adapter_connected": false,
+    "default_full_cycle_stages": [
+      "P0",
+      "P1",
+      "P2"
+    ],
+    "external_provider_cost": "UNAVAILABLE",
+    "external_provider_used": false,
+    "p4_p5_p6_available_via_validated_apis": true
+  },
+  "checks": {
+    "brief_resume_is_idempotent": true,
+    "durable_trace_linked": true,
+    "full_version_report_current": true,
+    "one_command_legal_stop": true,
+    "skill_structure_valid": true,
+    "version_regression_allowed": true
+  },
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\lenovo\\AppData\\Local\\Python\\pythoncore-3.13-64\\python.exe",
+        "scripts/brainstorm.py",
+        "run",
+        "--request",
+        "tests/acceptance/fixtures/ac01_one_command.json",
+        "--config",
+        "config/brainstorm-governor.example.yaml",
+        "--brief",
+        "D:\\personal_projects\\projects\\brainstorm\\tests\\acceptance\\cleanroom\\.agent-smoke-a7c478dd2f7b4d0cb2f9c88578826310-CONCEPT_BRIEF.md"
+      ],
+      "duration_ms": 624.162,
+      "name": "new-request",
+      "return_code": 0,
+      "transcript_sha256": "3c07cc6872259de7135e0390f724efd91c054f67ceba3b8a72f65555035ff0a0"
+    },
+    {
+      "command": [
+        "C:\\Users\\lenovo\\AppData\\Local\\Python\\pythoncore-3.13-64\\python.exe",
+        "scripts/brainstorm.py",
+        "run",
+        "--request",
+        "tests/acceptance/fixtures/ac01_one_command.json",
+        "--config",
+        "config/brainstorm-governor.example.yaml",
+        "--brief",
+        "D:\\personal_projects\\projects\\brainstorm\\tests\\acceptance\\cleanroom\\.agent-smoke-a7c478dd2f7b4d0cb2f9c88578826310-CONCEPT_BRIEF.md"
+      ],
+      "duration_ms": 203.283,
+      "name": "brief-resume",
+      "return_code": 0,
+      "transcript_sha256": "712fcab11bda5d53fc0f7b271eb043bb488dbf0a2b2702cfb897f652997255ec"
+    },
+    {
+      "command": [
+        "C:\\Users\\lenovo\\AppData\\Local\\Python\\pythoncore-3.13-64\\python.exe",
+        "ci/regression_gate.py",
+        "check"
+      ],
+      "duration_ms": 2043.501,
+      "name": "version-regression-gate",
+      "return_code": 0,
+      "transcript_sha256": "3884b2231e01e7c8790a03d8ffaca94d8fc445ab4434ca98e29cbd2ea78f4d86"
+    },
+    {
+      "command": [
+        "C:\\Users\\lenovo\\AppData\\Local\\Python\\pythoncore-3.13-64\\python.exe",
+        "acceptance/full_version.py",
+        "validate-report"
+      ],
+      "duration_ms": 89.596,
+      "name": "full-version-report-validation",
+      "return_code": 0,
+      "transcript_sha256": "6080bd5070d824fa2d2b72e1db76eedfbffa42848fb743daba4662e5d108b81e"
+    },
+    {
+      "command": [
+        "C:\\Users\\lenovo\\AppData\\Local\\Python\\pythoncore-3.13-64\\python.exe",
+        "ci/validate_skill.py",
+        ".agents/skills/brainstorm-governor"
+      ],
+      "duration_ms": 65.157,
+      "name": "skill-validation",
+      "return_code": 0,
+      "transcript_sha256": "db349825903d66adffea3ecf1bd8e1803043e8a71cf1a051235dabc5371f5bb0"
+    }
+  ],
+  "failure_reasons": [],
+  "finished_at": "2026-08-21T09:03:49.627539Z",
+  "result": "PASS",
+  "runtime": {
+    "exit_status": "NEEDS_INPUT",
+    "mode": "Shape",
+    "resumed_exit_status": "NEEDS_INPUT",
+    "run_id": "run-ac01-one-command",
+    "trace_event_count": 23,
+    "trace_usage_summary": {
+      "cached_tokens": 0,
+      "calculated_cost": 0,
+      "completion_tokens": 0,
+      "currency": null,
+      "priced_calls": 0,
+      "prompt_tokens": 0,
+      "tool_calls": 0,
+      "unavailable_calls": 0,
+      "unpriced_calls": 0
+    },
+    "version_fingerprint": "version:v1:sha256:ac6dbed763e5a66115d8cc255db3747427206edec56ac2fe7421477fbb8cd26c"
+  },
+  "schema_version": 1,
+  "started_at": "2026-08-21T09:03:46.585131Z",
+  "suite_id": "brainstorm-governor-agent-functional-smoke"
+}

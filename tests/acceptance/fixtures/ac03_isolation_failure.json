@@ -1,0 +1,24 @@
+{
+  "scenarios": [
+    {
+      "operation": "research",
+      "successful_units": 2,
+      "failed_units": 1
+    },
+    {
+      "operation": "worker",
+      "successful_units": 2,
+      "failed_units": 1
+    },
+    {
+      "operation": "worker",
+      "successful_units": 0,
+      "invalid_units": 1
+    }
+  ],
+  "assertions": {
+    "main_state_fingerprint_unchanged_on_failure": true,
+    "partial_commit": false,
+    "failure_ledger_required": true
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "changed_dimensions": [
+    "governor_prompt",
+    "evaluator_prompt",
+    "provider",
+    "model",
+    "adapter",
+    "schema",
+    "pricing"
+  ],
+  "assertions": {
+    "live_regression_triggered": true,
+    "mock_only_run_accepted": false,
+    "failed_threshold_blocks_release": true,
+    "baseline_update_requires_explicit_approval": true
+  }
+}
