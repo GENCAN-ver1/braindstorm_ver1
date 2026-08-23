@@ -80,11 +80,11 @@
       "id": "T1",
       "title": "Bootstrap toolchain, contracts, mappings, and persistence",
       "depends_on": [],
-      "status": "in_progress",
+      "status": "done",
       "outputs": [
         "web/package.json",
         "web/src/types",
-        "web/src/domain/mappings.ts",
+        "web/src/types/mappings.ts",
         "web/src/state/sessionPersistence.ts"
       ],
       "acceptance_ids": ["A2", "A3", "A4", "A7"]
@@ -93,11 +93,11 @@
       "id": "T2",
       "title": "Implement application shell, idea intake, and six-frame wizard",
       "depends_on": ["T1"],
-      "status": "pending",
+      "status": "in_progress",
       "outputs": [
         "web/src/app/App.tsx",
-        "web/src/features/intake/IdeaIntake.tsx",
-        "web/src/features/frames/FrameWizard.tsx"
+        "web/src/features/intake/IdeaIntakePage.tsx",
+        "web/src/features/frame/FrameWizardPage.tsx"
       ],
       "acceptance_ids": ["A1", "A2", "A3", "A4"]
     },
@@ -108,10 +108,10 @@
       "status": "pending",
       "outputs": [
         "web/src/api/developmentMock.ts",
-        "web/src/features/run/RunView.tsx",
-        "web/src/features/capability/ExternalCapabilityGate.tsx",
-        "web/src/features/human-gate/HumanGate.tsx",
-        "web/src/features/handoff/HandoffView.tsx"
+        "web/src/features/run/RunPage.tsx",
+        "web/src/features/external-capability/ExternalCapabilityGate.tsx",
+        "web/src/features/human-gate/HumanGatePage.tsx",
+        "web/src/features/handoff/HandoffPage.tsx"
       ],
       "acceptance_ids": ["A1", "A5", "A6", "A7", "A8", "A9"]
     },
