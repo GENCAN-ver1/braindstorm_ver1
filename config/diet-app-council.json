@@ -1,0 +1,53 @@
+{
+  "requested": true,
+  "minimum_successful_members": 2,
+  "providers": [
+    {
+      "provider": "deepseek",
+      "enabled": true,
+      "protocol": "OPENAI_COMPATIBLE",
+      "base_url": "https://api.deepseek.com",
+      "model": "deepseek-v4-pro",
+      "credential_env": "DEEPSEEK_API_KEY",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "provider_options": {
+        "thinking": {
+          "type": "disabled"
+        },
+        "response_format": {
+          "type": "json_object"
+        }
+      }
+    },
+    {
+      "provider": "kimi",
+      "enabled": true,
+      "protocol": "OPENAI_COMPATIBLE",
+      "base_url": "https://api.moonshot.cn/v1",
+      "model": "kimi-k2.6",
+      "credential_env": "MOONSHOT_API_KEY",
+      "timeout_seconds": 180,
+      "max_output_tokens": 4096,
+      "provider_options": {
+        "thinking": {
+          "type": "disabled"
+        },
+        "response_format": {
+          "type": "json_object"
+        }
+      }
+    },
+    {
+      "provider": "minimax",
+      "enabled": false,
+      "protocol": "OPENAI_COMPATIBLE",
+      "base_url": "https://api.minimaxi.com/v1",
+      "model": null,
+      "credential_env": "MINIMAX_API_KEY",
+      "timeout_seconds": 60,
+      "max_output_tokens": 4096,
+      "provider_options": {}
+    }
+  ]
+}

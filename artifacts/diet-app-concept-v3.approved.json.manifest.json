@@ -1,0 +1,9 @@
+{
+  "artifact_path": "D:\\gate\\personal_projects\\projects\\brainstorm\\artifacts\\diet-app-concept-v3.approved.json",
+  "brief_revision": 41,
+  "created_at": "2026-08-23T04:24:34.016988Z",
+  "quality_gate_id": "quality:diet-control-app-core-v3:round-1",
+  "quality_status": "APPROVED",
+  "run_id": "diet-control-app-core-v3",
+  "sha256": "ed0a3016e628b908918321ddbd2ab3185a43b92d2b82d397e3be32a4c58a6f18"
+}

@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "retrieved_at": "2026-08-23",
+  "treatment": "DATA_ONLY",
+  "records": [
+    {
+      "id": "e1-personalization-can-change-diet",
+      "question": "个性化饮食建议是否可能比通用建议更有效地改变饮食行为？",
+      "claim": "一项跨欧洲互联网随机对照试验发现，基于个人信息的营养建议比通用建议带来了更合适的饮食行为变化，但加入更复杂的表型和基因信息没有显示额外效果。",
+      "status": "CITED",
+      "evidence_strength": "HIGH",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/27524815/",
+      "source_date": "2017-04-01",
+      "contradictions": []
+    },
+    {
+      "id": "e2-personalization-not-automatically-superior",
+      "question": "个性化算法是否天然优于结构更简单的饮食方案？",
+      "claim": "一项随机临床试验未发现个性化餐后血糖反应饮食在六个月减重方面优于标准低脂饮食；据此作为产品风险推断，个性化本身不能被视为效果保证。",
+      "status": "CITED_INFERENCE",
+      "evidence_strength": "HIGH",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/36169954/",
+      "source_date": "2022-09-01",
+      "contradictions": []
+    },
+    {
+      "id": "e3-photo-portions-need-confirmation",
+      "question": "仅靠食物图片能否可靠估算分量？",
+      "claim": "受控评估显示，图像式分量估算仍有测量误差，并且在该研究中不如文字分量描述准确；据此作为产品风险推断，照片分量估算应允许用户确认或修正。",
+      "status": "CITED_INFERENCE",
+      "evidence_strength": "MEDIUM",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/33761165/",
+      "source_date": "2021-12-01",
+      "contradictions": []
+    },
+    {
+      "id": "e4-one-week-is-behavior-test",
+      "question": "一周原型应验证健康结果还是行为可行性？",
+      "claim": "近期远程个性化营养随机试验在更长周期内评估了依从、体验和身体指标；据此推断，一周原型更适合验证记录、计划跟随和决策成本，而不适合宣称稳定身体改善。",
+      "status": "CITED_INFERENCE",
+      "evidence_strength": "MEDIUM",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/41490780/",
+      "source_date": "2026-01-05",
+      "contradictions": []
+    },
+    {
+      "id": "e5-current-competitor-overlap",
+      "question": "当前竞品是否已经覆盖拍照记录、计划和动态调整？",
+      "claim": "当前产品已分别提供照片识别记录、基于目标与偏好的计划，以及根据记录和目标更新营养目标；因此功能组合本身不足以构成差异化。",
+      "status": "CITED_INFERENCE",
+      "evidence_strength": "MEDIUM",
+      "sources": [
+        {
+          "name": "MyFitnessPal Meal Scan",
+          "url": "https://support.myfitnesspal.com/hc/en-us/articles/360045761612-Meal-Scan-FAQ",
+          "source_date": "2026-08-20"
+        },
+        {
+          "name": "Lifesum Premium",
+          "url": "https://help.lifesum.com/en/article/what-do-i-get-when-i-buy-premium-1vzq8pz/",
+          "source_date": "2026-05-28"
+        },
+        {
+          "name": "MacroFactor Program Styles",
+          "url": "https://help.macrofactorapp.com/macro_program/program_styles/",
+          "source_date": "UNKNOWN"
+        }
+      ],
+      "contradictions": []
+    }
+  ],
+  "synthesis": {
+    "supported": [
+      "保留基于用户基线和生活习惯的个性化，但首版不采集复杂生物数据。",
+      "照片识别必须采用候选结果加用户确认，不能直接把单图估算当成精确摄入。",
+      "一周验证重点应是是否降低下一餐决策成本、是否愿意继续使用，以及是否持续跟随计划。"
+    ],
+    "decisive_risk": "c2 的功能与现有产品明显重叠，差异化必须落在同日下一餐纠偏、跨目标反馈与低决策成本闭环，而不是拍照识别或个性化计划本身。",
+    "unresolved": [
+      "目标发布市场及适用监管法域",
+      "不同目标的一周安全指标",
+      "建议误差的可接受阈值",
+      "MacroFactor 官方能力页未提供可验证发布日期，因此其严格时效性尚未解决"
+    ],
+    "citation_check": {
+      "checked_at": "2026-08-23",
+      "checker_role": "independent CitationSupportChecker",
+      "result": "PASS_WITH_FIELD_CORRECTIONS",
+      "rejected_records": []
+    }
+  }
+}

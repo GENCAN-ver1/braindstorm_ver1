@@ -1,0 +1,38 @@
+{
+  "approved_artifact_path": "D:\\gate\\personal_projects\\projects\\brainstorm\\artifacts\\brainstorm-web-host-v2.approved.json",
+  "locked_decisions": [
+    {
+      "id": "human-gate-brainstorm-web-host",
+      "topic": "concept",
+      "value": "c1"
+    }
+  ],
+  "open_questions": [],
+  "non_goals": [
+    "本轮不修改 P0–P6 Governor runtime、锁定决定或合法状态语义",
+    "本轮不实现或宣称真实后端编排、真实 Provider 调用和生产身份系统",
+    "本轮不部署、不配置 DNS、不保存真实凭据、不 push、不 merge 或创建 PR"
+  ],
+  "acceptance_criteria": [
+    "标准跳过路径、NEEDS_INPUT 恢复、Council 双 Provider 授权、Provider 失败和刷新恢复均可在浏览器完成；typecheck、lint、行为测试、production build、E2E、无障碍、React 与安全审查全部通过",
+    "终端用户无需查看或编辑 Governor JSON 即可完成 Idea Intake 和六 Frame Wizard。",
+    "四种 Idea stage 选择分别且仅映射到 Shape、Spark、Stress、Decide。",
+    "六 Frame 映射到约定 canonical 字段，并保留 UNKNOWN、ASSUMPTION、KNOWN、CONFLICT 知识分类；AI 建议不得自动成为 KNOWN。",
+    "运行页表达完整阶段、Governor 合法状态，并允许 NEEDS_INPUT 在同一 session lineage 中补充信息后恢复。",
+    "External Capability Gate 支持 Council Enable/Skip、至少两个独立 Provider 的校验和调用前显式授权。",
+    "API key 仅存在于 capability screen 的临时组件状态，不进入持久化、URL、日志、telemetry、manifest、Living Brief、Trace 或真实测试 fixture。",
+    "Human Gate 支持 Confirm、Request iteration 和 Provide missing input，且只有 Governor COMMIT 才显示正式 Final Handoff。",
+    "标准跳过、NEEDS_INPUT、Council、Provider failure 和刷新恢复场景均通过行为测试与真实浏览器 E2E。",
+    "390、768、1280、1440 代表性视口、键盘导航、焦点、标签、错误关联、对比度和 reduced motion 完成验证。",
+    "前端 typecheck、lint、单元与集成测试、production build、React review、UI review、安全审查、P7 validator 和 P0–P6 regression 全部通过。"
+  ],
+  "risks": [
+    "development mock 与未来真实 backend contract 漂移会造成错误集成信心。",
+    "session 恢复实现若边界不清，可能把前端 projection 误当 Governor canonical state。",
+    "API key 可能因持久化、日志或错误处理疏漏而泄漏。",
+    "单 Provider 或 Provider failure 可能被 UI 错误表述为真实 COUNCIL。",
+    "非 COMMIT 状态可能被错误展示为 Final、Approved 或 Ready for implementation。",
+    "高密度多阶段流程可能在移动端、键盘或辅助技术下不可完成。"
+  ],
+  "next_validation": "执行 P7 前端 TDD、production build、真实浏览器 E2E、React/UI/安全审查和 P0–P6 回归。"
+}

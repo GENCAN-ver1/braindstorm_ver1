@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "runtime": {
+    "mode": "auto",
+    "parallelism": 2,
+    "budget": {
+      "max_steps": 64,
+      "max_parallelism": 2
+    }
+  },
+  "persistence": {
+    "brief_path": "../DIET_APP_CONCEPT_BRIEF_V3.md"
+  },
+  "features": {
+    "research": true,
+    "workers": true,
+    "council": true,
+    "evaluator": true
+  },
+  "evaluation": {
+    "max_rounds": 2
+  }
+}

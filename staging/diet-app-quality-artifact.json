@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "request_id": "diet-control-app-core-v3",
+  "confirmed_frame": {
+    "problem": "希望改善体重、身体能力或日常精力与主观精神状态，但不愿手动计算热量与营养的年轻上班族，缺少一个能把低负担饮食记录转化为下一餐行动的工具。",
+    "target_user": "希望改善个人状态、经常受工作节奏和外食影响、愿意记录但不愿手动计算热量与营养的年轻上班族。",
+    "job_to_be_done": "在不手动计算热量与营养的情况下，获得适合个人基线、目标、生活节奏和饮食习惯的计划，并知道下一餐应该如何行动。",
+    "desired_change": "从被动记录饮食转变为主动跟随 App 提供的个性化计划。",
+    "hard_constraints": [
+      "一周内完成首轮 App 核心功能原型并开展验证。",
+      "首轮覆盖初始化、日历总结、拍照或食物列表记录，以及个性化下一餐建议。",
+      "建议不得越界为医疗诊断、症状解释、疾病管理或治疗方案。",
+      "首周不得把行为和主观信号表述为稳定健康效果。",
+      "进入建议闭环前必须让用户确认或修正食物与分量。"
+    ],
+    "success_metric": "保留用户确认的长期方向：相对初始化现状更接近至少一个自定义目标，或在体重、身体能力、日常精力、主观精神状态或饮食行为中报告改善；首周只把这类变化记为探索性自报信号，不作为健康效果证明。",
+    "kill_criterion": "试用结束后，用户既未表现继续使用意愿，也未报告 App 帮助其降低饮食决策成本。",
+    "non_goals": [
+      "本轮不制定完整技术架构或工程实施计划。",
+      "本轮不验证自动食物识别模型、精确营养计算或规模化推荐算法。",
+      "本轮不讨论商业模式、社交功能或运动管理。",
+      "本产品不提供医疗诊断或疾病治疗。"
+    ]
+  },
+  "candidates": [
+    {
+      "id": "c1",
+      "title": "七日个性化计划表",
+      "mechanism": "周期开始时生成静态七日计划，记录主要用于确认执行和日历复盘。",
+      "tradeoff": "最容易实现，但不能处理加班、聚餐、外食和漏记导致的当日偏差。"
+    },
+    {
+      "id": "c2",
+      "title": "实时自适应饮食教练",
+      "mechanism": "用户记录并确认食物与分量后，系统根据当天上下文给出一条方向性的下一餐行动建议。",
+      "prototype_mechanism": "首周由人工后台按统一规则在 10 分钟内生成建议；通知每日最多三次且可关闭，数据不足时使用预设偏好建议或半日总结。",
+      "value": "把每次记录直接转化为下一步行动，降低用户决定下一餐吃什么的成本。",
+      "main_risk": "识别误差、建议误差或高频纠偏可能被闭环放大，引发不信任、被控制感或饮食焦虑。"
+    },
+    {
+      "id": "c3",
+      "title": "无热量界面的下一餐导航",
+      "mechanism": "隐藏营养数字，通过照片签到、完成度和有限的下一餐选项引导行动。",
+      "tradeoff": "低负担且可作为 c2 降级路径，但透明度和个性化可信度较弱。"
+    }
+  ],
+  "recommendation": {
+    "candidate_id": "c2",
+    "decision": "PROCEED_WITH_GATES",
+    "confidence": 0.72,
+    "rationale": "c2 最直接实现从记录到行动的目标；研究和双 Provider Council 支持继续验证，但不支持首周直接建设全自动识别、精确计算或宣称健康效果。",
+    "product_promise": "记录这一餐，确认两步信息，马上知道下一餐怎么选。",
+    "differentiation": "同日下一餐纠偏、跨个人目标的方向性反馈，以及可测量的饮食决策成本下降；照片识别和个性化计划本身不是差异化。",
+    "prototype_scope": {
+      "onboarding": [
+        "选择一个首要目标与一个辅助目标。",
+        "记录初始化主观基线、常见作息、外食频率、饮食偏好、过敏或禁忌。",
+        "确认非医疗边界、数据用途和通知节奏。"
+      ],
+      "meal_input": [
+        "拍照或从常见食物列表选择。",
+        "用户确认或修正食物类别与标准份量；不可跳过后直接生成纠偏。"
+      ],
+      "next_meal_action": [
+        "人工后台依据统一规则在 10 分钟内返回一条方向性建议。",
+        "建议使用食物类别、比例、份量等级和进餐时机，不输出精确热量承诺。",
+        "用户可选择已执行、部分执行、不适用或稍后决定。"
+      ],
+      "calendar_summary": [
+        "展示记录完成、建议跟随、异常场景和每日决策成本自评。",
+        "身体或精神状态仅展示为用户自报趋势，不解释因果。"
+      ],
+      "fallback": [
+        "外食、加班或漏记时，使用用户预设偏好的默认建议。",
+        "数据不足、响应超时或用户关闭实时纠偏时，回退为用户主动触发或半日总结。"
+      ]
+    },
+    "safety_boundaries": [
+      "禁止症状解释、疾病管理、治疗建议和补充剂处方。",
+      "禁止因一周体重、精力或情绪变化宣称产品产生稳定健康效果。",
+      "出现过敏、进食障碍风险、孕期、慢性病用药或其他需专业判断的输入时停止个性化建议并提示寻求专业人员。",
+      "建议语气使用选择和剩余空间，不使用惩罚、补偿、必须或失败等表达。",
+      "允许删除单日记录、关闭提醒并重置当日计划。"
+    ],
+    "one_week_validation": {
+      "sample": "目标招募 8-12 名，最低 8 名符合画像的测试用户。",
+      "method": [
+        "第 0 天完成目标、基线、决策成本和当前记录习惯访谈。",
+        "连续 7 天使用可点击原型与透明标注的人工后台。",
+        "每日最多三次记录触发建议，并采集确认完成率、建议响应时间、执行或部分执行比例、决策成本和情绪反应。",
+        "第 7 天访谈继续使用意愿、信任建立或破坏时刻，以及分量确认是否形成负担。"
+      ],
+      "primary_pass_signals": [
+        "至少 60% 用户报告饮食决策成本相对第 0 天下降。",
+        "至少 50% 用户明确表达继续使用意愿。",
+        "至少 60% 已确认建议被执行或部分执行。",
+        "食物与分量确认完成率至少 80%。"
+      ],
+      "guardrail_signals": [
+        "所有输出均通过非医疗规则检查。",
+        "没有用户报告严重焦虑、惩罚感或被控制感；出现两名及以上相关负面报告即判定机制需回退。",
+        "人工建议响应时间中位数不超过 10 分钟，且 90% 不超过 15 分钟。"
+      ],
+      "fail_signals": [
+        "继续使用意愿低于 40%，且决策成本下降比例也低于 40%。",
+        "建议执行或部分执行比例低于 40%。",
+        "分量确认完成率低于 50%，或多数用户认为该步骤负担明显。",
+        "两名及以上用户报告焦虑、被控制感或因建议失去信任。",
+        "人工响应频繁超过 15 分钟并直接造成建议失效。"
+      ],
+      "exploratory_only": "记录用户是否自报更接近个人目标，但不得据此声称体重、身体能力、精力或精神状态得到稳定改善。"
+    },
+    "tradeoffs": {
+      "chosen": "用人工复核和用户确认牺牲自动化程度，换取首周建议质量、可解释性和对核心闭环的诚实验证。",
+      "rejected_for_now": "全自动照片识别、精确热量预算和复杂生物数据个性化。",
+      "fallback_candidate": "若实时闭环因确认负担、延迟或焦虑风险失败，回退到 c3 的用户主动触发或半日总结式导航。",
+      "weight_sensitivity": "若一周交付速度权重显著高于行为价值，c1 会胜出；当前用户已明确选择 c2，因此首周通过 Wizard-of-Oz 控制实现成本。"
+    },
+    "decisive_uncertainties": [
+      "分量确认是否仍然符合低负担承诺。",
+      "方向性建议是否足够有用和可信。",
+      "实时纠偏相对固定计划是否产生可感知的额外价值。",
+      "可接受的建议频率、响应延迟和误差阈值。"
+    ],
+    "next_validation": "先执行上述七天 Wizard-of-Oz 测试；只有通过主要信号和安全护栏后，才进入自动识别或自动营养计算的工程验证。"
+  },
+  "evidence_summary": [
+    {
+      "id": "e1-personalization-can-change-diet",
+      "claim": "基础个人信息驱动的个性化建议可能改善饮食行为，但更复杂的表型和基因信息未显示额外效果。",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/27524815/",
+      "evidence_strength": "HIGH",
+      "contradictions": [],
+      "treatment": "DATA_ONLY"
+    },
+    {
+      "id": "e2-personalization-not-automatically-superior",
+      "claim": "个性化本身不能被视为效果保证。",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/36169954/",
+      "evidence_strength": "HIGH",
+      "contradictions": [],
+      "treatment": "DATA_ONLY"
+    },
+    {
+      "id": "e3-photo-portions-need-confirmation",
+      "claim": "图像式分量估算存在测量误差，产品闭环应允许用户确认或修正。",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/33761165/",
+      "evidence_strength": "MEDIUM",
+      "contradictions": [],
+      "treatment": "DATA_ONLY"
+    },
+    {
+      "id": "e4-one-week-is-behavior-test",
+      "claim": "一周原型更适合验证记录、计划跟随和决策成本，不适合宣称稳定身体改善。",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/41490780/",
+      "evidence_strength": "MEDIUM",
+      "contradictions": [],
+      "treatment": "DATA_ONLY"
+    },
+    {
+      "id": "e5-current-competitor-overlap",
+      "claim": "照片识别、目标计划和动态营养目标已被现有产品分别覆盖，功能组合本身不足以构成差异化。",
+      "source": "https://support.myfitnesspal.com/hc/en-us/articles/360045761612-Meal-Scan-FAQ | https://help.lifesum.com/en/article/what-do-i-get-when-i-buy-premium-1vzq8pz/ | https://help.macrofactorapp.com/macro_program/program_styles/",
+      "evidence_strength": "MEDIUM",
+      "contradictions": [],
+      "treatment": "DATA_ONLY"
+    }
+  ],
+  "output_contract": {
+    "artifact_type": "diet_app_concept_handoff",
+    "required": [
+      "confirmed_frame",
+      "candidates",
+      "recommendation.candidate_id",
+      "recommendation.prototype_scope",
+      "recommendation.safety_boundaries",
+      "recommendation.one_week_validation",
+      "recommendation.tradeoffs",
+      "recommendation.next_validation",
+      "evidence_summary"
+    ]
+  }
+}

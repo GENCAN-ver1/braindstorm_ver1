@@ -1,0 +1,9 @@
+{
+  "artifact_path": "D:\\gate\\personal_projects\\projects\\brainstorm\\artifacts\\brainstorm-web-host.approved.json",
+  "brief_revision": 37,
+  "created_at": "2026-08-23T09:50:43.203032Z",
+  "quality_gate_id": "quality:brainstorm-web-host-v1:round-1",
+  "quality_status": "APPROVED",
+  "run_id": "brainstorm-web-host-v1",
+  "sha256": "4e961e30c28b5e84231a7d0eabcafcdb7e6b96aa896f899e45a4dbfc23e792a5"
+}

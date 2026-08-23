@@ -1,0 +1,1062 @@
+{
+  "base_cursor": 0,
+  "events": [
+    {
+      "details": {
+        "transition": "ENTER"
+      },
+      "event_id": "trace:v1:sha256:44f02a5f085ce8a0f947531abe571a496abd7360218af160de47e88009cb62f6",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 1,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "INITIALIZE",
+      "timestamp": "2026-08-23T09:48:56.027878Z",
+      "trace_cursor": 1
+    },
+    {
+      "details": {
+        "next_action": "execute INITIALIZE"
+      },
+      "event_id": "trace:v1:sha256:13896e6280dbeb809cb3eeca86ec56b15a08b392c06113997967505b8b50ec2a",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 1,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "INITIALIZE",
+      "timestamp": "2026-08-23T09:48:56.027949Z",
+      "trace_cursor": 2
+    },
+    {
+      "details": {
+        "next_action": "execute INITIALIZE"
+      },
+      "event_id": "trace:v1:sha256:13f7d85c2145f948a40cb470b1938bebca0e4af59cec99227a3ee59ce29617fe",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 2,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "INITIALIZE",
+      "timestamp": "2026-08-23T09:48:56.058990Z",
+      "trace_cursor": 3
+    },
+    {
+      "details": {
+        "next_stage": "ROUTE",
+        "transition": "COMMIT"
+      },
+      "event_id": "trace:v1:sha256:4be6a45bcdffe657476ca76b60d3a624bbc7d115c7089ada642a152b4495624d",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 3,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "INITIALIZE",
+      "timestamp": "2026-08-23T09:48:56.105505Z",
+      "trace_cursor": 4
+    },
+    {
+      "details": {
+        "next_action": "resume at ROUTE"
+      },
+      "event_id": "trace:v1:sha256:3b2e1c02ca717a022934f3dd18b367713679bfe5122709663ed185667d48959e",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 3,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "ROUTE",
+      "timestamp": "2026-08-23T09:48:56.105544Z",
+      "trace_cursor": 5
+    },
+    {
+      "details": {
+        "transition": "ENTER"
+      },
+      "event_id": "trace:v1:sha256:d7cd6e847befb9c9aad777d01b62c60ad96ca0ddbdcb0d8332d5d3d45e7c3276",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 4,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "ROUTE",
+      "timestamp": "2026-08-23T09:48:56.145149Z",
+      "trace_cursor": 6
+    },
+    {
+      "details": {
+        "next_action": "execute ROUTE"
+      },
+      "event_id": "trace:v1:sha256:0946a5a12e66f67decf7e0c68e5018a42971fdcf60ce05a801b3eb1eefcb3da1",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 4,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "ROUTE",
+      "timestamp": "2026-08-23T09:48:56.145184Z",
+      "trace_cursor": 7
+    },
+    {
+      "details": {
+        "next_action": "execute ROUTE"
+      },
+      "event_id": "trace:v1:sha256:b8f407409fd2caebeb8b087aec82df7b857b4ea80c3608b3373555499ca9f5b1",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 5,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "ROUTE",
+      "timestamp": "2026-08-23T09:48:56.203478Z",
+      "trace_cursor": 8
+    },
+    {
+      "details": {
+        "next_stage": "CONTEXT",
+        "transition": "COMMIT"
+      },
+      "event_id": "trace:v1:sha256:d9fc050793878e0905ba706a3d9e10cf30a327d18382c3559588f7cac2a2fd9d",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 6,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "ROUTE",
+      "timestamp": "2026-08-23T09:48:56.260907Z",
+      "trace_cursor": 9
+    },
+    {
+      "details": {
+        "next_action": "resume at CONTEXT"
+      },
+      "event_id": "trace:v1:sha256:1fb3ed7a5ad604e771d6cdd1abdabda73f704052e1afe77bb9d9a42b8d13dc2d",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 6,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "CONTEXT",
+      "timestamp": "2026-08-23T09:48:56.260941Z",
+      "trace_cursor": 10
+    },
+    {
+      "details": {
+        "transition": "ENTER"
+      },
+      "event_id": "trace:v1:sha256:acfd963050f41a2a3b5cd2d0bdd28cddbb6bfa8e53813a26121d1e419722c3fa",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 7,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "CONTEXT",
+      "timestamp": "2026-08-23T09:48:56.309499Z",
+      "trace_cursor": 11
+    },
+    {
+      "details": {
+        "next_action": "execute CONTEXT"
+      },
+      "event_id": "trace:v1:sha256:6059fc68fd0f48be1bcfb3f018e1dcca0f536c45eae829f146326b546af20cb5",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 7,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "CONTEXT",
+      "timestamp": "2026-08-23T09:48:56.309540Z",
+      "trace_cursor": 12
+    },
+    {
+      "details": {
+        "next_action": "execute CONTEXT"
+      },
+      "event_id": "trace:v1:sha256:c407fd3b172d6e54f7961c2fecd5af33a564bba4704ccef5948525dd72b47e61",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 8,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "CONTEXT",
+      "timestamp": "2026-08-23T09:48:56.353472Z",
+      "trace_cursor": 13
+    },
+    {
+      "details": {
+        "next_stage": "FRAME",
+        "transition": "COMMIT"
+      },
+      "event_id": "trace:v1:sha256:9a00a865065717418303dd8d1e84d00dea54d416d94a2ea63ecf6401f5ae0365",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 9,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "CONTEXT",
+      "timestamp": "2026-08-23T09:48:56.407642Z",
+      "trace_cursor": 14
+    },
+    {
+      "details": {
+        "next_action": "resume at FRAME"
+      },
+      "event_id": "trace:v1:sha256:51741fcb4eef3e44e97465d32b7c457ae54e9cd4535f3c5b3c45dff0d8ebb60c",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 9,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "FRAME",
+      "timestamp": "2026-08-23T09:48:56.407676Z",
+      "trace_cursor": 15
+    },
+    {
+      "details": {
+        "transition": "ENTER"
+      },
+      "event_id": "trace:v1:sha256:89ac7b5bfc68c5eea26f29e3bf7a597a0f8235a99cbd634d79a11b9674fba4f5",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 10,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "FRAME",
+      "timestamp": "2026-08-23T09:48:56.460375Z",
+      "trace_cursor": 16
+    },
+    {
+      "details": {
+        "next_action": "execute FRAME"
+      },
+      "event_id": "trace:v1:sha256:6dd28f30e0f0bc9b8ef2ace450f5cd04cec1b6ea11a54e41b7d6eeb825bdd7ca",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 10,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "FRAME",
+      "timestamp": "2026-08-23T09:48:56.460409Z",
+      "trace_cursor": 17
+    },
+    {
+      "details": {
+        "next_action": "execute FRAME"
+      },
+      "event_id": "trace:v1:sha256:aa374465b50a0161c4cd8e443c3274e21b6f6e6bd2225b27fa6e0b57ee997b70",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 11,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "FRAME",
+      "timestamp": "2026-08-23T09:48:56.511656Z",
+      "trace_cursor": 18
+    },
+    {
+      "details": {
+        "next_stage": "DIVERGE",
+        "transition": "COMMIT"
+      },
+      "event_id": "trace:v1:sha256:6b2a00873466804e1e4b7065ee0cbad4b5045dceee0ecce4a22f0ed6024667eb",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 12,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "FRAME",
+      "timestamp": "2026-08-23T09:48:56.571930Z",
+      "trace_cursor": 19
+    },
+    {
+      "details": {
+        "next_action": "resume at DIVERGE"
+      },
+      "event_id": "trace:v1:sha256:78dc9f074fc29776f32afe23371063d378251bb9e1338ce449e91282434474fa",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 12,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "DIVERGE",
+      "timestamp": "2026-08-23T09:48:56.571965Z",
+      "trace_cursor": 20
+    },
+    {
+      "details": {
+        "transition": "ENTER"
+      },
+      "event_id": "trace:v1:sha256:daeb7dd9d5b67149228533b1a1674bac0ca01f91a386716c3bdbc0aae0a292e1",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 13,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "DIVERGE",
+      "timestamp": "2026-08-23T09:48:56.627492Z",
+      "trace_cursor": 21
+    },
+    {
+      "details": {
+        "next_action": "execute DIVERGE"
+      },
+      "event_id": "trace:v1:sha256:a51b74cae9ae95be9a73f3d77935f22dc89981784de62722314906dbd97d3f37",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 13,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "DIVERGE",
+      "timestamp": "2026-08-23T09:48:56.627527Z",
+      "trace_cursor": 22
+    },
+    {
+      "details": {
+        "next_action": "execute DIVERGE"
+      },
+      "event_id": "trace:v1:sha256:b101010b7063ae8198820e562d1a01efcc06a4bb3d19a7cc061a7c25b9c8dc36",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 14,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "DIVERGE",
+      "timestamp": "2026-08-23T09:48:56.676720Z",
+      "trace_cursor": 23
+    },
+    {
+      "details": {
+        "next_stage": "NORMALIZE",
+        "transition": "COMMIT"
+      },
+      "event_id": "trace:v1:sha256:7f615054985f95b141f4c4a19a399fbde824ae21c84304466ec08b787a2cf536",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 15,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "DIVERGE",
+      "timestamp": "2026-08-23T09:48:56.728271Z",
+      "trace_cursor": 24
+    },
+    {
+      "details": {
+        "next_action": "resume at NORMALIZE"
+      },
+      "event_id": "trace:v1:sha256:5feeb4f139493a05c22c9c39d983a2b348942cb0ed91062d5d8f455b83b10ef2",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 15,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "NORMALIZE",
+      "timestamp": "2026-08-23T09:48:56.728313Z",
+      "trace_cursor": 25
+    },
+    {
+      "details": {
+        "transition": "ENTER"
+      },
+      "event_id": "trace:v1:sha256:e69e4855965da9e6f539afcd4d8d1e63c9689179a3230b402dd2c38f559fa22e",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 16,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "NORMALIZE",
+      "timestamp": "2026-08-23T09:48:56.795222Z",
+      "trace_cursor": 26
+    },
+    {
+      "details": {
+        "next_action": "execute NORMALIZE"
+      },
+      "event_id": "trace:v1:sha256:02bf26b24bf7f0f06372df69058816e67528af9f30fbc199387cc3c4ced189e9",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 16,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "NORMALIZE",
+      "timestamp": "2026-08-23T09:48:56.795265Z",
+      "trace_cursor": 27
+    },
+    {
+      "details": {
+        "next_action": "execute NORMALIZE"
+      },
+      "event_id": "trace:v1:sha256:bcb4751c2e1a688ebbfed406e1ec1494548a69e12b90349504734ce8a0f3e4b4",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 17,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "NORMALIZE",
+      "timestamp": "2026-08-23T09:48:56.870997Z",
+      "trace_cursor": 28
+    },
+    {
+      "details": {
+        "next_stage": "CHALLENGE",
+        "transition": "COMMIT"
+      },
+      "event_id": "trace:v1:sha256:f35ac5d6db115e084004becb6e1533a517057693e60e89f6a78ec5629ffb93e9",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 18,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "NORMALIZE",
+      "timestamp": "2026-08-23T09:48:56.948352Z",
+      "trace_cursor": 29
+    },
+    {
+      "details": {
+        "next_action": "resume at CHALLENGE"
+      },
+      "event_id": "trace:v1:sha256:2f91e0deeb74dd41b57f4fe47d40c08edeffdebcaf06851836f83ef61d19351d",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 18,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "CHALLENGE",
+      "timestamp": "2026-08-23T09:48:56.948544Z",
+      "trace_cursor": 30
+    },
+    {
+      "details": {
+        "transition": "ENTER"
+      },
+      "event_id": "trace:v1:sha256:28c0517f342f5496c977dbfc2f62f3ef01ee54868781eeb6e35794119aa1363a",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 19,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "CHALLENGE",
+      "timestamp": "2026-08-23T09:48:57.005876Z",
+      "trace_cursor": 31
+    },
+    {
+      "details": {
+        "next_action": "execute CHALLENGE"
+      },
+      "event_id": "trace:v1:sha256:3b32c1f31579da01f09147b26d514d8030cfb58e770bb8a9996034e25dabd58c",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 19,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "CHALLENGE",
+      "timestamp": "2026-08-23T09:48:57.005914Z",
+      "trace_cursor": 32
+    },
+    {
+      "details": {
+        "next_action": "execute CHALLENGE"
+      },
+      "event_id": "trace:v1:sha256:475c424b11519c99ede0a7d05ebd31a551c3d72d776243e9e976579414e10ba6",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 20,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "CHALLENGE",
+      "timestamp": "2026-08-23T09:48:57.049128Z",
+      "trace_cursor": 33
+    },
+    {
+      "details": {
+        "next_stage": "CONVERGE",
+        "transition": "COMMIT"
+      },
+      "event_id": "trace:v1:sha256:22705edf166faf9434ed98ed103f5cf7e3ae1ae399d5668785e033c453becb0a",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 21,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "CHALLENGE",
+      "timestamp": "2026-08-23T09:48:57.092753Z",
+      "trace_cursor": 34
+    },
+    {
+      "details": {
+        "next_action": "resume at CONVERGE"
+      },
+      "event_id": "trace:v1:sha256:8de18abd92b45e3c04403d2ab76f723a38ac62f76913da61d7fa2d61def4b8a0",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 21,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "CONVERGE",
+      "timestamp": "2026-08-23T09:48:57.092787Z",
+      "trace_cursor": 35
+    },
+    {
+      "details": {
+        "transition": "ENTER"
+      },
+      "event_id": "trace:v1:sha256:33aad9289c058780b070cf9266d6583b06b65a80bcde12c385c5b8102647f2dc",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 22,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "CONVERGE",
+      "timestamp": "2026-08-23T09:48:57.135532Z",
+      "trace_cursor": 36
+    },
+    {
+      "details": {
+        "next_action": "execute CONVERGE"
+      },
+      "event_id": "trace:v1:sha256:5224c699f4ea01fe06d8f5cb81edac7bfa3a1a0e3e677892df4452467d377c85",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 22,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "CONVERGE",
+      "timestamp": "2026-08-23T09:48:57.135584Z",
+      "trace_cursor": 37
+    },
+    {
+      "details": {
+        "next_action": "execute CONVERGE"
+      },
+      "event_id": "trace:v1:sha256:d61de9f900b50c3c0782f224c0d446bacb5f60a2a4a186a05bf7393fd77153e8",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 23,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "CONVERGE",
+      "timestamp": "2026-08-23T09:48:57.177801Z",
+      "trace_cursor": 38
+    },
+    {
+      "details": {
+        "next_stage": null,
+        "transition": "COMMIT"
+      },
+      "event_id": "trace:v1:sha256:9f568ac8b38fae1b9bdc55383a561402c0fb527176673adc26451d45fb7cfeae",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 24,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "CONVERGE",
+      "timestamp": "2026-08-23T09:48:57.219469Z",
+      "trace_cursor": 39
+    },
+    {
+      "details": {
+        "exit_status": "NEEDS_INPUT"
+      },
+      "event_id": "trace:v1:sha256:c0993e60c04537594337087268918feeb96662367d0bb3a8278a6052cec28481",
+      "kind": "EXIT_STATUS",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 24,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "CONVERGE",
+      "timestamp": "2026-08-23T09:48:57.219505Z",
+      "trace_cursor": 40
+    },
+    {
+      "details": {
+        "next_action": "provide the missing Problem Frame information"
+      },
+      "event_id": "trace:v1:sha256:ab5ec35922c78af69fbdcb10236b0bd67e241f82771d5e8ff5207a7fc51bd5d3",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 24,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "CONVERGE",
+      "timestamp": "2026-08-23T09:48:57.219524Z",
+      "trace_cursor": 41
+    },
+    {
+      "details": {
+        "next_stage": "EVALUATE",
+        "transition": "COMMIT"
+      },
+      "event_id": "trace:v1:sha256:368ccf8ca390028b72402c84acc4722355abb331805ce7f7a2ce0c4cf4c0c000",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 25,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "CONVERGE",
+      "timestamp": "2026-08-23T09:50:42.516095Z",
+      "trace_cursor": 42
+    },
+    {
+      "details": {
+        "next_action": "run the bounded Brainstorm Web Host P6 evaluator"
+      },
+      "event_id": "trace:v1:sha256:4c3005a95f97f75ea1044ddfcc2fc3d61343249aa46ce75e4b2851542e1d92d0",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 25,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "EVALUATE",
+      "timestamp": "2026-08-23T09:50:42.516193Z",
+      "trace_cursor": 43
+    },
+    {
+      "details": {
+        "transition": "ENTER"
+      },
+      "event_id": "trace:v1:sha256:53175b1320afb2bc0392a46b0dd1f98d03d625219e84fb574bbe05893ca99bd6",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 26,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "EVALUATE",
+      "timestamp": "2026-08-23T09:50:42.560943Z",
+      "trace_cursor": 44
+    },
+    {
+      "details": {
+        "next_action": "execute EVALUATE"
+      },
+      "event_id": "trace:v1:sha256:8ba315e241b1381293209d556b6be1b9fe8cf8c9d39af48605f7afbcf0745a6c",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 26,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "EVALUATE",
+      "timestamp": "2026-08-23T09:50:42.560988Z",
+      "trace_cursor": 45
+    },
+    {
+      "details": {
+        "next_action": "execute EVALUATE"
+      },
+      "event_id": "trace:v1:sha256:a318d5591143712d32dabeafda35f72e562aa1dcec2c38ac7a815ccacb0d188f",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 27,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "EVALUATE",
+      "timestamp": "2026-08-23T09:50:42.620226Z",
+      "trace_cursor": 46
+    },
+    {
+      "details": {
+        "enabled": true,
+        "gate": "evaluator_round_cap",
+        "max_rounds": 2,
+        "round": 1
+      },
+      "event_id": "trace:v1:sha256:76a2116abde2760d1c7111052275d525e8478150d9637bb9d6a90c572fc6181f",
+      "kind": "GATE_DECISION",
+      "model": null,
+      "operation_id": "evaluator:1",
+      "provider": null,
+      "revision": 28,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "EVALUATE",
+      "timestamp": "2026-08-23T09:50:42.667596Z",
+      "trace_cursor": 47
+    },
+    {
+      "details": {
+        "next_action": "call evaluator round 1"
+      },
+      "event_id": "trace:v1:sha256:2a0e3c4d3dd38d781f3afffa681d527b41ad3c8e1a25896527fbb59992562395",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 28,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "EVALUATE",
+      "timestamp": "2026-08-23T09:50:42.667629Z",
+      "trace_cursor": 48
+    },
+    {
+      "details": {
+        "dedupe_key": "gate:EVALUATE:evaluation:True:P6 requested evaluator round 1",
+        "enabled": true,
+        "gate": "evaluation",
+        "reason": "P6 requested evaluator round 1"
+      },
+      "event_id": "trace:v1:sha256:f72588617ce279691ae7824e8c6d1a6837d970795925591cde993455cddda89b",
+      "kind": "GATE_DECISION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 29,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "EVALUATE",
+      "timestamp": "2026-08-23T09:50:42.740571Z",
+      "trace_cursor": 49
+    },
+    {
+      "details": {
+        "next_action": "call evaluator round 1"
+      },
+      "event_id": "trace:v1:sha256:a796a8dcbc51ee4a7dbc39a7679afff123d8ae8e6739ab1d026740bd1a5903bb",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 29,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "EVALUATE",
+      "timestamp": "2026-08-23T09:50:42.740624Z",
+      "trace_cursor": 50
+    },
+    {
+      "details": {
+        "activation": "P6_EVALUATOR",
+        "dedupe_key": "activation:P6_EVALUATOR"
+      },
+      "event_id": "trace:v1:sha256:c5cd4c38a3e986453a59a4ee353cad22413dfe4c4b89a45c13ce6fc3faccf0a2",
+      "kind": "ACTIVATION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 30,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "EVALUATE",
+      "timestamp": "2026-08-23T09:50:42.797584Z",
+      "trace_cursor": 51
+    },
+    {
+      "details": {
+        "next_action": "call evaluator round 1"
+      },
+      "event_id": "trace:v1:sha256:55fabe1b1ef9c8b9c14427c904e28cdeaf30ef64e0661074694ff102c7d58d40",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 30,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "EVALUATE",
+      "timestamp": "2026-08-23T09:50:42.797619Z",
+      "trace_cursor": 52
+    },
+    {
+      "details": {
+        "idempotency_key": "idem:v1:4cfef139386d8ec9ecaa34559b3c984d04806dc24d6d88688ac07731af271952"
+      },
+      "event_id": "trace:v1:sha256:379cf4d1272e57cfd2778169646a8f2e7b1b93560b0c2409ea8c271577017285",
+      "kind": "EXTERNAL_CALL_STARTED",
+      "model": "deterministic-contract-v1",
+      "operation_id": "evaluator:1",
+      "provider": "local-contract-evaluator",
+      "revision": 31,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "EVALUATE",
+      "timestamp": "2026-08-23T09:50:42.826312Z",
+      "trace_cursor": 53
+    },
+    {
+      "details": {
+        "next_action": "complete external operation evaluator:1"
+      },
+      "event_id": "trace:v1:sha256:23637575405114a959ae00b1dcaebf9b459b109f08f970ec5113e3c1b130ea86",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 31,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "EVALUATE",
+      "timestamp": "2026-08-23T09:50:42.826343Z",
+      "trace_cursor": 54
+    },
+    {
+      "details": {
+        "next_action": "call external operation evaluator:1 at EVALUATE"
+      },
+      "event_id": "trace:v1:sha256:f592708702126611cc9e1d94bbeb4259b69ad244401a25a529e25b3739389a61",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 32,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "EVALUATE",
+      "timestamp": "2026-08-23T09:50:42.873404Z",
+      "trace_cursor": 55
+    },
+    {
+      "details": {
+        "idempotency_key": "idem:v1:4cfef139386d8ec9ecaa34559b3c984d04806dc24d6d88688ac07731af271952",
+        "usage_receipt_id": "usage:v1:sha256:fa5e22ee3bdaadb01cbda4cc2aca69622338d135208332d6839e5ef77cbbc58d"
+      },
+      "event_id": "trace:v1:sha256:271df8216d49a1b1abf97fd8739e52f5ba9c143b4d71f1031539a55858ccb4a5",
+      "kind": "EXTERNAL_CALL_SUCCEEDED",
+      "model": "deterministic-contract-v1",
+      "operation_id": "evaluator:1",
+      "provider": "local-contract-evaluator",
+      "revision": 33,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "EVALUATE",
+      "timestamp": "2026-08-23T09:50:42.930280Z",
+      "trace_cursor": 56
+    },
+    {
+      "details": {
+        "next_action": "commit the current stage"
+      },
+      "event_id": "trace:v1:sha256:f6aa6126b8c2638db92e4f07a56c8c9d3de6edae6e84400e257c356c5718922d",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 33,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "EVALUATE",
+      "timestamp": "2026-08-23T09:50:42.930344Z",
+      "trace_cursor": 57
+    },
+    {
+      "details": {
+        "next_action": "process evaluator corrections"
+      },
+      "event_id": "trace:v1:sha256:ab9546bde4c3df9ecc9b97fd5ee10910cbb894b3fa650e6b544babef311f868f",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 34,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "EVALUATE",
+      "timestamp": "2026-08-23T09:50:42.984397Z",
+      "trace_cursor": 58
+    },
+    {
+      "details": {
+        "next_stage": null,
+        "transition": "COMMIT"
+      },
+      "event_id": "trace:v1:sha256:ad7d10ca2709b437c622052dbcbb3477a0cf05827ed604cc2de717a68eff2217",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 35,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "EVALUATE",
+      "timestamp": "2026-08-23T09:50:43.033577Z",
+      "trace_cursor": 59
+    },
+    {
+      "details": {
+        "exit_status": "COMMIT"
+      },
+      "event_id": "trace:v1:sha256:9dfbca718d9effde5ce83fad98e754c4e4adcac38331577fc08627e9442193b8",
+      "kind": "EXIT_STATUS",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 35,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "EVALUATE",
+      "timestamp": "2026-08-23T09:50:43.033642Z",
+      "trace_cursor": 60
+    },
+    {
+      "details": {
+        "next_action": "produce the restricted Brainstorm Web Host handoff"
+      },
+      "event_id": "trace:v1:sha256:5d31b1b935e98baec899261811d783a87d18f067f0ab3decb8837db53178019f",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 35,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "EVALUATE",
+      "timestamp": "2026-08-23T09:50:43.033672Z",
+      "trace_cursor": 61
+    },
+    {
+      "details": {
+        "next_action": "produce the restricted Brainstorm Web Host handoff"
+      },
+      "event_id": "trace:v1:sha256:efd9783068b5ea3010f824396e37486467f721d7eacce09752c034a481b06c0e",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 36,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "EVALUATE",
+      "timestamp": "2026-08-23T09:50:43.096569Z",
+      "trace_cursor": 62
+    },
+    {
+      "details": {
+        "next_action": "produce the restricted Brainstorm Web Host handoff"
+      },
+      "event_id": "trace:v1:sha256:47ae5aa626a1a094f21101441c3bcc742fc7b9a675d01877daeee3542f45d286",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 37,
+      "run_id": "brainstorm-web-host-v1",
+      "schema_version": 1,
+      "stage": "EVALUATE",
+      "timestamp": "2026-08-23T09:50:43.158632Z",
+      "trace_cursor": 63
+    }
+  ],
+  "run_id": "brainstorm-web-host-v1",
+  "schema_version": 1,
+  "summary": {
+    "cached_tokens": 0,
+    "calculated_cost": 0.0,
+    "completion_tokens": 0,
+    "currency": "USD",
+    "priced_calls": 0,
+    "prompt_tokens": 0,
+    "tool_calls": 0,
+    "unavailable_calls": 1,
+    "unpriced_calls": 0
+  },
+  "usage_receipts": [
+    {
+      "cached_tokens": null,
+      "calculated_cost": null,
+      "completion_tokens": null,
+      "currency": "USD",
+      "latency_ms": 0.14,
+      "model": "deterministic-contract-v1",
+      "price_table_version": "builtin-fixture-v1",
+      "prompt_tokens": null,
+      "provider": "local-contract-evaluator",
+      "request_id": "local:aa7a42efc44842408fb00ef6e5986a63",
+      "run_id": "brainstorm-web-host-v1",
+      "stage": "EVALUATE",
+      "tool_calls": null,
+      "usage_source": "UNAVAILABLE"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "runtime": {
+    "mode": "Stress",
+    "parallelism": 1,
+    "budget": {
+      "max_steps": 64,
+      "max_parallelism": 1
+    }
+  },
+  "persistence": {
+    "brief_path": "./BRAINSTORM_WEB_HOST_BRIEF_V2.md"
+  },
+  "features": {
+    "research": false,
+    "workers": false,
+    "council": false,
+    "evaluator": true
+  },
+  "evaluation": {
+    "max_rounds": 2
+  }
+}

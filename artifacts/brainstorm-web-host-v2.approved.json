@@ -1,0 +1,242 @@
+{
+  "candidates": [
+    {
+      "complexity": "MEDIUM",
+      "core_mechanism": "route-based guided wizard with typed session projection and isolated development mock adapter",
+      "exploration_lens": "BASELINE",
+      "id": "c1",
+      "key_assumptions": [
+        {
+          "classification": "ASSUMPTION",
+          "statement": "typed development mock 可以在不伪装真实 Governor 结果的前提下验证完整前端交互"
+        }
+      ],
+      "main_dependency": {
+        "classification": "KNOWN",
+        "statement": "浏览器端路由、session projection 和 mock adapter 必须共享同一 typed API contract"
+      },
+      "one_liner": "以 typed session projection、六 Frame Wizard 和显式 Governor gate 构成完整可恢复前端流程。",
+      "target_user": {
+        "classification": "KNOWN",
+        "statement": "不应接触 Governor JSON 的产品构建者与小型团队"
+      },
+      "title": "结构化 Wizard Web Host",
+      "value_created": "把 Governor 的复杂状态转成可理解、可恢复、可验证的浏览器交互，同时保留后端为唯一 workflow truth。",
+      "why_distinct": "明确区分 server canonical、client projection 和 secret ephemeral state，并对每个合法 stop 提供专用 UX。"
+    },
+    {
+      "complexity": "LOW",
+      "core_mechanism": "browser JSON console directly exposing governor request and state documents",
+      "exploration_lens": "INVERSION",
+      "id": "c2",
+      "key_assumptions": [
+        {
+          "classification": "ASSUMPTION",
+          "statement": "目标用户能够安全理解并编辑 Governor JSON"
+        }
+      ],
+      "main_dependency": {
+        "classification": "ASSUMPTION",
+        "statement": "用户具备内部 schema 知识"
+      },
+      "one_liner": "在浏览器中直接编辑请求 JSON 并展示 runtime JSON。",
+      "target_user": {
+        "classification": "ASSUMPTION",
+        "statement": "熟悉 Governor schema 的内部工程用户"
+      },
+      "title": "原始 Governor 控制台",
+      "value_created": "实现成本最低并最大程度贴近当前 CLI。",
+      "why_distinct": "不提供用户友好映射，直接暴露底层合同。"
+    },
+    {
+      "complexity": "HIGH",
+      "core_mechanism": "chat-first implicit frame collection with hidden governor progression",
+      "exploration_lens": "STAKEHOLDER_SHIFT",
+      "id": "c3",
+      "key_assumptions": [
+        {
+          "classification": "ASSUMPTION",
+          "statement": "隐式 Frame 不会降低可解释性、恢复能力和知识分类准确性"
+        }
+      ],
+      "main_dependency": {
+        "classification": "ASSUMPTION",
+        "statement": "可靠地从自由文本提取全部必填 Frame"
+      },
+      "one_liner": "以单一聊天线程隐式收集 Frame 并在后台驱动 Governor。",
+      "target_user": {
+        "classification": "ASSUMPTION",
+        "statement": "偏好自由对话而非显式结构的用户"
+      },
+      "title": "Chat-first Brainstorm",
+      "value_created": "减少表单感并保持连续对话体验。",
+      "why_distinct": "弱化显式 Frame、状态和 gate，可用自然语言补充信息。"
+    },
+    {
+      "complexity": "LOW",
+      "core_mechanism": "read-only session viewer replacing interactive workflow with checkpoint inspection",
+      "exploration_lens": "SUBSTITUTION",
+      "id": "c4",
+      "key_assumptions": [
+        {
+          "classification": "ASSUMPTION",
+          "statement": "只读审阅足以替代新建和恢复 brainstorm session"
+        }
+      ],
+      "main_dependency": {
+        "classification": "ASSUMPTION",
+        "statement": "所有用户已有由其他入口创建的合法 session"
+      },
+      "one_liner": "只读取现有 Living Brief 并生成阶段与 handoff 报告，不提供运行输入。",
+      "target_user": {
+        "classification": "ASSUMPTION",
+        "statement": "只需要审计既有 run 的 reviewer"
+      },
+      "title": "静态 Session Review",
+      "value_created": "提供最安全的只读状态审查界面。",
+      "why_distinct": "用审阅器替代端到端交互产品。"
+    }
+  ],
+  "confirmed_frame": {
+    "constraints": [
+      {
+        "classification": "KNOWN",
+        "statement": "Idea stage 只能映射到 Shape、Spark、Stress、Decide 四种现有模式"
+      },
+      {
+        "classification": "KNOWN",
+        "statement": "六 Frame 必须映射 target_user、core_task、desired_change、hard_constraints、success_metrics、abandonment_criteria、non_goals 和 validation_horizon，并保留知识分类"
+      },
+      {
+        "classification": "KNOWN",
+        "statement": "运行页必须表达 Governor 阶段、NEEDS_INPUT 恢复、External Capability Gate、Council Enable/Skip、Human Gate 和合法状态"
+      },
+      {
+        "classification": "KNOWN",
+        "statement": "只有 Governor 返回 COMMIT 时才能展示正式 Final Handoff"
+      },
+      {
+        "classification": "KNOWN",
+        "statement": "API key 不得进入浏览器持久化、URL、日志、analytics、Living Brief、Trace、manifest、git 或真实测试 fixture"
+      },
+      {
+        "classification": "KNOWN",
+        "statement": "用户授权必须独立于凭据存在，并在外部 Provider 调用前说明共享内容、接收方和用途"
+      },
+      {
+        "classification": "KNOWN",
+        "statement": "MVP 必须支持 390、768、1280 和 1440 代表性视口，键盘操作、清晰标签、焦点、错误关联和 reduced motion"
+      },
+      {
+        "classification": "KNOWN",
+        "statement": "界面应平静、专业、高信息密度并避免通用 dashboard 和 AI 紫色发光风格"
+      },
+      {
+        "classification": "KNOWN",
+        "statement": "不引入超出 MVP 所需的大型状态管理或组件框架"
+      }
+    ],
+    "kill": {
+      "classification": "KNOWN",
+      "statement": "任一核心流程无法完成、非 COMMIT 显示正式 handoff、密钥进入持久化或日志、刷新丢失非敏感 session 投影，或前端要求用户编辑 Governor JSON"
+    },
+    "non_goals": [
+      {
+        "classification": "KNOWN",
+        "statement": "本轮不修改 P0–P6 Governor runtime、锁定决定或合法状态语义"
+      },
+      {
+        "classification": "KNOWN",
+        "statement": "本轮不实现或宣称真实后端编排、真实 Provider 调用和生产身份系统"
+      },
+      {
+        "classification": "KNOWN",
+        "statement": "本轮不部署、不配置 DNS、不保存真实凭据、不 push、不 merge 或创建 PR"
+      }
+    ],
+    "problem": {
+      "classification": "KNOWN",
+      "statement": "现有 Brainstorm Governor 具备完整运行合同，但缺少不暴露 JSON 和 CLI 的浏览器交互层，普通用户无法安全完成从想法输入到最终 handoff 的连续流程"
+    },
+    "success": {
+      "classification": "KNOWN",
+      "statement": "标准跳过路径、NEEDS_INPUT 恢复、Council 双 Provider 授权、Provider 失败和刷新恢复均可在浏览器完成；typecheck、lint、行为测试、production build、E2E、无障碍、React 与安全审查全部通过"
+    },
+    "user": {
+      "classification": "KNOWN",
+      "statement": "希望把模糊想法转成可验证方向，但不应接触 Governor JSON、CLI 或内部 checkpoint 的产品构建者与小型团队"
+    }
+  },
+  "evidence_summary": [],
+  "output_contract": {
+    "artifact_type": "brainstorm_web_host_handoff",
+    "required": [
+      "confirmed_frame",
+      "candidates",
+      "recommendation",
+      "evidence_summary",
+      "output_contract"
+    ]
+  },
+  "quality_gate": {
+    "evaluator_model": "deterministic-contract-v1",
+    "evaluator_provider": "local-contract-evaluator",
+    "evaluator_rounds_used": 1,
+    "quality_gate_id": "quality:brainstorm-web-host-v2:round-1",
+    "status": "APPROVED",
+    "stop_reason": "QUALITY_PASS"
+  },
+  "recommendation": {
+    "acceptance_criteria": [
+      "终端用户无需查看或编辑 Governor JSON 即可完成 Idea Intake 和六 Frame Wizard。",
+      "四种 Idea stage 选择分别且仅映射到 Shape、Spark、Stress、Decide。",
+      "六 Frame 映射到约定 canonical 字段，并保留 UNKNOWN、ASSUMPTION、KNOWN、CONFLICT 知识分类；AI 建议不得自动成为 KNOWN。",
+      "运行页表达完整阶段、Governor 合法状态，并允许 NEEDS_INPUT 在同一 session lineage 中补充信息后恢复。",
+      "External Capability Gate 支持 Council Enable/Skip、至少两个独立 Provider 的校验和调用前显式授权。",
+      "API key 仅存在于 capability screen 的临时组件状态，不进入持久化、URL、日志、telemetry、manifest、Living Brief、Trace 或真实测试 fixture。",
+      "Human Gate 支持 Confirm、Request iteration 和 Provide missing input，且只有 Governor COMMIT 才显示正式 Final Handoff。",
+      "标准跳过、NEEDS_INPUT、Council、Provider failure 和刷新恢复场景均通过行为测试与真实浏览器 E2E。",
+      "390、768、1280、1440 代表性视口、键盘导航、焦点、标签、错误关联、对比度和 reduced motion 完成验证。",
+      "前端 typecheck、lint、单元与集成测试、production build、React review、UI review、安全审查、P7 validator 和 P0–P6 regression 全部通过。"
+    ],
+    "architecture_boundary": {
+      "api": "typed API boundary with development-only mock adapter",
+      "canonical_state": "backend Governor and Living Brief",
+      "client": "React + TypeScript + Vite structured workflow UI",
+      "ephemeral_state": "provider credentials and authorization screen state"
+    },
+    "candidate_id": "c1",
+    "confidence": 0.9,
+    "decision": "PROCEED_WITH_FRONTEND_MVP",
+    "next_validation": "执行 P7 前端 TDD、production build、真实浏览器 E2E、React/UI/安全审查和 P0–P6 回归。",
+    "required_flow": [
+      "Idea Intake",
+      "Six Frame Wizard",
+      "Run Progress",
+      "External Capability Gate",
+      "Council Enable or Skip",
+      "Human Gate",
+      "Evaluation",
+      "COMMIT-only Final Handoff"
+    ],
+    "risks": [
+      "development mock 与未来真实 backend contract 漂移会造成错误集成信心。",
+      "session 恢复实现若边界不清，可能把前端 projection 误当 Governor canonical state。",
+      "API key 可能因持久化、日志或错误处理疏漏而泄漏。",
+      "单 Provider 或 Provider failure 可能被 UI 错误表述为真实 COUNCIL。",
+      "非 COMMIT 状态可能被错误展示为 Final、Approved 或 Ready for implementation。",
+      "高密度多阶段流程可能在移动端、键盘或辅助技术下不可完成。"
+    ],
+    "tradeoffs": {
+      "chosen": "结构化 Wizard 在可解释性、恢复能力、状态边界和用户可达性之间最符合全部硬约束。",
+      "rejected": [
+        "原始 JSON 控制台要求终端用户理解内部 schema。",
+        "Chat-first 隐藏 Frame、知识分类和合法状态，削弱可恢复性。",
+        "静态 Session Review 无法完成新建、补充信息和 Human Gate 操作。"
+      ]
+    },
+    "weight_sensitivity": "若唯一目标变成仅服务熟悉 schema 的内部工程师且不要求端到端交互，原始 JSON 控制台会以更低成本胜出；当前用户明确要求无 JSON 的完整浏览器流程，因此 c1 保持优势。"
+  },
+  "request_id": "brainstorm-web-host-v2",
+  "schema_version": 1
+}

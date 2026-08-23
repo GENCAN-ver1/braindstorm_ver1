@@ -70,7 +70,7 @@
   "execution_mode": "LOCAL_RUNTIME",
   "external_provider_used": false,
   "failing_cases": [],
-  "finished_at": "2026-08-21T03:06:21.011942Z",
+  "finished_at": "2026-08-23T04:25:54.958037Z",
   "metrics": {
     "average_rounds": 0.6666666666666666,
     "average_token_cost": null,
@@ -85,39 +85,39 @@
   "result": "PASS",
   "runner": "evals.local_runtime_scenarios.LocalRuntimeScenarioRunner",
   "schema_version": 1,
-  "started_at": "2026-08-21T03:06:12.523616Z",
+  "started_at": "2026-08-23T04:25:45.374617Z",
   "supplemental_cases": [
     {
       "case_id": "provider-failure",
-      "duration_ms": 354.918,
+      "duration_ms": 257.267,
       "return_code": 0,
       "status": "PASS",
       "test_id": "tests.acceptance.test_research_worker_isolation.ResearchWorkerIsolationAcceptanceTests.test_ac_03_research_and_worker_failures_do_not_pollute_main_state",
-      "transcript_sha256": "8f4bda4518ff4b8e701052bf18ca329aa830e6dba579bc1ceeb5826b65bce871"
+      "transcript_sha256": "93cc882f782f3576c444fdc1ddd42bde5dbaa6be65155815f05d953c5d05509c"
     },
     {
       "case_id": "resume",
-      "duration_ms": 6053.542,
+      "duration_ms": 7026.237,
       "return_code": 0,
       "status": "PASS",
       "test_id": "tests.acceptance.test_ac02_resume_matrix.ResumeMatrixAcceptanceTests.test_ac_02_every_stage_resumes_to_equivalent_main_state",
-      "transcript_sha256": "c2e71273acd297e79bff1498f32e32afb85c69fd6c49b0c1fe41e265f6946674"
+      "transcript_sha256": "337157aae351c7265ec129ae24886f1790ddc8cc387df6620a930d463b596c39"
     },
     {
       "case_id": "every-stage-park",
-      "duration_ms": 1561.966,
+      "duration_ms": 1822.366,
       "return_code": 0,
       "status": "PASS",
       "test_id": "tests.acceptance.test_budget_park_matrix.BudgetParkMatrixAcceptanceTests.test_ac_05_every_stage_parks_before_work",
-      "transcript_sha256": "8e4c8f283eadba2a4c68541796a4ce1e95cdbc52275a491caac4c68222080ac4"
+      "transcript_sha256": "a529f4eaed3715c4c6e967f9312710ee24f5d755c822017f5997fb052f64f1d9"
     },
     {
       "case_id": "artifact-tamper",
-      "duration_ms": 445.353,
+      "duration_ms": 441.114,
       "return_code": 0,
       "status": "PASS",
       "test_id": "tests.acceptance.test_evaluator_artifact_gates.ArtifactGateAcceptanceTests.test_ac_08_only_current_hash_matched_approved_artifact_can_handoff",
-      "transcript_sha256": "24d62e5e34e259842dca77312fc8cfeed4e94c47910e246005d9c6dffb7563a3"
+      "transcript_sha256": "d7e83190cd1a377bc7fca2719b0d974cc7c071e9b436436afb286064b22128d3"
     }
   ],
   "threshold_results": {

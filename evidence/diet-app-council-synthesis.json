@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "request_id": "diet-control-app-core-v3",
+  "treatment": "DATA_ONLY",
+  "council_label": "COUNCIL",
+  "minimum_successful_members": 2,
+  "members": [
+    {
+      "member_id": "diet-deepseek",
+      "provider": "deepseek",
+      "model": "deepseek-v4-pro",
+      "verdict": "REFINE",
+      "synthesis_input_usage": {
+        "prompt_tokens": 1986,
+        "completion_tokens": 760,
+        "total_tokens": 2746
+      }
+    },
+    {
+      "member_id": "diet-kimi",
+      "provider": "kimi",
+      "model": "kimi-k2.6",
+      "verdict": "REFINE",
+      "synthesis_input_usage": {
+        "prompt_tokens": 1827,
+        "completion_tokens": 1154,
+        "total_tokens": 2981
+      }
+    }
+  ],
+  "agreements": [
+    "保留用户已确认的 c2：记录后给出同日下一餐行动建议，而不是继续堆叠营养数据展示。",
+    "首周使用 Wizard-of-Oz 人工后台生成方向性建议，不开发或假装已经具备完整自动识别和精确营养计算。",
+    "照片或食物列表输入进入闭环前必须由用户确认或修正食物与分量。",
+    "建议严格限定为一般饮食行为指导，不做症状解释、疾病管理、治疗建议或稳定健康效果声明。",
+    "一周验证主要检验决策成本、建议跟随、记录负担、信任和继续使用意愿；身体目标变化只能作为探索性自报信号。",
+    "通知频率必须由用户控制；数据不足、漏记、外食或加班时必须降级，不能伪造精确纠偏。"
+  ],
+  "differences": [
+    "DeepSeek 将识别误差和高频纠偏视为可能使机制失效的产品风险；Kimi 进一步把医疗越界、一周健康效果误读和未确认分量列为首周阻断条件。",
+    "DeepSeek 建议 8-12 名测试用户；Kimi 建议 6-10 名。综合后采用目标 8-12 名、最低 8 名的招募口径。"
+  ],
+  "recommendation": {
+    "decision": "PROCEED_WITH_GATES",
+    "candidate_id": "c2",
+    "prototype_scope": "可点击 App 原型加人工后台：初始化基线与目标、照片或列表记录、食物和标准份量确认、10 分钟内返回方向性下一餐建议、用户可控通知、异常场景降级、每日简短复盘。",
+    "differentiation": "同一天内把记录变成下一餐行动，并明确降低用户的饮食决策成本；拍照识别、计划生成和数据面板本身不作为差异化。",
+    "fallback": "若分量确认负担过高、实时建议延迟或误差无法接受，则回退为用户主动触发或半日总结式纠偏，而不是继续扩大自动化范围。"
+  },
+  "decisive_uncertainties": [
+    "用户是否愿意完成食物和分量确认，且不会因此恢复到高负担记录。",
+    "无精确热量计算的方向性建议是否仍被认为有用、可信并足以指导下一餐。",
+    "多少建议频率、延迟和误差会触发被控制感、焦虑或信任崩塌。",
+    "实时下一餐纠偏是否产生竞品现有记录和计划功能没有提供的可感知价值。"
+  ],
+  "execution_notes": {
+    "initial_attempt": "两家均因 60 秒传输窗口失败，未返回可用输出或 Provider 用量。",
+    "first_successful_attempt": "两家均成功并满足 Council 准入，但 Windows 控制台编码破坏了可读文本；未用于综合。Provider 报告总 tokens：DeepSeek 2648，Kimi 2818。",
+    "synthesis_attempt": "以 UTF-8 重放隔离请求，两家均成功；本文件仅保留主代理验证后的共识，不保留原始响应。"
+  }
+}

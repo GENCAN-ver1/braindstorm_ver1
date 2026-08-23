@@ -1,10 +1,10 @@
 {
   "approval": {
-    "approval_id": "fv07-skill-sync-2026-08-21",
+    "approval_id": "diet-app-v3-20260823",
     "explicit": true,
-    "reviewer": "workspace-owner"
+    "reviewer": "Bowen_in pita"
   },
-  "approved_at": "2026-08-21T03:08:59.505967Z",
+  "approved_at": "2026-08-23T05:03:34.116033Z",
   "baseline_id": "baseline:version:v1:sha256:ac6dbed763e5a66115d8cc255db3747427206edec56ac2fe7421477fbb8cd26c",
   "case_count": 16,
   "cost": {
@@ -14,7 +14,7 @@
     "status": "UNAVAILABLE"
   },
   "live_report_path": "evals/live-report.json",
-  "live_report_sha256": "0b9fb3341d7fa74bb972d136fce6f929ce84ec9feec8dcaf9f6ec4e1b1d48f17",
+  "live_report_sha256": "8289bbb16c58da322b91d89845439b15550962e4d15dc4016a1f31c62f687aaf",
   "metrics": {
     "average_rounds": 0.6666666666666666,
     "average_token_cost": null,

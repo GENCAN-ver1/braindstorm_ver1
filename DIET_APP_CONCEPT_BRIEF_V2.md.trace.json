@@ -1,0 +1,683 @@
+{
+  "base_cursor": 0,
+  "events": [
+    {
+      "details": {
+        "transition": "ENTER"
+      },
+      "event_id": "trace:v1:sha256:7d313922d510578b54f6f750ecf72084045d085959ca5041841fbe98aa721779",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 1,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "INITIALIZE",
+      "timestamp": "2026-08-23T03:16:16.458972Z",
+      "trace_cursor": 1
+    },
+    {
+      "details": {
+        "next_action": "execute INITIALIZE"
+      },
+      "event_id": "trace:v1:sha256:c6f7bdf1c6ef120e75ac405a41924fffcf4153d6d8c9c0244e6626dfa4815ca7",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 1,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "INITIALIZE",
+      "timestamp": "2026-08-23T03:16:16.459053Z",
+      "trace_cursor": 2
+    },
+    {
+      "details": {
+        "next_action": "execute INITIALIZE"
+      },
+      "event_id": "trace:v1:sha256:14514fa96eb01812031dd1608ad11d01804ab080ef61fec92bab5d0279c305c7",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 2,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "INITIALIZE",
+      "timestamp": "2026-08-23T03:16:16.486158Z",
+      "trace_cursor": 3
+    },
+    {
+      "details": {
+        "next_stage": "ROUTE",
+        "transition": "COMMIT"
+      },
+      "event_id": "trace:v1:sha256:06e0966995830dfe811a8041b6aa59eade4d314387fbdeef66cf32d2f3a30d8b",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 3,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "INITIALIZE",
+      "timestamp": "2026-08-23T03:16:16.521710Z",
+      "trace_cursor": 4
+    },
+    {
+      "details": {
+        "next_action": "resume at ROUTE"
+      },
+      "event_id": "trace:v1:sha256:ec5d078e35b638c615c2ab62c02ce3dfd6712c5e9da7aa5ac84e317a21dd8884",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 3,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "ROUTE",
+      "timestamp": "2026-08-23T03:16:16.521756Z",
+      "trace_cursor": 5
+    },
+    {
+      "details": {
+        "transition": "ENTER"
+      },
+      "event_id": "trace:v1:sha256:5ed8a89f50cd330f87b780dbb135e9c50092f720280b0427c3b559a41d0cef3a",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 4,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "ROUTE",
+      "timestamp": "2026-08-23T03:16:16.554868Z",
+      "trace_cursor": 6
+    },
+    {
+      "details": {
+        "next_action": "execute ROUTE"
+      },
+      "event_id": "trace:v1:sha256:657fa420bad79d0441f32a20f0020a873d1a720408edb4e52ae2f9a197d243b9",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 4,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "ROUTE",
+      "timestamp": "2026-08-23T03:16:16.554909Z",
+      "trace_cursor": 7
+    },
+    {
+      "details": {
+        "next_action": "execute ROUTE"
+      },
+      "event_id": "trace:v1:sha256:700b13c69d59a6773145b82f80bb4332e899db1dc3dcb7d29b519e6d215375cc",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 5,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "ROUTE",
+      "timestamp": "2026-08-23T03:16:16.594354Z",
+      "trace_cursor": 8
+    },
+    {
+      "details": {
+        "next_stage": "CONTEXT",
+        "transition": "COMMIT"
+      },
+      "event_id": "trace:v1:sha256:b642f4032c36265feb5b3d3b82b0cec469e460021b58b97bd2457e19faee633e",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 6,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "ROUTE",
+      "timestamp": "2026-08-23T03:16:16.645495Z",
+      "trace_cursor": 9
+    },
+    {
+      "details": {
+        "next_action": "resume at CONTEXT"
+      },
+      "event_id": "trace:v1:sha256:b661d511641aaf6af73b3ff10c143f468fa26e5c2535d017cec6fb9ebfcb2dda",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 6,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "CONTEXT",
+      "timestamp": "2026-08-23T03:16:16.645575Z",
+      "trace_cursor": 10
+    },
+    {
+      "details": {
+        "transition": "ENTER"
+      },
+      "event_id": "trace:v1:sha256:120e02410e58c2d4b3af6b99920ca2ee743aae668cec9594a70377950dbc9be5",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 7,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "CONTEXT",
+      "timestamp": "2026-08-23T03:16:16.690646Z",
+      "trace_cursor": 11
+    },
+    {
+      "details": {
+        "next_action": "execute CONTEXT"
+      },
+      "event_id": "trace:v1:sha256:a66579c324769361de6135af7efc60886d89408a80418d806fe2f80f4153253a",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 7,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "CONTEXT",
+      "timestamp": "2026-08-23T03:16:16.690708Z",
+      "trace_cursor": 12
+    },
+    {
+      "details": {
+        "next_action": "execute CONTEXT"
+      },
+      "event_id": "trace:v1:sha256:75e51afc13c14bc0b2b1a7d9e7ec5d6a579a77369587881d7e5d9f4c9be94a27",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 8,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "CONTEXT",
+      "timestamp": "2026-08-23T03:16:16.729411Z",
+      "trace_cursor": 13
+    },
+    {
+      "details": {
+        "next_stage": "FRAME",
+        "transition": "COMMIT"
+      },
+      "event_id": "trace:v1:sha256:f90e947041e228bcabcc2cc019c21f1f5f23c5447ff9e2c1d3c44a4a825081e9",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 9,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "CONTEXT",
+      "timestamp": "2026-08-23T03:16:16.771148Z",
+      "trace_cursor": 14
+    },
+    {
+      "details": {
+        "next_action": "resume at FRAME"
+      },
+      "event_id": "trace:v1:sha256:66006acd96ad25fbb58491f8af8f051651de46bfadf784dca10028a79e933c28",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 9,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "FRAME",
+      "timestamp": "2026-08-23T03:16:16.771207Z",
+      "trace_cursor": 15
+    },
+    {
+      "details": {
+        "transition": "ENTER"
+      },
+      "event_id": "trace:v1:sha256:9ee5a35eef61707ac01b24bd30511fa23de9a0ea359bb8190cabce10401950ef",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 10,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "FRAME",
+      "timestamp": "2026-08-23T03:16:16.811075Z",
+      "trace_cursor": 16
+    },
+    {
+      "details": {
+        "next_action": "execute FRAME"
+      },
+      "event_id": "trace:v1:sha256:10056c778523f58132c52f5fec5990962ba1e73e0ae43141caf6f4e99d79f0b6",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 10,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "FRAME",
+      "timestamp": "2026-08-23T03:16:16.811135Z",
+      "trace_cursor": 17
+    },
+    {
+      "details": {
+        "next_action": "execute FRAME"
+      },
+      "event_id": "trace:v1:sha256:b0e483e8dac11dba12230b07a2af158075047f3a64da9c2b98ead83b8ae9629a",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 11,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "FRAME",
+      "timestamp": "2026-08-23T03:16:16.849050Z",
+      "trace_cursor": 18
+    },
+    {
+      "details": {
+        "next_stage": "DIVERGE",
+        "transition": "COMMIT"
+      },
+      "event_id": "trace:v1:sha256:6a97cac981468758f34fc7be94ec030d2475d80237b38d194205ca61945dc887",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 12,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "FRAME",
+      "timestamp": "2026-08-23T03:16:16.891745Z",
+      "trace_cursor": 19
+    },
+    {
+      "details": {
+        "next_action": "resume at DIVERGE"
+      },
+      "event_id": "trace:v1:sha256:707e9696d7380707af87aec43eb3b62557d2309f31f2e8c73992aed3ef023051",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 12,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "DIVERGE",
+      "timestamp": "2026-08-23T03:16:16.891790Z",
+      "trace_cursor": 20
+    },
+    {
+      "details": {
+        "transition": "ENTER"
+      },
+      "event_id": "trace:v1:sha256:d914f2320ae133af319ae768ce00f68bb6ad2f231cc26bc718dda55884abd48b",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 13,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "DIVERGE",
+      "timestamp": "2026-08-23T03:16:16.936793Z",
+      "trace_cursor": 21
+    },
+    {
+      "details": {
+        "next_action": "execute DIVERGE"
+      },
+      "event_id": "trace:v1:sha256:bb4716acefbbf76f6f69ef9a1a1aa9c6e4c9ffb487189582c7be407b57bde342",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 13,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "DIVERGE",
+      "timestamp": "2026-08-23T03:16:16.936848Z",
+      "trace_cursor": 22
+    },
+    {
+      "details": {
+        "next_action": "execute DIVERGE"
+      },
+      "event_id": "trace:v1:sha256:498ed1441937c8d8f4f4e06da7e186eb1ec258da1548d0f88938b21c08286235",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 14,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "DIVERGE",
+      "timestamp": "2026-08-23T03:16:16.984957Z",
+      "trace_cursor": 23
+    },
+    {
+      "details": {
+        "next_stage": "NORMALIZE",
+        "transition": "COMMIT"
+      },
+      "event_id": "trace:v1:sha256:288278690885d0f0693663de014c0b220f6165970478a35339aa083196465c17",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 15,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "DIVERGE",
+      "timestamp": "2026-08-23T03:16:17.028125Z",
+      "trace_cursor": 24
+    },
+    {
+      "details": {
+        "next_action": "resume at NORMALIZE"
+      },
+      "event_id": "trace:v1:sha256:f4357de9fab7106eaec8d23e350b609c90b4aca42011074c2e0380cb8ad358d6",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 15,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "NORMALIZE",
+      "timestamp": "2026-08-23T03:16:17.028261Z",
+      "trace_cursor": 25
+    },
+    {
+      "details": {
+        "transition": "ENTER"
+      },
+      "event_id": "trace:v1:sha256:c82bda145ac9f9db2c77cfbe82697bf099f49dc6f32a18a8fa1ed8339be3a3d7",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 16,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "NORMALIZE",
+      "timestamp": "2026-08-23T03:16:17.086187Z",
+      "trace_cursor": 26
+    },
+    {
+      "details": {
+        "next_action": "execute NORMALIZE"
+      },
+      "event_id": "trace:v1:sha256:6aab9250186f1d716cd021abe3bb922e2b115cc8d2e516e9f166ff0caf4478b8",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 16,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "NORMALIZE",
+      "timestamp": "2026-08-23T03:16:17.086252Z",
+      "trace_cursor": 27
+    },
+    {
+      "details": {
+        "next_action": "execute NORMALIZE"
+      },
+      "event_id": "trace:v1:sha256:6f2a866da3c9f14aea0043cc5f94f151446c3738a6b7910280dc8c5a575109f9",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 17,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "NORMALIZE",
+      "timestamp": "2026-08-23T03:16:17.145440Z",
+      "trace_cursor": 28
+    },
+    {
+      "details": {
+        "next_stage": "CHALLENGE",
+        "transition": "COMMIT"
+      },
+      "event_id": "trace:v1:sha256:c61fe2c19e7f077be1eb3459573bc3ee4c211a2e3732f546099205c16175b732",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 18,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "NORMALIZE",
+      "timestamp": "2026-08-23T03:16:17.193383Z",
+      "trace_cursor": 29
+    },
+    {
+      "details": {
+        "next_action": "resume at CHALLENGE"
+      },
+      "event_id": "trace:v1:sha256:cd60f8ff43acb506fdf1dff70835b85cf3d17ecdde0f2921d91a0104491924e3",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 18,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "CHALLENGE",
+      "timestamp": "2026-08-23T03:16:17.193436Z",
+      "trace_cursor": 30
+    },
+    {
+      "details": {
+        "transition": "ENTER"
+      },
+      "event_id": "trace:v1:sha256:08d8a0afb338ce87bf266e9c2f88cc76ebf5858fbe3545015c6414b6fd4b814c",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 19,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "CHALLENGE",
+      "timestamp": "2026-08-23T03:16:17.233115Z",
+      "trace_cursor": 31
+    },
+    {
+      "details": {
+        "next_action": "execute CHALLENGE"
+      },
+      "event_id": "trace:v1:sha256:403c4c46ae6a8584dbb66146ede800b9c0c7e242d9688dc93c22a01c3f7d2e73",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 19,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "CHALLENGE",
+      "timestamp": "2026-08-23T03:16:17.233181Z",
+      "trace_cursor": 32
+    },
+    {
+      "details": {
+        "next_action": "execute CHALLENGE"
+      },
+      "event_id": "trace:v1:sha256:0175c4b7ea674a909fea31cc1f2e0b13322b5b8c0134021e98145e08fa03cb64",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 20,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "CHALLENGE",
+      "timestamp": "2026-08-23T03:16:17.280470Z",
+      "trace_cursor": 33
+    },
+    {
+      "details": {
+        "next_stage": "CONVERGE",
+        "transition": "COMMIT"
+      },
+      "event_id": "trace:v1:sha256:98965655a8e2dd3e7d4cb13fb4e4987b236b8ca5669e883bf3486807e5377190",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 21,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "CHALLENGE",
+      "timestamp": "2026-08-23T03:16:17.328352Z",
+      "trace_cursor": 34
+    },
+    {
+      "details": {
+        "next_action": "resume at CONVERGE"
+      },
+      "event_id": "trace:v1:sha256:065860d8acfbc5b931935bdaafe2eb3bff35fec2a2e39988bfe8f3bed4ce8bc8",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 21,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "CONVERGE",
+      "timestamp": "2026-08-23T03:16:17.328426Z",
+      "trace_cursor": 35
+    },
+    {
+      "details": {
+        "transition": "ENTER"
+      },
+      "event_id": "trace:v1:sha256:350764441ae1181b9332142a74e895d564f4eb5c56cccc8bf2d1e2a8893b1bee",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 22,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "CONVERGE",
+      "timestamp": "2026-08-23T03:16:17.375251Z",
+      "trace_cursor": 36
+    },
+    {
+      "details": {
+        "next_action": "execute CONVERGE"
+      },
+      "event_id": "trace:v1:sha256:19956d89713222ece66f9e0748f35ff97b5c352d7c547c0d82bdbf3190ec2cfd",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 22,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "CONVERGE",
+      "timestamp": "2026-08-23T03:16:17.375301Z",
+      "trace_cursor": 37
+    },
+    {
+      "details": {
+        "next_action": "execute CONVERGE"
+      },
+      "event_id": "trace:v1:sha256:ea852a23235d220ce1e5950eeb17a00e3d4cc36e96238a3cc14c73d52344a542",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 23,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "CONVERGE",
+      "timestamp": "2026-08-23T03:16:17.420037Z",
+      "trace_cursor": 38
+    },
+    {
+      "details": {
+        "next_stage": null,
+        "transition": "COMMIT"
+      },
+      "event_id": "trace:v1:sha256:93fac01a913bbe02723c37ef9559ba087bd61efa7481be1cddce9c488c022ce1",
+      "kind": "STAGE_TRANSITION",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 24,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "CONVERGE",
+      "timestamp": "2026-08-23T03:16:17.463177Z",
+      "trace_cursor": 39
+    },
+    {
+      "details": {
+        "exit_status": "NEEDS_INPUT"
+      },
+      "event_id": "trace:v1:sha256:060ffa7758fd3b894d87ff926de4134e424da5b7a7648dabdfa43f32edab467e",
+      "kind": "EXIT_STATUS",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 24,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "CONVERGE",
+      "timestamp": "2026-08-23T03:16:17.463236Z",
+      "trace_cursor": 40
+    },
+    {
+      "details": {
+        "next_action": "provide the missing Problem Frame information"
+      },
+      "event_id": "trace:v1:sha256:b74b0b471c5485139d39c5d7379fb8faf4cd8d8b77ba04c04a03306138af7fc1",
+      "kind": "CHECKPOINT_SAVED",
+      "model": null,
+      "operation_id": null,
+      "provider": null,
+      "revision": 24,
+      "run_id": "diet-control-app-core-v2",
+      "schema_version": 1,
+      "stage": "CONVERGE",
+      "timestamp": "2026-08-23T03:16:17.463271Z",
+      "trace_cursor": 41
+    }
+  ],
+  "run_id": "diet-control-app-core-v2",
+  "schema_version": 1,
+  "summary": {
+    "cached_tokens": 0,
+    "calculated_cost": 0,
+    "completion_tokens": 0,
+    "currency": null,
+    "priced_calls": 0,
+    "prompt_tokens": 0,
+    "tool_calls": 0,
+    "unavailable_calls": 0,
+    "unpriced_calls": 0
+  },
+  "usage_receipts": []
+}

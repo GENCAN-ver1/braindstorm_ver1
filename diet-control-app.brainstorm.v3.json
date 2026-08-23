@@ -1,0 +1,341 @@
+{
+  "request_id": "diet-control-app-core-v3",
+  "text": "对用户已确认的 c2 实时自适应饮食教练进行 Stress 验证。产品面向希望改善体重、身体能力或日常精力与主观精神状态，但不愿手动计算热量与营养的年轻上班族；通过初始化基线与目标、低负担饮食记录和下一餐动态纠偏，推动用户从被动记录转向主动跟随个性化计划。",
+  "routing": {
+    "has_existing_solution": true,
+    "validation_requested": true
+  },
+  "core": {
+    "context": {
+      "requested_outcome": {
+        "statement": "验证用户已确认的 c2 实时自适应饮食教练，并形成可在一周内检验关键假设的产品概念",
+        "classification": "KNOWN"
+      },
+      "current_idea": {
+        "statement": "App 包含日历化饮食总结、拍照识别与营养分析、常规食物列表，以及基于用户身体、生活和饮食习惯生成的营养摄入策略",
+        "classification": "KNOWN"
+      },
+      "target_user": {
+        "statement": "希望改善体重、身体能力或日常精力与主观精神状态，但不愿手动计算热量与营养的年轻上班族",
+        "classification": "KNOWN"
+      },
+      "constraints": [
+        {
+          "statement": "一周内完成首轮 App 核心功能原型并进入验证",
+          "classification": "KNOWN"
+        },
+        {
+          "statement": "产品提供饮食管理建议但不构成医疗诊断",
+          "classification": "KNOWN"
+        }
+      ],
+      "questions": [
+        {
+          "statement": "不同用户目标应如何选择安全且可比较的一周阶段指标",
+          "classification": "UNKNOWN"
+        },
+        {
+          "statement": "生成个性化计划所需的最小用户数据集合是什么",
+          "classification": "UNKNOWN"
+        },
+        {
+          "statement": "食物识别、分量估算与营养计算需要达到什么准确度才足以支持用户决策",
+          "classification": "UNKNOWN"
+        }
+      ],
+      "alternatives": [
+        {
+          "statement": "用户当前不希望采用手动计算并录入热量与营养的方式进行饮食管理",
+          "classification": "KNOWN"
+        }
+      ],
+      "assets": [
+        {
+          "statement": "已经明确日历总结、拍照识别、常规食物列表和个性化策略四组核心功能",
+          "classification": "KNOWN"
+        },
+        {
+          "statement": "App 在初始化阶段记录用户现状与个人目标，并将其作为后续反馈基准",
+          "classification": "KNOWN"
+        },
+        {
+          "statement": "用户已在 Human Gate 明确确认 c2 实时自适应饮食教练方向",
+          "classification": "KNOWN"
+        },
+        {
+          "statement": "试用期结束后，继续使用意愿或自报饮食决策成本下降任一出现，即达到最低粘性标准",
+          "classification": "KNOWN"
+        }
+      ]
+    },
+    "problem_frame": {
+      "problem_statement": {
+        "statement": "希望改善体重、身体能力或日常精力与主观精神状态，但不愿手动计算热量与营养的年轻上班族，缺少一个能结合个人基线、目标、生活节奏和饮食习惯，把低负担记录转化为下一餐行动的工具",
+        "classification": "KNOWN"
+      },
+      "target_user": {
+        "statement": "希望改善体重、身体能力或日常精力与主观精神状态，但不愿手动计算热量与营养的年轻上班族",
+        "classification": "KNOWN"
+      },
+      "job_to_be_done": {
+        "statement": "在不手动计算热量与营养的情况下，获得适合个人基线、目标、生活与饮食习惯的计划，并知道当下和下一餐应该如何行动",
+        "classification": "KNOWN"
+      },
+      "desired_change": {
+        "statement": "让用户从被动记录饮食转变为主动跟随 App 提供的个性化计划",
+        "classification": "KNOWN"
+      },
+      "hard_constraints": [
+        {
+          "statement": "一周内完成首轮 App 核心功能原型并进入验证",
+          "classification": "KNOWN"
+        },
+        {
+          "statement": "首轮概念必须覆盖日历总结、拍照或食物列表记录，以及个性化计划建议",
+          "classification": "KNOWN"
+        },
+        {
+          "statement": "建议不得越界为医疗诊断或疾病治疗方案",
+          "classification": "KNOWN"
+        }
+      ],
+      "soft_preferences": [
+        {
+          "statement": "尽量减少用户手动计算和录入热量的负担",
+          "classification": "KNOWN"
+        },
+        {
+          "statement": "产品体验应以行动计划为中心，而不是以营养数据展示为中心",
+          "classification": "KNOWN"
+        }
+      ],
+      "success_metric": {
+        "statement": "测试用户连续使用七天后，相对初始化现状更接近至少一个自定义目标，或在体重、身体能力、日常精力、主观精神状态或饮食行为中的至少一个维度报告明确改善",
+        "classification": "KNOWN"
+      },
+      "kill_criterion": {
+        "statement": "试用结束后，用户既未表现继续使用意愿，也未报告 App 帮助其降低饮食决策成本",
+        "classification": "KNOWN"
+      },
+      "non_goals": [
+        {
+          "statement": "本轮不制定完整技术架构或工程实施计划",
+          "classification": "KNOWN"
+        },
+        {
+          "statement": "本轮不讨论商业模式、社交功能或运动管理",
+          "classification": "KNOWN"
+        },
+        {
+          "statement": "本产品不提供医疗诊断或疾病治疗",
+          "classification": "KNOWN"
+        }
+      ],
+      "time_horizon": {
+        "statement": "一周内完成首轮 App 核心功能原型并开展第一轮验证",
+        "classification": "KNOWN"
+      }
+    },
+    "candidates": [
+      {
+        "id": "c1",
+        "title": "七日个性化计划表",
+        "one_liner": "先生成一份可执行的七日计划，再用简化记录与日历复盘验证用户是否愿意持续跟随。",
+        "core_mechanism": "static seven-day personalized plan with simplified food confirmation and calendar adherence tracking",
+        "target_user": {
+          "statement": "希望改善体重、身体能力或日常精力与主观精神状态，但不愿手动计算热量与营养的年轻上班族",
+          "classification": "KNOWN"
+        },
+        "value_created": "用低复杂度方式快速交付个性化计划价值，并减少首轮原型对实时算法的依赖。",
+        "why_distinct": "计划在周期开始时生成，记录主要用于确认执行情况，不进行实时重算。",
+        "key_assumptions": [
+          {
+            "statement": "静态七日计划已经足以让用户感知个性化价值",
+            "classification": "ASSUMPTION"
+          },
+          {
+            "statement": "用户愿意每天通过食物列表或照片确认执行情况",
+            "classification": "ASSUMPTION"
+          }
+        ],
+        "main_dependency": {
+          "statement": "生成首版计划所需的最小用户数据和安全规则尚未确定",
+          "classification": "UNKNOWN"
+        },
+        "exploration_lens": "INVERSION",
+        "complexity": "LOW"
+      },
+      {
+        "id": "c2",
+        "title": "实时自适应饮食教练",
+        "one_liner": "每次拍照或选择食物后，立即根据当天剩余目标调整下一餐建议。",
+        "core_mechanism": "closed-loop meal logging followed by same-day next-meal plan adjustment",
+        "target_user": {
+          "statement": "希望改善体重、身体能力或日常精力与主观精神状态，但不愿手动计算热量与营养的年轻上班族",
+          "classification": "KNOWN"
+        },
+        "value_created": "把饮食记录直接转化为下一步行动，让用户感知 App 在主动带领计划。",
+        "why_distinct": "计划不是固定菜单，而是随着真实饮食行为在当天持续纠偏。",
+        "key_assumptions": [
+          {
+            "statement": "用户比起查看历史营养数据，更重视下一餐应该怎么吃",
+            "classification": "ASSUMPTION"
+          },
+          {
+            "statement": "实时纠偏建议不会让用户感到被控制或产生挫败感",
+            "classification": "ASSUMPTION"
+          },
+          {
+            "statement": "照片或食物列表输入能够提供足够信息支持当天的方向性调整",
+            "classification": "ASSUMPTION"
+          }
+        ],
+        "main_dependency": {
+          "statement": "食物识别、分量估算和建议规则能否在低误导风险下形成闭环尚未验证",
+          "classification": "UNKNOWN"
+        },
+        "exploration_lens": "BASELINE",
+        "complexity": "MEDIUM"
+      },
+      {
+        "id": "c3",
+        "title": "无热量界面的下一餐导航",
+        "one_liner": "隐藏复杂营养数字，只通过照片签到、计划完成度和下一餐选项引导用户行动。",
+        "core_mechanism": "replace calorie dashboards with photo check-ins, adherence signals, and constrained next-meal choices",
+        "target_user": {
+          "statement": "希望改善体重、身体能力或日常精力与主观精神状态，但不愿手动计算热量与营养的年轻上班族",
+          "classification": "KNOWN"
+        },
+        "value_created": "降低数字焦虑和学习成本，使用户只需要做少量可执行选择。",
+        "why_distinct": "以行为导航替代热量和营养仪表盘，把数据分析隐藏在产品后台。",
+        "key_assumptions": [
+          {
+            "statement": "隐藏热量数字会提高持续使用意愿，而不会降低用户信任",
+            "classification": "ASSUMPTION"
+          },
+          {
+            "statement": "有限的下一餐选项能够适配上班族真实的外食环境",
+            "classification": "ASSUMPTION"
+          }
+        ],
+        "main_dependency": {
+          "statement": "如何在不展示详细计算过程的情况下建立建议可信度尚未确定",
+          "classification": "UNKNOWN"
+        },
+        "exploration_lens": "SUBSTITUTION",
+        "complexity": "MEDIUM"
+      }
+    ],
+    "challenges": [
+      {
+        "candidate_id": "c1",
+        "blindspots": [
+          "计划生成后若用户临时加班、聚餐或外食，静态七日安排可能迅速失效。",
+          "身体数据、饮食偏好与照片记录涉及隐私，但当前尚未定义最小采集范围。",
+          "日历完成度可能鼓励形式上的打卡，而不代表真实减脂行为发生。"
+        ],
+        "assumption_audit": [
+          {
+            "statement": "静态七日计划已经足以让用户感知个性化价值",
+            "classification": "ASSUMPTION"
+          },
+          {
+            "statement": "用户可以容忍计划与临时生活安排之间的偏差",
+            "classification": "UNKNOWN"
+          }
+        ],
+        "pressure_test": [
+          "Steelman：静态计划最容易在一周内完成可用原型，并能先验证用户是否愿意跟随计划。",
+          "依赖失败：如果个性化数据不足，计划会退化为通用菜单，核心价值难以成立。",
+          "采用摩擦：若每日确认仍需要大量搜索和修改，用户可能在三天内停止记录。"
+        ]
+      },
+      {
+        "candidate_id": "c2",
+        "blindspots": [
+          "错误的识别或分量估算可能连续影响后续建议，放大一次输入错误。",
+          "过于频繁的纠偏可能造成被监督感、挫败感或饮食焦虑。",
+          "实时建议同时依赖识别、营养估算、计划规则和通知节奏，一周原型存在范围压力。",
+          "用户身体与饮食数据的隐私边界及建议责任尚未定义。"
+        ],
+        "assumption_audit": [
+          {
+            "statement": "下一餐行动建议比历史营养总结更能推动用户持续使用",
+            "classification": "ASSUMPTION"
+          },
+          {
+            "statement": "人工辅助生成的方向性建议可以替代首轮原型中的完整自动化能力",
+            "classification": "ASSUMPTION"
+          },
+          {
+            "statement": "什么程度的建议误差会破坏用户信任尚未确定",
+            "classification": "UNKNOWN"
+          }
+        ],
+        "pressure_test": [
+          "Steelman：它最直接实现从被动记录到主动跟随计划的目标，并把每次记录转化为即时价值。",
+          "边界测试：连续出现外食、加班和漏记时，系统可能无法给出稳定且可执行的调整。",
+          "依赖失败：若识别或分量估算不可靠，后续建议可能看似个性化但实际误导。",
+          "可持续性：高频提醒若不能由用户控制，短期新鲜感可能转化为通知疲劳。"
+        ]
+      },
+      {
+        "candidate_id": "c3",
+        "blindspots": [
+          "隐藏营养计算过程可能降低透明度，使用户无法判断建议依据。",
+          "有限选项可能无法覆盖真实外食、预算、过敏或文化饮食约束。",
+          "用户可能只完成签到而没有真实执行建议。"
+        ],
+        "assumption_audit": [
+          {
+            "statement": "减少热量数字展示会提升目标用户的使用粘性",
+            "classification": "ASSUMPTION"
+          },
+          {
+            "statement": "用户愿意在看不到详细计算过程时相信下一餐建议",
+            "classification": "UNKNOWN"
+          }
+        ],
+        "pressure_test": [
+          "Steelman：它最大程度降低手动计算负担，符合目标用户对简单行动指导的需求。",
+          "替代品测试：普通备忘录、固定餐单或即时聊天建议可能以更低成本提供相似价值。",
+          "信任失败：一旦推荐与用户现实条件明显不符，缺少解释界面可能加速流失。"
+        ]
+      }
+    ],
+    "assessments": [
+      {
+        "candidate_id": "c1",
+        "hard_constraint_violations": [],
+        "user_value": 0.72,
+        "feasibility": 0.86,
+        "evidence_confidence": 0.48,
+        "reversibility": 0.9,
+        "risk": 0.22
+      },
+      {
+        "candidate_id": "c2",
+        "hard_constraint_violations": [],
+        "user_value": 0.92,
+        "feasibility": 0.62,
+        "evidence_confidence": 0.38,
+        "reversibility": 0.74,
+        "risk": 0.44
+      },
+      {
+        "candidate_id": "c3",
+        "hard_constraint_violations": [],
+        "user_value": 0.82,
+        "feasibility": 0.76,
+        "evidence_confidence": 0.35,
+        "reversibility": 0.86,
+        "risk": 0.28
+      }
+    ],
+    "recommended_candidate_id": "c2",
+    "confidence": 0.58,
+    "cheapest_test": "在一周内用可点击原型加人工后台模拟初始化目标、个性化计划、食物识别确认和下一餐纠偏；邀请少量目标用户连续使用七天，比较其结束状态与初始化基线，并调查继续使用意愿及饮食决策成本是否下降。首轮不开发完整自动识别或自动营养计算。",
+    "supplemental_candidates": [],
+    "supplemental_rounds": 0
+  }
+}

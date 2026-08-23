@@ -1,0 +1,259 @@
+{
+  "schema_version": "p7.1",
+  "project": {
+    "name": "brainstorm-web-host",
+    "root": "."
+  },
+  "source": {
+    "handoff_path": "artifacts/brainstorm-web-host-v2.p6-handoff.json",
+    "handoff_sha256": "f559307a6dde234be436cfaa2aa59097f1626e28b7fd6fd2a1971724ef858421"
+  },
+  "scope": {
+    "in_scope": [
+      "React + TypeScript + Vite Brainstorm Web Host Frontend MVP",
+      "typed API boundary and development-only mock adapter",
+      "browser interaction, accessibility, responsive, and security acceptance"
+    ],
+    "non_goals": [
+      "本轮不修改 P0–P6 Governor runtime、锁定决定或合法状态语义",
+      "本轮不实现或宣称真实后端编排、真实 Provider 调用和生产身份系统",
+      "本轮不部署、不配置 DNS、不保存真实凭据、不 push、不 merge 或创建 PR"
+    ]
+  },
+  "architecture": {
+    "entrypoints": [
+      "web/src/main.tsx"
+    ],
+    "components": [
+      {
+        "id": "web-contracts",
+        "path": "web/src/types",
+        "responsibility": "Define the frozen frontend domain and API contracts.",
+        "depends_on": []
+      },
+      {
+        "id": "web-api",
+        "path": "web/src/api",
+        "responsibility": "Provide the typed host boundary and development-only mock adapter.",
+        "depends_on": ["web-contracts"]
+      },
+      {
+        "id": "web-state",
+        "path": "web/src/state",
+        "responsibility": "Own the versioned allowlisted browser session projection.",
+        "depends_on": ["web-contracts"]
+      },
+      {
+        "id": "web-features",
+        "path": "web/src/features",
+        "responsibility": "Render and coordinate intake, framing, run, capability, human-gate, and handoff flows.",
+        "depends_on": ["web-contracts", "web-api", "web-state"]
+      },
+      {
+        "id": "web-shell",
+        "path": "web/src/app",
+        "responsibility": "Compose the application shell, navigation, and top-level session lifecycle.",
+        "depends_on": ["web-features"]
+      }
+    ],
+    "decisions": [
+      {
+        "decision": "Use React, TypeScript, Vite, and npm.",
+        "rationale": "The repository has no existing frontend stack and the approved host is a browser application."
+      },
+      {
+        "decision": "Hide runtime behavior behind a typed BrainstormApi and show a visible development-mock indicator.",
+        "rationale": "The frontend must be locally runnable without implying that a real backend or Provider integration exists."
+      },
+      {
+        "decision": "Persist only a versioned, allowlisted, non-secret session projection in sessionStorage.",
+        "rationale": "Refresh recovery is required while credentials and other sensitive transient values must never be persisted."
+      },
+      {
+        "decision": "Use React context and local state without a large state-management dependency.",
+        "rationale": "The MVP has one bounded session flow and does not justify another runtime dependency."
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "id": "T1",
+      "title": "Bootstrap toolchain, contracts, mappings, and persistence",
+      "depends_on": [],
+      "status": "in_progress",
+      "outputs": [
+        "web/package.json",
+        "web/src/types",
+        "web/src/domain/mappings.ts",
+        "web/src/state/sessionPersistence.ts"
+      ],
+      "acceptance_ids": ["A2", "A3", "A4", "A7"]
+    },
+    {
+      "id": "T2",
+      "title": "Implement application shell, idea intake, and six-frame wizard",
+      "depends_on": ["T1"],
+      "status": "pending",
+      "outputs": [
+        "web/src/app/App.tsx",
+        "web/src/features/intake/IdeaIntake.tsx",
+        "web/src/features/frames/FrameWizard.tsx"
+      ],
+      "acceptance_ids": ["A1", "A2", "A3", "A4"]
+    },
+    {
+      "id": "T3",
+      "title": "Implement mock API, run, capability, human gate, and handoff flows",
+      "depends_on": ["T2"],
+      "status": "pending",
+      "outputs": [
+        "web/src/api/developmentMock.ts",
+        "web/src/features/run/RunView.tsx",
+        "web/src/features/capability/ExternalCapabilityGate.tsx",
+        "web/src/features/human-gate/HumanGate.tsx",
+        "web/src/features/handoff/HandoffView.tsx"
+      ],
+      "acceptance_ids": ["A1", "A5", "A6", "A7", "A8", "A9"]
+    },
+    {
+      "id": "T4",
+      "title": "Complete responsive visual system and accessibility behavior",
+      "depends_on": ["T3"],
+      "status": "pending",
+      "outputs": [
+        "web/src/styles/global.css",
+        "web/src/app/accessibility.test.tsx"
+      ],
+      "acceptance_ids": ["A10"]
+    },
+    {
+      "id": "T5",
+      "title": "Run browser E2E, reviews, and package acceptance evidence",
+      "depends_on": ["T4"],
+      "status": "pending",
+      "outputs": [
+        "artifacts/acceptance/brainstorm-web-host-test-report.md",
+        "artifacts/acceptance/brainstorm-web-host-browser-report.md",
+        "artifacts/acceptance/brainstorm-web-host-security-report.md"
+      ],
+      "acceptance_ids": ["A1", "A8", "A9", "A10", "A11"]
+    }
+  ],
+  "frontend": {
+    "applicable": true,
+    "states": ["loading", "empty", "error", "success"],
+    "accessibility_checks": [
+      "keyboard navigation",
+      "visible focus",
+      "labels",
+      "error association",
+      "contrast",
+      "reduced motion"
+    ],
+    "responsive_checks": ["390", "768", "1280", "1440"]
+  },
+  "security": {
+    "data_classification": "confidential",
+    "auth_required": false,
+    "trust_boundaries": [
+      "browser-to-development-mock",
+      "browser-to-session-storage",
+      "browser-to-future-host-api"
+    ],
+    "controls": [
+      "input-validation",
+      "output-encoding",
+      "secret-management",
+      "dependency-review",
+      "allowlisted session persistence",
+      "ephemeral provider credentials",
+      "explicit provider authorization",
+      "safe rendered text",
+      "production mock exclusion"
+    ],
+    "secret_sources": []
+  },
+  "acceptance": [
+    {
+      "id": "A1",
+      "criterion": "标准跳过路径、NEEDS_INPUT 恢复、Council 双 Provider 授权、Provider 失败和刷新恢复均可在浏览器完成；typecheck、lint、行为测试、production build、E2E、无障碍、React 与安全审查全部通过",
+      "source": "handoff",
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "A2",
+      "criterion": "终端用户无需查看或编辑 Governor JSON 即可完成 Idea Intake 和六 Frame Wizard。",
+      "source": "handoff",
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "A3",
+      "criterion": "四种 Idea stage 选择分别且仅映射到 Shape、Spark、Stress、Decide。",
+      "source": "handoff",
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "A4",
+      "criterion": "六 Frame 映射到约定 canonical 字段，并保留 UNKNOWN、ASSUMPTION、KNOWN、CONFLICT 知识分类；AI 建议不得自动成为 KNOWN。",
+      "source": "handoff",
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "A5",
+      "criterion": "运行页表达完整阶段、Governor 合法状态，并允许 NEEDS_INPUT 在同一 session lineage 中补充信息后恢复。",
+      "source": "handoff",
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "A6",
+      "criterion": "External Capability Gate 支持 Council Enable/Skip、至少两个独立 Provider 的校验和调用前显式授权。",
+      "source": "handoff",
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "A7",
+      "criterion": "API key 仅存在于 capability screen 的临时组件状态，不进入持久化、URL、日志、telemetry、manifest、Living Brief、Trace 或真实测试 fixture。",
+      "source": "handoff",
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "A8",
+      "criterion": "Human Gate 支持 Confirm、Request iteration 和 Provide missing input，且只有 Governor COMMIT 才显示正式 Final Handoff。",
+      "source": "handoff",
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "A9",
+      "criterion": "标准跳过、NEEDS_INPUT、Council、Provider failure 和刷新恢复场景均通过行为测试与真实浏览器 E2E。",
+      "source": "handoff",
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "A10",
+      "criterion": "390、768、1280、1440 代表性视口、键盘导航、焦点、标签、错误关联、对比度和 reduced motion 完成验证。",
+      "source": "handoff",
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "A11",
+      "criterion": "前端 typecheck、lint、单元与集成测试、production build、React review、UI review、安全审查、P7 validator 和 P0–P6 regression 全部通过。",
+      "source": "handoff",
+      "status": "unverified",
+      "evidence": []
+    }
+  ],
+  "gate": {
+    "status": "DEVELOPING",
+    "summary": "Independent Brainstorm Web Host contract is pinned; frontend implementation is in progress."
+  }
+}
