@@ -187,50 +187,50 @@
       "id": "A2",
       "criterion": "终端用户无需查看或编辑 Governor JSON 即可完成 Idea Intake 和六 Frame Wizard。",
       "source": "handoff",
-      "status": "unverified",
-      "evidence": []
+      "status": "pass",
+      "evidence": ["artifacts/acceptance/brainstorm-web-host-test-report.md"]
     },
     {
       "id": "A3",
       "criterion": "四种 Idea stage 选择分别且仅映射到 Shape、Spark、Stress、Decide。",
       "source": "handoff",
-      "status": "unverified",
-      "evidence": []
+      "status": "pass",
+      "evidence": ["artifacts/acceptance/brainstorm-web-host-test-report.md"]
     },
     {
       "id": "A4",
       "criterion": "六 Frame 映射到约定 canonical 字段，并保留 UNKNOWN、ASSUMPTION、KNOWN、CONFLICT 知识分类；AI 建议不得自动成为 KNOWN。",
       "source": "handoff",
-      "status": "unverified",
-      "evidence": []
+      "status": "pass",
+      "evidence": ["artifacts/acceptance/brainstorm-web-host-test-report.md"]
     },
     {
       "id": "A5",
       "criterion": "运行页表达完整阶段、Governor 合法状态，并允许 NEEDS_INPUT 在同一 session lineage 中补充信息后恢复。",
       "source": "handoff",
-      "status": "unverified",
-      "evidence": []
+      "status": "pass",
+      "evidence": ["artifacts/acceptance/brainstorm-web-host-test-report.md"]
     },
     {
       "id": "A6",
       "criterion": "External Capability Gate 支持 Council Enable/Skip、至少两个独立 Provider 的校验和调用前显式授权。",
       "source": "handoff",
-      "status": "unverified",
-      "evidence": []
+      "status": "pass",
+      "evidence": ["artifacts/acceptance/brainstorm-web-host-test-report.md"]
     },
     {
       "id": "A7",
       "criterion": "API key 仅存在于 capability screen 的临时组件状态，不进入持久化、URL、日志、telemetry、manifest、Living Brief、Trace 或真实测试 fixture。",
       "source": "handoff",
-      "status": "unverified",
-      "evidence": []
+      "status": "pass",
+      "evidence": ["artifacts/acceptance/brainstorm-web-host-test-report.md", "artifacts/acceptance/brainstorm-web-host-security-report.md"]
     },
     {
       "id": "A8",
       "criterion": "Human Gate 支持 Confirm、Request iteration 和 Provide missing input，且只有 Governor COMMIT 才显示正式 Final Handoff。",
       "source": "handoff",
-      "status": "unverified",
-      "evidence": []
+      "status": "pass",
+      "evidence": ["artifacts/acceptance/brainstorm-web-host-test-report.md"]
     },
     {
       "id": "A9",
@@ -256,6 +256,6 @@
   ],
   "gate": {
     "status": "DEVELOPING",
-    "summary": "Independent Brainstorm Web Host contract is pinned; frontend implementation is in progress."
+    "summary": "T1-T4 complete and verified; T5 in progress. Web typecheck/lint/unit+integration tests/production build and P0-P6 regression all pass; real-browser E2E and visual/React/UI review remain pending browser tooling."
   }
 }
