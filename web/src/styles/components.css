@@ -1,0 +1,126 @@
+.app-shell {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: var(--space-4);
+}
+
+.app-shell__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-3);
+}
+
+.app-shell__title {
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+.app-shell__main {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-neutral);
+  background: var(--color-neutral-bg);
+}
+
+.status-badge--neutral {
+  background: var(--color-neutral-bg);
+  color: var(--color-neutral);
+}
+
+.status-badge--info {
+  background: var(--color-info-bg);
+  color: var(--color-info);
+}
+
+.status-badge--warning {
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
+}
+
+.status-badge--danger {
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+}
+
+.status-badge--success {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.form-error {
+  color: var(--color-danger);
+  margin: var(--space-1) 0 0;
+  font-size: var(--text-sm);
+}
+
+.frame-field {
+  margin-bottom: var(--space-4);
+}
+
+.frame-field__list-item {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.frame-field__list-item input {
+  flex: 1;
+}
+
+.frame-field > button {
+  margin-top: var(--space-2);
+}
+
+fieldset {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  margin: 0 0 var(--space-4);
+}
+
+legend {
+  font-weight: 600;
+  padding: 0 var(--space-2);
+}
+
+ol {
+  padding-left: var(--space-5);
+}
+
+pre {
+  font-family: var(--font-mono);
+  white-space: pre-wrap;
+  background: var(--color-neutral-bg);
+  padding: var(--space-3);
+  border-radius: var(--radius);
+}
+
+@media (max-width: 767px) {
+  .app-shell {
+    padding: var(--space-3);
+  }
+
+  .app-shell__main {
+    padding: var(--space-4);
+  }
+
+  .app-shell__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

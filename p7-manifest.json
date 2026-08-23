@@ -119,9 +119,11 @@
       "id": "T4",
       "title": "Complete responsive visual system and accessibility behavior",
       "depends_on": ["T3"],
-      "status": "in_progress",
+      "status": "done",
       "outputs": [
+        "web/src/styles/tokens.css",
         "web/src/styles/global.css",
+        "web/src/styles/components.css",
         "web/src/app/accessibility.test.tsx"
       ],
       "acceptance_ids": ["A10"]
@@ -130,7 +132,7 @@
       "id": "T5",
       "title": "Run browser E2E, reviews, and package acceptance evidence",
       "depends_on": ["T4"],
-      "status": "pending",
+      "status": "in_progress",
       "outputs": [
         "artifacts/acceptance/brainstorm-web-host-test-report.md",
         "artifacts/acceptance/brainstorm-web-host-browser-report.md",
