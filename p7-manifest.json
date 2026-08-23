@@ -93,7 +93,7 @@
       "id": "T2",
       "title": "Implement application shell, idea intake, and six-frame wizard",
       "depends_on": ["T1"],
-      "status": "in_progress",
+      "status": "done",
       "outputs": [
         "web/src/app/App.tsx",
         "web/src/features/intake/IdeaIntakePage.tsx",
@@ -105,7 +105,7 @@
       "id": "T3",
       "title": "Implement mock API, run, capability, human gate, and handoff flows",
       "depends_on": ["T2"],
-      "status": "pending",
+      "status": "in_progress",
       "outputs": [
         "web/src/api/developmentMock.ts",
         "web/src/features/run/RunPage.tsx",
