@@ -114,3 +114,17 @@ export const FRAME_BY_SLUG: Readonly<Record<string, FrameDefinition | undefined>
 
 export const frameIndexBySlug = (slug: string): number =>
   FRAME_DEFINITIONS.findIndex((frame) => frame.slug === slug)
+
+const ALL_FRAME_FIELDS = FRAME_DEFINITIONS.flatMap((frame) => frame.fields)
+
+export const FRAME_FIELD_LABELS = Object.fromEntries(
+  ALL_FRAME_FIELDS.map((field) => [field.key, field.label]),
+) as Record<keyof FrameSchema, string>
+
+export const FRAME_FIELD_KINDS = Object.fromEntries(
+  ALL_FRAME_FIELDS.map((field) => [field.key, field.kind]),
+) as Record<keyof FrameSchema, FrameFieldKind>
+
+export const LIST_FIELD_KEYS: ReadonlySet<keyof FrameSchema> = new Set(
+  ALL_FRAME_FIELDS.filter((field) => field.kind === 'list').map((field) => field.key),
+)

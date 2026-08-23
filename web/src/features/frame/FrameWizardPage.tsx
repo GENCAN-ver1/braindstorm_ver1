@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import type {
+  CreateBrainstormRequest,
   FrameValidationError,
   FrameValue,
   KnowledgeStatus,
 } from '../../types/contracts'
-import { validateFrameContinuation } from '../../types/mappings'
+import { IDEA_STAGE_TO_MODE, validateFrameContinuation } from '../../types/mappings'
+import { getBrainstormApi } from '../../api/client'
+import { isBrainstormApiError } from '../../api/errors'
 import { useSession } from '../../state/SessionContext'
 import { FormError } from '../../components/FormError'
 import { StatusBadge, type BadgeTone } from '../../components/StatusBadge'
@@ -98,47 +101,20 @@ function FrameFieldEditor({
   )
 }
 
-function FrameSummary() {
-  const { state } = useSession()
-  return (
-    <section aria-labelledby="summary-heading">
-      <h1 id="summary-heading">Frame wizard complete</h1>
-      <dl>
-        {FRAME_DEFINITIONS.flatMap((frame) => frame.fields).map((field) => {
-          const frameValue = state.frames[field.key]
-          const value = Array.isArray(frameValue.value)
-            ? frameValue.value.join(', ')
-            : frameValue.value
-          return (
-            <div key={field.key}>
-              <dt>{field.label}</dt>
-              <dd>
-                {value || '\u2014'}
-                <StatusBadge tone={KNOWLEDGE_TONE[frameValue.status]}>
-                  {frameValue.status}
-                </StatusBadge>
-              </dd>
-            </div>
-          )
-        })}
-      </dl>
-    </section>
-  )
-}
-
 export function FrameWizardPage() {
   const navigate = useNavigate()
   const { frameSlug } = useParams<{ frameSlug: string }>()
-  const { state, setFrameValue, setCurrentFrame } = useSession()
+  const { state, setFrameValue, setCurrentFrame, setSession } = useSession()
   const [touched, setTouched] = useState(false)
-  const [wizardComplete, setWizardComplete] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   const frame = frameSlug ? FRAME_BY_SLUG[frameSlug] : undefined
   const index = frameIndexBySlug(frameSlug ?? '')
 
   useEffect(() => {
     setTouched(false)
-    setWizardComplete(false)
+    setSubmitError(null)
   }, [frameSlug])
 
   useEffect(() => {
@@ -158,8 +134,26 @@ export function FrameWizardPage() {
     if (currentErrors.length > 0) return
     if (index < FRAME_DEFINITIONS.length - 1) {
       navigate(FRAME_DEFINITIONS[index + 1].route)
-    } else {
-      setWizardComplete(true)
+    }
+  }
+
+  const handleComplete = async () => {
+    setTouched(true)
+    const currentErrors = validateFrameContinuation(state.frames, frame.name)
+    if (currentErrors.length > 0) return
+    if (!state.selectedIdeaStage) return
+
+    const mode = IDEA_STAGE_TO_MODE[state.selectedIdeaStage]
+    const request: CreateBrainstormRequest = { idea: state.idea, mode, frames: state.frames }
+    setSubmitting(true)
+    setSubmitError(null)
+    try {
+      const session = await getBrainstormApi().createSession(request)
+      setSession(session.id, session.revision)
+      navigate('/run')
+    } catch (err) {
+      setSubmitError(isBrainstormApiError(err) ? err.message : 'Could not start the run.')
+      setSubmitting(false)
     }
   }
 
@@ -171,9 +165,7 @@ export function FrameWizardPage() {
     }
   }
 
-  if (wizardComplete) {
-    return <FrameSummary />
-  }
+  const isLastFrame = index === FRAME_DEFINITIONS.length - 1
 
   return (
     <section aria-labelledby="frame-heading">
@@ -192,12 +184,18 @@ export function FrameWizardPage() {
         />
       ))}
 
-      <button type="button" onClick={handleBack}>
+      <button type="button" onClick={handleBack} disabled={submitting}>
         Back
       </button>
-      <button type="button" onClick={handleContinue}>
-        {index < FRAME_DEFINITIONS.length - 1 ? 'Continue' : 'Complete'}
+      <button
+        type="button"
+        onClick={isLastFrame ? () => void handleComplete() : handleContinue}
+        disabled={submitting}
+      >
+        {isLastFrame ? (submitting ? 'Starting…' : 'Complete') : 'Continue'}
       </button>
+
+      {submitError && <FormError id="wizard-submit-error">{submitError}</FormError>}
     </section>
   )
 }

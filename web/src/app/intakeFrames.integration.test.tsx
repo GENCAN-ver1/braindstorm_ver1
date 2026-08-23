@@ -49,7 +49,7 @@ describe('intake to frames integration', () => {
     await user.click(screen.getByRole('button', { name: /complete/i }))
 
     expect(
-      await screen.findByRole('heading', { name: /frame wizard complete/i }),
+      await screen.findByRole('button', { name: /configure external capabilities/i }),
     ).toBeInTheDocument()
   })
 

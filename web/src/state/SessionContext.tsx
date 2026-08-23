@@ -60,6 +60,7 @@ interface SessionContextValue {
   setFrameValue: (field: keyof FrameSchema, value: string | string[]) => void
   setRoute: (route: string) => void
   setCurrentFrame: (index: number) => void
+  setSession: (id: string, revision: number) => void
 }
 
 const SessionContext = createContext<SessionContextValue | null>(null)
@@ -109,9 +110,21 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     setState((prev) => ({ ...prev, currentFrame: index }))
   }, [])
 
+  const setSession = useCallback((id: string, revision: number) => {
+    setState((prev) => ({ ...prev, sessionId: id, revision }))
+  }, [])
+
   const value = useMemo(
-    () => ({ state, setIdea, selectIdeaStage, setFrameValue, setRoute, setCurrentFrame }),
-    [state, setIdea, selectIdeaStage, setFrameValue, setRoute, setCurrentFrame],
+    () => ({
+      state,
+      setIdea,
+      selectIdeaStage,
+      setFrameValue,
+      setRoute,
+      setCurrentFrame,
+      setSession,
+    }),
+    [state, setIdea, selectIdeaStage, setFrameValue, setRoute, setCurrentFrame, setSession],
   )
 
   return <SessionContext.Provider value={value}>{children}</SessionContext.Provider>
