@@ -59,7 +59,10 @@ function FrameFieldEditor({
           {items.map((item, index) => (
             <div key={index} className="frame-field__list-item">
               <input
+                id={`${field.key}-${index}`}
+                name={`${field.key}-${index}`}
                 type="text"
+                autoComplete="off"
                 value={item}
                 placeholder={field.placeholder}
                 aria-label={`${field.label} item ${index + 1}`}
@@ -76,7 +79,7 @@ function FrameFieldEditor({
             </div>
           ))}
         </div>
-        <button type="button" onClick={addItem}>
+        <button id={`${field.key}-add`} type="button" onClick={addItem}>
           Add {field.label.toLowerCase()}
         </button>
         {error && <FormError id={errorId}>{error.message}</FormError>}
@@ -91,6 +94,8 @@ function FrameFieldEditor({
       <StatusBadge tone={KNOWLEDGE_TONE[frameValue.status]}>{frameValue.status}</StatusBadge>
       <textarea
         id={field.key}
+        name={field.key}
+        autoComplete="off"
         value={value}
         placeholder={field.placeholder}
         aria-describedby={error ? errorId : undefined}
@@ -131,7 +136,15 @@ export function FrameWizardPage() {
   const handleContinue = () => {
     setTouched(true)
     const currentErrors = validateFrameContinuation(state.frames, frame.name)
-    if (currentErrors.length > 0) return
+    if (currentErrors.length > 0) {
+      const firstField = currentErrors[0].field
+      const focusTarget =
+        document.getElementById(firstField) ??
+        document.getElementById(`${firstField}-0`) ??
+        document.getElementById(`${firstField}-add`)
+      focusTarget?.focus()
+      return
+    }
     if (index < FRAME_DEFINITIONS.length - 1) {
       navigate(FRAME_DEFINITIONS[index + 1].route)
     }
@@ -140,7 +153,15 @@ export function FrameWizardPage() {
   const handleComplete = async () => {
     setTouched(true)
     const currentErrors = validateFrameContinuation(state.frames, frame.name)
-    if (currentErrors.length > 0) return
+    if (currentErrors.length > 0) {
+      const firstField = currentErrors[0].field
+      const focusTarget =
+        document.getElementById(firstField) ??
+        document.getElementById(`${firstField}-0`) ??
+        document.getElementById(`${firstField}-add`)
+      focusTarget?.focus()
+      return
+    }
     if (!state.selectedIdeaStage) return
 
     const mode = IDEA_STAGE_TO_MODE[state.selectedIdeaStage]

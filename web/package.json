@@ -8,6 +8,8 @@
   },
   "scripts": {
     "dev": "vite",
+    "dev:mock": "vite --mode mock",
+    "serve:real": "python ../web_host/server.py",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "test": "vitest --run",

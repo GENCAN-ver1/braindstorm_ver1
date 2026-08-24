@@ -1,3 +1,4 @@
+import { StrictMode } from 'react'
 import { render } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import type {
@@ -90,7 +91,9 @@ export async function seedCommittedSession(): Promise<void> {
 
 export const renderApp = (initialEntries: string[] = ['/']) =>
   render(
-    <MemoryRouter initialEntries={initialEntries}>
-      <App />
-    </MemoryRouter>,
+    <StrictMode>
+      <MemoryRouter initialEntries={initialEntries}>
+        <App />
+      </MemoryRouter>
+    </StrictMode>,
   )

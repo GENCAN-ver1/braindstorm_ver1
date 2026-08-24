@@ -1,0 +1,40 @@
+{
+  "approved_artifact_path": "D:\\gate\\personal_projects\\projects\\brainstorm\\artifacts\\brainstorm-web-host-deepseek-v3.approved.json",
+  "locked_decisions": [
+    {
+      "id": "human-gate-brainstorm-web-host",
+      "topic": "concept",
+      "value": "c1"
+    }
+  ],
+  "open_questions": [],
+  "non_goals": [
+    "本轮不修改 P0–P6 Governor runtime、锁定决定或合法状态语义",
+    "本轮只接入固定官方 DeepSeek deepseek-v4-pro；不开放任意 Provider URL、不实现真实 multi-provider Council 或生产身份系统",
+    "本轮不部署、不配置 DNS、不把真实凭据写入仓库或浏览器、不 push、不 merge 或创建 PR"
+  ],
+  "acceptance_criteria": [
+    "前后端 typecheck、lint、单元与集成测试、production build、真实 Provider smoke、React/UI/安全审查、P7 validator 和 P0–P6 regression 全部通过。",
+    "终端用户无需查看或编辑 Governor JSON 即可完成 Idea Intake 和六 Frame Wizard。",
+    "四种 Idea stage 选择分别且仅映射到 Shape、Spark、Stress、Decide。",
+    "六 Frame 映射到约定 canonical 字段，并保留 UNKNOWN、ASSUMPTION、KNOWN、CONFLICT 知识分类；AI 建议不得自动成为 KNOWN。",
+    "运行页表达完整阶段、Governor 合法状态，并允许 NEEDS_INPUT 在同一 session lineage 中补充信息后恢复。",
+    "生产路径通过同源服务端 typed BrainstormApi 调用固定官方 DeepSeek deepseek-v4-pro；DEEPSEEK_API_KEY 只从服务端环境变量解析。",
+    "浏览器 bundle、sessionStorage、localStorage、URL、日志、telemetry、manifest、Living Brief、Trace、git 和测试 fixture 均不得包含真实 DeepSeek 凭据。",
+    "真实 start run 必须产生经 schema 验证的候选、挑战、收敛与 Human Gate review；Provider usage 来自真实响应，缺失时不得估算。",
+    "Human Gate Confirm 必须经过独立 bounded evaluator；只有 Governor COMMIT 才显示正式 Final Handoff。",
+    "DeepSeek 超时、429、5xx、无效 JSON 或 schema failure 必须返回可恢复且脱敏的错误，不得泄漏响应体、密钥、stack 或内部路径。",
+    "development mock 仅限 test/development 显式模式，production path 不得回退或伪装成真实 Governor 结果。",
+    "标准路径、NEEDS_INPUT、真实 DeepSeek run、Provider failure、Human Gate、COMMIT handoff 和刷新恢复均通过自动化与真实浏览器 E2E。",
+    "390、768、1280、1440 代表性视口、键盘导航、焦点、标签、错误关联、对比度和 reduced motion 完成验证。"
+  ],
+  "risks": [
+    "模型输出可能不满足 Governor schema，必须在 canonical state 之前验证并安全失败。",
+    "Provider 延迟、限流或服务失败可能中断 run，必须有超时、有限重试和幂等 revision。",
+    "Prompt injection 可能试图把用户内容变成模型指令，所有输入必须按 DATA_ONLY 处理。",
+    "服务端密钥可能经日志、错误或浏览器 payload 泄漏。",
+    "任意 Provider URL 会形成 SSRF，因此 endpoint 与 model 必须固定并在服务端配置。",
+    "单一 DeepSeek Provider 不能被表述为 multi-provider Council。"
+  ],
+  "next_validation": "执行 P7 前端 TDD、production build、真实浏览器 E2E、React/UI/安全审查和 P0–P6 回归。"
+}

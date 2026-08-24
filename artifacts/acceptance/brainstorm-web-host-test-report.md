@@ -1,35 +1,29 @@
 # Brainstorm Web Host — Test & Build Report
 
-Generated: 2026-08-23 (Asia/Shanghai)
-P7 gate: `DEVELOPING`
+Generated: 2026-08-24 (Asia/Shanghai)
 
-## Web frontend (run from `web/` with npm)
+Revision: `329b2b71a27378b778175d2583c33f62b685e19e` plus the T5 working-tree changes recorded by this report
 
-| Check | Command | Result |
-|---|---|---|
-| Typecheck | `npm run typecheck` | exit 0 |
-| Lint | `npm run lint` | exit 0 (1 warning: react-refresh for `SessionContext` `useSession` hook — idiomatic React context pattern) |
-| Unit/integration tests | `npx vitest --run` | 11 files / 51 tests passed |
-| Production build | `npm run build` | exit 0 (64 modules; CSS 3.96 kB gzip 1.31 kB; JS 258.83 kB gzip 81.99 kB) |
-| P7 validator | `python .agents/skills/p7-web-host-development/scripts/validate_p7.py --root . --manifest p7-manifest.json` | `valid:true`, 0 errors, 0 warnings |
+P7 result: `COMMIT` candidate; final status is determined by `p7-manifest.json` and `validate_p7.py`.
 
-## Behavior coverage by scenario
-
-- **Idea intake**: four idea-stage choices map exactly to Shape/Spark/Stress/Decide; blocking validation until an idea and a stage are provided (`IdeaIntakePage.test.tsx`, `mappings.test.ts`).
-- **Six-frame wizard**: canonical field mapping, `UNKNOWN`/blank continuation blocking, next/back navigation, list-field editing (`FrameWizardPage.test.tsx`).
-- **Session persistence**: versioned allowlisted projection, provider-secret exclusion, malformed/out-of-bounds rejection, storage-failure results (`sessionPersistence.test.ts`).
-- **Development mock state machine**: complete run → `EXPLORE`; incomplete → `NEEDS_INPUT` then same-lineage resume; standard skip; Council distinct-name validation; provider failure; COMMIT-only handoff; revision-conflict rejection (`developmentMock.test.ts`).
-- **Run / NEEDS_INPUT**: run page expresses stages + legal status; missing-input panel resumes (`RunPage.test.tsx`).
-- **Capability gate**: skip as first-class result; Council enable with two distinct providers + explicit authorization; provider API key never reaches storage (`ExternalCapabilityGate.test.tsx`).
-- **Human gate / handoff**: COMMIT-only final handoff (`HandoffPage.test.tsx`).
-- **End-to-end**: intake → six frames → run → skip → human gate → final handoff; refresh recovery (`governedFlow.integration.test.tsx`, `intakeFrames.integration.test.tsx`).
-- **Accessibility semantics**: single level-one heading, labelled controls, error association via `aria-describedby` + `role="alert"` (`accessibility.test.tsx`).
-
-## P0–P6 regression (primary workspace)
+## Web frontend (`web/`)
 
 | Check | Command | Result |
 |---|---|---|
-| Repository tests | `python -m unittest discover -s tests -q` | 108 tests OK |
-| Skill tests | `python -m unittest discover -s .agents/skills/brainstorm-governor/tests -q` | 108 tests OK |
-| Regression gate | `python ci\regression_gate.py check` | `ALLOW` |
-| Full Version | `python acceptance\full_version.py validate-report` | `PASS` |
+| Typecheck | `npm run typecheck` | PASS, exit 0 |
+| Lint | `npm run lint` | PASS, exit 0; 0 errors, 1 existing `react-refresh/only-export-components` warning in `SessionContext.tsx` |
+| Unit/integration | `npm test` | PASS, 11 files / 54 tests after the final keyboard test was added |
+| Production build | `npm run build` | PASS, 64 modules; CSS 4.32 kB (1.42 kB gzip), JS 260.06 kB (82.26 kB gzip) |
+
+The suite covers exact stage mappings; six-frame canonical fields and knowledge status; allowlisted non-secret persistence; mock state transitions and revision conflicts; StrictMode duplicate-start idempotency; `NEEDS_INPUT` same-lineage resume; Council validation/authorization/failure; COMMIT-only handoff; full skip flow; refresh recovery; labels, errors, focus, skip link, and keyboard Tab/Arrow navigation.
+
+## P0–P6 regression (repository root)
+
+| Check | Command | Result |
+|---|---|---|
+| Repository tests | `python -m unittest discover -s tests -q` | PASS, 108 tests in 129.449 s |
+| Governor skill tests | `python -m unittest discover -s .agents/skills/brainstorm-governor/tests -q` | PASS, 108 tests |
+| Regression gate | `python ci\regression_gate.py check` | PASS, `ALLOW`, 0 changed dimensions, 0 failing cases |
+| Full Version report | `python acceptance\full_version.py validate-report` | PASS, `FULL_VERSION`, AC-01 through AC-08 PASS |
+
+The pinned P6 handoff digest remains `f559307a6dde234be436cfaa2aa59097f1626e28b7fd6fd2a1971724ef858421`.

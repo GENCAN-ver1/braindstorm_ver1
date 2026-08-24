@@ -55,6 +55,8 @@ export function NeedsInputPanel({
           <label htmlFor={`missing-${field}`}>{FRAME_FIELD_LABELS[field]}</label>
           <textarea
             id={`missing-${field}`}
+            name={`missing-${field}`}
+            autoComplete="off"
             value={drafts[field] ?? ''}
             placeholder={LIST_FIELD_KEYS.has(field) ? 'One item per line' : undefined}
             onChange={(event) => setDraft(field, event.target.value)}

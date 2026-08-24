@@ -36,6 +36,22 @@ p {
   margin: 0 0 var(--space-3);
 }
 
+.skip-link {
+  position: fixed;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: 10;
+  transform: translateY(-200%);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius);
+  color: var(--color-ink);
+  background: var(--color-surface);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
 :focus-visible {
   outline: none;
   box-shadow: var(--focus-ring);
@@ -72,6 +88,12 @@ select {
   background: var(--color-surface);
   width: 100%;
   max-width: 100%;
+}
+
+input[type='radio'],
+input[type='checkbox'] {
+  width: auto;
+  margin: 0 var(--space-2) 0 0;
 }
 
 textarea {

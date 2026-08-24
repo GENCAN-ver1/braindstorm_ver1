@@ -79,6 +79,9 @@ export function CouncilForm({
             <label htmlFor={`provider-${index}-name`}>Name</label>
             <input
               id={`provider-${index}-name`}
+              name={`provider-${index}-name`}
+              autoComplete="off"
+              spellCheck={false}
               value={provider.name}
               onChange={(event) => updateProvider(index, { name: event.target.value })}
             />
@@ -87,6 +90,11 @@ export function CouncilForm({
             <label htmlFor={`provider-${index}-baseUrl`}>Base URL</label>
             <input
               id={`provider-${index}-baseUrl`}
+              name={`provider-${index}-baseUrl`}
+              type="url"
+              inputMode="url"
+              autoComplete="off"
+              spellCheck={false}
               value={provider.baseUrl}
               onChange={(event) => updateProvider(index, { baseUrl: event.target.value })}
             />
@@ -95,6 +103,9 @@ export function CouncilForm({
             <label htmlFor={`provider-${index}-model`}>Model</label>
             <input
               id={`provider-${index}-model`}
+              name={`provider-${index}-model`}
+              autoComplete="off"
+              spellCheck={false}
               value={provider.model}
               onChange={(event) => updateProvider(index, { model: event.target.value })}
             />
@@ -103,7 +114,10 @@ export function CouncilForm({
             <label htmlFor={`provider-${index}-apiKey`}>API key</label>
             <input
               id={`provider-${index}-apiKey`}
+              name={`provider-${index}-apiKey`}
               type="password"
+              autoComplete="off"
+              spellCheck={false}
               value={provider.apiKey}
               onChange={(event) => updateProvider(index, { apiKey: event.target.value })}
             />

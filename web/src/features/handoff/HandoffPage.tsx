@@ -27,7 +27,7 @@ export function HandoffPage() {
     }
   }, [state.sessionId])
 
-  if (loading) return <p>Loading…</p>
+  if (loading) return <p role="status" aria-live="polite">Loading…</p>
 
   if (!handoff) {
     return (

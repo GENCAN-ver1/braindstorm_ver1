@@ -1,11 +1,15 @@
 import type { BrainstormApi } from '../types/contracts'
-import { createDevelopmentMock } from './developmentMock'
+import { createSelectedApi, isDevelopmentSimulation } from '@brainstorm-api-adapter'
 
 let api: BrainstormApi | undefined
 
 export function getBrainstormApi(): BrainstormApi {
-  if (!api) api = createDevelopmentMock()
+  if (!api) api = createSelectedApi()
   return api
+}
+
+export function isDevelopmentMockEnabled(): boolean {
+  return isDevelopmentSimulation
 }
 
 export function resetBrainstormApi(): void {

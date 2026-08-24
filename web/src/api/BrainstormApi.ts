@@ -2,6 +2,8 @@ export type {
   BrainstormApi,
   BrainstormApiError,
   BrainstormApiErrorCode,
+  BrainstormCandidateReview,
+  BrainstormReview,
   BrainstormSession,
   BrainstormStage,
   CapabilityProvider,
@@ -16,5 +18,6 @@ export type {
   HumanGateDecision,
   KnowledgeStatus,
   MissingInputSubmission,
+  ProviderUsageReceipt,
   StageStatus,
 } from '../types/contracts'

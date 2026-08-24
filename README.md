@@ -403,6 +403,75 @@ Get-Content -Raw config/council-providers.example.json |
 
 ## 测试与发布门
 
+### 本地 Web Host（DeepSeek）
+
+当前 Web Host 是本地验收版本：浏览器只访问同源 Python 服务，生产路径固定调用官方 `deepseek-v4-pro`，API Key 只由 Python 服务进程从 `DEEPSEEK_API_KEY` 读取。它不会把密钥写入浏览器 bundle、URL、session 文件或仓库。
+
+#### 运行前准备
+
+- Python 3.10 或更高版本；
+- Node.js 20 或更高版本，以及 npm；
+- 如需真实模型流程，在启动服务的同一个终端中配置 `DEEPSEEK_API_KEY`。不要把真实值写入 README、`.env`、脚本或 Git。
+
+首次检出仓库后，在项目根目录安装前端依赖：
+
+```powershell
+Set-Location web
+npm ci
+Set-Location ..
+```
+
+#### 构建并启动真实版本
+
+在项目根目录执行：
+
+```powershell
+Set-Location web
+npm run build
+Set-Location ..
+if (-not $env:DEEPSEEK_API_KEY) { throw 'DEEPSEEK_API_KEY is not configured in this terminal.' }
+python -m web_host.server --host 127.0.0.1 --port 4173
+```
+
+看到以下输出表示服务已启动：
+
+```text
+Brainstorm host listening on http://127.0.0.1:4173 (DeepSeek deepseek-v4-pro)
+```
+
+浏览器打开 `http://127.0.0.1:4173/`。运行终端必须保持开启；结束测试时在该终端按 `Ctrl+C`。本地 session 默认写入 `var/web-host/sessions/`，该目录已被 Git 忽略。
+
+真实流程会把用户填写的 Idea 和 Frame 发送给 DeepSeek，并产生 API 费用。只有在确认数据允许外发且接受费用后，才点击完成并启动运行。一次完整成功流程通常包含 P1 生成和 P6 独立评估两次 Provider 调用。
+
+#### 无 API Key 的界面测试
+
+只验证页面与交互时，使用显式 mock 模式；它不会调用 DeepSeek：
+
+```powershell
+Set-Location web
+npm run dev:mock
+```
+
+按终端显示的 Vite 地址访问。mock 结果不得作为真实 Governor 或 Provider 验收证据。
+
+#### 常见问题
+
+- 浏览器显示 `ERR_CONNECTION_REFUSED`：Python host 没有运行或已经被 `Ctrl+C` 关闭；回到项目根目录重新执行启动命令。
+- 提示找不到 `web/dist`：先运行 `npm run build`。
+- 页面显示 `DEEPSEEK_API_KEY is not configured`：在启动 Python host 的同一个终端中配置该环境变量，然后重启服务。
+- 端口 `4173` 被占用：结束占用进程，或同时修改启动命令中的 `--port` 和浏览器地址。
+- 修改前端代码后：重新运行 `npm run build`，再重启 Python host 并刷新浏览器。
+
+该命令只监听本机回环地址，不是公网部署方案。不要通过路由器端口映射直接暴露；公网运行需要另行补齐 HTTPS、身份认证、持久化、密钥托管、备份和监控。
+
+#### 真实纵向 Smoke
+
+真实纵向 smoke 会执行两次 Provider 调用（P1 生成 + P6 独立评估）：
+
+```powershell
+python scripts/real_deepseek_smoke.py
+```
+
 仓库级测试：
 
 ```powershell

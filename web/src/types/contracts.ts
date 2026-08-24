@@ -68,6 +68,40 @@ export interface BrainstormSession {
   governorStatus: GovernorStatus
   frames: FrameSchema
   stages: BrainstormStage[]
+  review?: BrainstormReview | null
+}
+
+export interface BrainstormCandidateReview {
+  id: string
+  title: string
+  oneLiner: string
+  coreMechanism: string
+  valueCreated: string
+  whyDistinct: string
+  lens: string
+  complexity: string
+}
+
+export interface ProviderUsageReceipt {
+  provider: 'deepseek'
+  model: 'deepseek-v4-pro'
+  request_id: string | null
+  prompt_tokens: number | null
+  completion_tokens: number | null
+  total_tokens: number | null
+  latency_ms: number
+}
+
+export interface BrainstormReview {
+  provider: 'DeepSeek'
+  model: 'deepseek-v4-pro'
+  candidates: BrainstormCandidateReview[]
+  recommendation: string
+  confidence: number | null
+  cheapestTest: string | null
+  risks: string[]
+  usage: ProviderUsageReceipt
+  corrections: Array<Record<string, unknown>>
 }
 
 export interface FrontendSessionState {
@@ -151,6 +185,7 @@ export interface HandoffContract {
 }
 
 export interface BrainstormApi {
+  getSession(sessionId: string): Promise<BrainstormSession>
   createSession(request: CreateBrainstormRequest): Promise<BrainstormSession>
   saveFrames(sessionId: string, revision: number, frames: FrameSchema): Promise<BrainstormSession>
   startRun(sessionId: string, revision: number): Promise<BrainstormSession>

@@ -20,7 +20,14 @@ export function IdeaIntakePage() {
 
   const handleContinue = () => {
     setTouched(true)
-    if (ideaBlank || stageMissing) return
+    if (stageMissing) {
+      document.querySelector<HTMLInputElement>('input[name="idea-stage"]')?.focus()
+      return
+    }
+    if (ideaBlank) {
+      document.getElementById('idea')?.focus()
+      return
+    }
     navigate('/frames/who-and-job')
   }
 
@@ -49,6 +56,8 @@ export function IdeaIntakePage() {
         <label htmlFor="idea">What is your idea?</label>
         <textarea
           id="idea"
+          name="idea"
+          autoComplete="off"
           value={state.idea}
           onChange={(event) => setIdea(event.target.value)}
           aria-describedby={ideaError ? 'idea-error' : undefined}

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import type { CapabilityProvider, CapabilityRequest } from '../../api/BrainstormApi'
-import { getBrainstormApi } from '../../api/client'
+import { getBrainstormApi, isDevelopmentMockEnabled } from '../../api/client'
 import { isBrainstormApiError } from '../../api/errors'
 import { useSession } from '../../state/SessionContext'
 import { CouncilForm } from './CouncilForm'
@@ -11,6 +11,21 @@ export function ExternalCapabilityGate() {
   const { state, setSession } = useSession()
   const [showCouncil, setShowCouncil] = useState(false)
   const [error, setError] = useState<string | null>(null)
+
+  if (!isDevelopmentMockEnabled()) {
+    return (
+      <section aria-labelledby="capability-heading">
+        <h1 id="capability-heading">External capabilities</h1>
+        <p>
+          This host uses only the fixed server-side DeepSeek v4 Pro integration. Configurable
+          provider URLs, browser API keys, and multi-provider Council are disabled.
+        </p>
+        <button type="button" onClick={() => navigate('/human-gate')}>
+          Continue to human gate
+        </button>
+      </section>
+    )
+  }
 
   const configure = async (request: CapabilityRequest) => {
     if (!state.sessionId) {

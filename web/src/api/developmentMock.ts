@@ -248,6 +248,13 @@ const buildHandoff = (session: MockSession): HandoffContract => {
 
 export function createDevelopmentMock(): BrainstormApi {
   return {
+    async getSession(sessionId: string): Promise<BrainstormSession> {
+      const { sessions } = loadSnapshot()
+      const session = sessions.get(sessionId)
+      if (!session) throw apiError('VALIDATION_FAILURE', 'Session not found.', { retryable: false })
+      return toSession(session)
+    },
+
     async createSession(request: CreateBrainstormRequest): Promise<BrainstormSession> {
       if (request.idea.trim().length === 0) {
         throw apiError('VALIDATION_FAILURE', 'Idea must not be blank.', {
@@ -297,6 +304,13 @@ export function createDevelopmentMock(): BrainstormApi {
       const { nextId, sessions } = loadSnapshot()
       const session = sessions.get(sessionId)
       if (!session) throw apiError('VALIDATION_FAILURE', 'Session not found.', { retryable: false })
+      if (
+        session.phase !== 'created' &&
+        session.revision === 1 &&
+        revision === session.revision - 1
+      ) {
+        return toSession(session)
+      }
       if (session.revision !== revision) {
         throw apiError(
           'REVISION_CONFLICT',
@@ -449,3 +463,6 @@ export function createDevelopmentMock(): BrainstormApi {
     },
   }
 }
+
+export const isDevelopmentSimulation = true
+export const createSelectedApi = createDevelopmentMock

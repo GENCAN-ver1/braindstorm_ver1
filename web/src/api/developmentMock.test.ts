@@ -55,6 +55,18 @@ describe('developmentMock state machine', () => {
     expect(run.revision).toBeGreaterThan(created.revision)
   })
 
+  it('treats the StrictMode duplicate start as the same idempotent operation', async () => {
+    const api = createDevelopmentMock()
+    const created = await api.createSession(makeRequest(completeFrames()))
+
+    const first = await api.startRun(created.id, created.revision)
+    const duplicate = await api.startRun(created.id, created.revision)
+
+    expect(duplicate).toEqual(first)
+    expect(duplicate.revision).toBe(1)
+    expect(duplicate.governorStatus).toBe('EXPLORE')
+  })
+
   it('stops at NEEDS_INPUT for incomplete frames and resumes within the same lineage', async () => {
     const api = createDevelopmentMock()
     const frames = completeFrames()

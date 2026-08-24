@@ -17,7 +17,9 @@ export function RunPage() {
   const { state, setSession } = useSession()
   const [session, setSessionState] = useState<BrainstormSession | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [retryable, setRetryable] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [attempt, setAttempt] = useState(0)
 
   useEffect(() => {
     let cancelled = false
@@ -26,6 +28,9 @@ export function RunPage() {
         navigate('/intake', { replace: true })
         return
       }
+      setLoading(true)
+      setError(null)
+      setRetryable(false)
       try {
         const result = await getBrainstormApi().startRun(state.sessionId, state.revision ?? 0)
         if (!cancelled) {
@@ -33,7 +38,10 @@ export function RunPage() {
           setSession(result.id, result.revision)
         }
       } catch (err) {
-        if (!cancelled) setError(isBrainstormApiError(err) ? err.message : 'Run failed.')
+        if (!cancelled) {
+          setError(isBrainstormApiError(err) ? err.message : 'Run failed.')
+          setRetryable(isBrainstormApiError(err) && err.retryable)
+        }
       } finally {
         if (!cancelled) setLoading(false)
       }
@@ -42,10 +50,25 @@ export function RunPage() {
     return () => {
       cancelled = true
     }
-  }, [state.sessionId, state.revision, navigate, setSession])
+  }, [state.sessionId, state.revision, navigate, setSession, attempt])
 
-  if (loading) return <p>Running…</p>
-  if (error) return <p role="alert">{error}</p>
+  if (loading) return <p role="status" aria-live="polite">Running…</p>
+  if (error) {
+    return (
+      <section aria-labelledby="run-error-heading">
+        <h1 id="run-error-heading">Run interrupted</h1>
+        <p role="alert">{error}</p>
+        {retryable && (
+          <button type="button" onClick={() => setAttempt((value) => value + 1)}>
+            Retry run
+          </button>
+        )}
+        <button type="button" onClick={() => navigate('/frames/who-and-job')}>
+          Start a revised session
+        </button>
+      </section>
+    )
+  }
   if (!session) return null
 
   const status = session.governorStatus
@@ -92,8 +115,8 @@ export function RunPage() {
           View final handoff
         </button>
       )}
-      {status === 'RESEARCH_REQUIRED' && <p>Research is required (simulation).</p>}
-      {status === 'PARK' && <p>The run is parked (simulation).</p>}
+      {status === 'RESEARCH_REQUIRED' && <p>Research is required.</p>}
+      {status === 'PARK' && <p>The run is parked.</p>}
     </section>
   )
 }

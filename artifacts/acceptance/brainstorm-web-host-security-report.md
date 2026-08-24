@@ -1,18 +1,23 @@
-# Brainstorm Web Host — Security Review (code inspection)
+# Brainstorm Web Host — Security Review
 
-Status: reviewed by code inspection; no real-browser security tooling was available.
+Generated: 2026-08-24 (Asia/Shanghai)
 
-## Controls verified
+Revision: `329b2b71a27378b778175d2583c33f62b685e19e` plus the T5 working-tree changes recorded by this report
 
-- **Secret management (A7)**: provider API keys are typed `EphemeralProviderSecret` and held only in `CouncilForm` component state. The development mock strips `providers` (which carry `apiKey`) from every persisted snapshot; the allowlisted frontend-session projection contains no key field. Verified by `ExternalCapabilityGate.test.tsx` ("never persists provider API keys") and `sessionPersistence.test.ts` ("never serialises provider keys").
-- **Input validation**: session restore validates version, value types, size bounds, and an allowlisted route set; frame continuation blocks blank/`UNKNOWN` values; provider fields require non-blank name/baseUrl/model/key.
-- **Output encoding**: all dynamic text is rendered through React's default escaping; no `dangerouslySetInnerHTML`; the handoff `problem_frame` renders inside `<pre>` (escaped).
-- **Allowlisted persistence**: versioned, allowlisted, non-secret `sessionStorage` projection with safe degradation when storage is unavailable.
-- **Ephemeral credentials + explicit authorization**: credentials exist only in component state; an explicit authorization checkbox is required before any provider call.
-- **Production mock exclusion**: the development mock is the only adapter and is persistently labelled "Development simulation"; no real Governor/Provider is claimed (a P7 non-goal).
-- **Dependency review**: `npm ci` reported 0 vulnerabilities (270 packages audited).
+Result: **PASS** for the approved development-mock scope; 0 Critical, 0 High, 0 Medium findings.
 
-## Residual risks / notes
+## Verification performed
 
-- The mock adapter is not gated behind `import.meta.env.DEV`; it is always the adapter. Acceptable for this MVP because the app never claims real integration and always shows the "Development simulation" label, but a production build requires a real `BrainstormApi` implementation (explicitly out of scope).
-- No real-browser security scan was performed; A11's security-review portion is supported by this code-inspection review only.
+- `npm audit --json --omit=optional`: 0 vulnerabilities reported across the audited dependency graph.
+- Repository secret-pattern and secret-file-name scans: no exposed credential match. Browser scenarios used fake keys only.
+- Dangerous-sink scan: no `dangerouslySetInnerHTML`, dynamic evaluation, command execution, or client-side Provider fetch path. Dynamic text is rendered through React escaping.
+- Provider keys remain masked, component-local, and excluded from the versioned allowlisted `sessionStorage` projection; tests verify they never serialize.
+- Capability calls require an explicit authorization checkbox. Each provider has independent name/base URL/model/key inputs and failure handling.
+- Input/restore boundaries validate type, size, route allowlists, required values, distinct provider names, and optimistic revisions.
+- The UI remains visibly labelled `Development simulation`; the production bundle does not claim a real Governor or Provider connection.
+
+## Boundary and residual risk
+
+- The current adapter is intentionally a development mock under the pinned P6 authority. A real backend is not present and is not claimed by this report.
+- A future backend must not fetch arbitrary user-supplied provider base URLs without an endpoint allowlist and network egress policy; doing so would create an SSRF boundary. Provider secrets must remain server-side or call-time only, be redacted from logs/traces, and require explicit cost/data-sharing authorization.
+- Production identity, deployment, monitoring, backup, DNS, and credential provisioning remain outside this P7 development COMMIT.

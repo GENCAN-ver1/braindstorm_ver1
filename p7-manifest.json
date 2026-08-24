@@ -5,19 +5,20 @@
     "root": "."
   },
   "source": {
-    "handoff_path": "artifacts/brainstorm-web-host-v2.p6-handoff.json",
-    "handoff_sha256": "f559307a6dde234be436cfaa2aa59097f1626e28b7fd6fd2a1971724ef858421"
+    "handoff_path": "artifacts/brainstorm-web-host-deepseek-v3.p6-handoff.json",
+    "handoff_sha256": "1b493417044e8e7487c125739a3010c7c4b3d76d82fa8276cbfe1de915b99e4d"
   },
   "scope": {
     "in_scope": [
-      "React + TypeScript + Vite Brainstorm Web Host Frontend MVP",
-      "typed API boundary and development-only mock adapter",
-      "browser interaction, accessibility, responsive, and security acceptance"
+      "React + TypeScript + Vite Brainstorm Web Host",
+      "same-origin local backend with durable non-secret Governor session state",
+      "fixed official DeepSeek deepseek-v4-pro server-side generation and bounded evaluation",
+      "browser interaction, accessibility, responsive, provider, and security acceptance"
     ],
     "non_goals": [
       "本轮不修改 P0–P6 Governor runtime、锁定决定或合法状态语义",
-      "本轮不实现或宣称真实后端编排、真实 Provider 调用和生产身份系统",
-      "本轮不部署、不配置 DNS、不保存真实凭据、不 push、不 merge 或创建 PR"
+      "本轮只接入固定官方 DeepSeek deepseek-v4-pro；不开放任意 Provider URL、不实现真实 multi-provider Council 或生产身份系统",
+      "本轮不部署、不配置 DNS、不把真实凭据写入仓库或浏览器、不 push、不 merge 或创建 PR"
     ]
   },
   "architecture": {
@@ -34,7 +35,13 @@
       {
         "id": "web-api",
         "path": "web/src/api",
-        "responsibility": "Provide the typed host boundary and development-only mock adapter.",
+        "responsibility": "Provide the typed host boundary, real HTTP adapter, and explicit test/development mock.",
+        "depends_on": ["web-contracts"]
+      },
+      {
+        "id": "web-host-server",
+        "path": "web_host",
+        "responsibility": "Serve the built UI, own durable non-secret sessions, invoke the existing Governor, and enforce the DeepSeek trust boundary.",
         "depends_on": ["web-contracts"]
       },
       {
@@ -47,7 +54,7 @@
         "id": "web-features",
         "path": "web/src/features",
         "responsibility": "Render and coordinate intake, framing, run, capability, human-gate, and handoff flows.",
-        "depends_on": ["web-contracts", "web-api", "web-state"]
+        "depends_on": ["web-contracts", "web-api", "web-state", "web-host-server"]
       },
       {
         "id": "web-shell",
@@ -62,8 +69,8 @@
         "rationale": "The repository has no existing frontend stack and the approved host is a browser application."
       },
       {
-        "decision": "Hide runtime behavior behind a typed BrainstormApi and show a visible development-mock indicator.",
-        "rationale": "The frontend must be locally runnable without implying that a real backend or Provider integration exists."
+        "decision": "Use a same-origin local Python host behind the typed BrainstormApi and keep the mock only in explicit test/development mode.",
+        "rationale": "The browser must not receive Provider credentials, and production-path behavior must not silently fall back to a simulation."
       },
       {
         "decision": "Persist only a versioned, allowlisted, non-secret session projection in sessionStorage.",
@@ -72,6 +79,10 @@
       {
         "decision": "Use React context and local state without a large state-management dependency.",
         "rationale": "The MVP has one bounded session flow and does not justify another runtime dependency."
+      },
+      {
+        "decision": "Fix Provider configuration to https://api.deepseek.com and deepseek-v4-pro, resolving DEEPSEEK_API_KEY only on the server.",
+        "rationale": "A fixed outbound destination prevents browser-controlled SSRF and credential forwarding while satisfying the approved DeepSeek scope."
       }
     ]
   },
@@ -132,13 +143,64 @@
       "id": "T5",
       "title": "Run browser E2E, reviews, and package acceptance evidence",
       "depends_on": ["T4"],
-      "status": "in_progress",
+      "status": "done",
       "outputs": [
         "artifacts/acceptance/brainstorm-web-host-test-report.md",
         "artifacts/acceptance/brainstorm-web-host-browser-report.md",
         "artifacts/acceptance/brainstorm-web-host-security-report.md"
       ],
       "acceptance_ids": ["A1", "A8", "A9", "A10", "A11"]
+    },
+    {
+      "id": "T6",
+      "title": "Generate and pin the DeepSeek v3 P0-P6 authority",
+      "depends_on": ["T5"],
+      "status": "done",
+      "outputs": [
+        "scripts/run_brainstorm_web_host_deepseek_authority.py",
+        "BRAINSTORM_WEB_HOST_DEEPSEEK_BRIEF.md",
+        "artifacts/brainstorm-web-host-deepseek-v3.approved.json",
+        "artifacts/brainstorm-web-host-deepseek-v3.p6-handoff.json"
+      ],
+      "acceptance_ids": ["S1", "S6"]
+    },
+    {
+      "id": "T7",
+      "title": "Implement the durable Governor and DeepSeek server bridge",
+      "depends_on": ["T6"],
+      "status": "done",
+      "outputs": [
+        "web_host/server.py",
+        "web_host/service.py",
+        "web_host/store.py",
+        "adapters/deepseek_p1.py"
+      ],
+      "acceptance_ids": ["S6", "S7", "S8", "S9", "S10", "S11"]
+    },
+    {
+      "id": "T8",
+      "title": "Connect the frontend to the real same-origin BrainstormApi",
+      "depends_on": ["T7"],
+      "status": "done",
+      "outputs": [
+        "web/src/api/httpApi.ts",
+        "web/src/api/client.ts",
+        "web/src/app/AppShell.tsx",
+        "web/src/features/human-gate/HumanGatePage.tsx"
+      ],
+      "acceptance_ids": ["S6", "S8", "S9", "S11", "S12"]
+    },
+    {
+      "id": "T9",
+      "title": "Verify the real DeepSeek vertical slice and package acceptance evidence",
+      "depends_on": ["T8"],
+      "status": "done",
+      "outputs": [
+        "artifacts/acceptance/brainstorm-web-host-deepseek-test-report.md",
+        "artifacts/acceptance/brainstorm-web-host-deepseek-browser-report.md",
+        "artifacts/acceptance/brainstorm-web-host-deepseek-security-report.md"
+      ],
+      "acceptance_ids": ["S1", "S7", "S8", "S9", "S10", "S11", "S12", "A10"]
     }
   ],
   "frontend": {
@@ -158,9 +220,10 @@
     "data_classification": "confidential",
     "auth_required": false,
     "trust_boundaries": [
-      "browser-to-development-mock",
+      "browser-to-same-origin-host",
       "browser-to-session-storage",
-      "browser-to-future-host-api"
+      "host-to-governor-files",
+      "host-to-api.deepseek.com"
     ],
     "controls": [
       "input-validation",
@@ -171,91 +234,201 @@
       "ephemeral provider credentials",
       "explicit provider authorization",
       "safe rendered text",
-      "production mock exclusion"
+      "production mock exclusion",
+      "fixed provider endpoint and model",
+      "request size and rate limits",
+      "provider timeout and response size limits",
+      "idempotent provider operations",
+      "security headers and same-origin enforcement"
     ],
-    "secret_sources": []
+    "secret_sources": ["DEEPSEEK_API_KEY"]
   },
   "acceptance": [
     {
       "id": "A1",
       "criterion": "标准跳过路径、NEEDS_INPUT 恢复、Council 双 Provider 授权、Provider 失败和刷新恢复均可在浏览器完成；typecheck、lint、行为测试、production build、E2E、无障碍、React 与安全审查全部通过",
-      "source": "handoff",
-      "status": "unverified",
-      "evidence": []
+      "source": "derived",
+      "status": "pass",
+      "evidence": [
+        "artifacts/acceptance/brainstorm-web-host-test-report.md",
+        "artifacts/acceptance/brainstorm-web-host-browser-report.md",
+        "artifacts/acceptance/brainstorm-web-host-security-report.md"
+      ]
     },
     {
       "id": "A2",
       "criterion": "终端用户无需查看或编辑 Governor JSON 即可完成 Idea Intake 和六 Frame Wizard。",
-      "source": "handoff",
+      "source": "derived",
       "status": "pass",
       "evidence": ["artifacts/acceptance/brainstorm-web-host-test-report.md"]
     },
     {
       "id": "A3",
       "criterion": "四种 Idea stage 选择分别且仅映射到 Shape、Spark、Stress、Decide。",
-      "source": "handoff",
+      "source": "derived",
       "status": "pass",
       "evidence": ["artifacts/acceptance/brainstorm-web-host-test-report.md"]
     },
     {
       "id": "A4",
       "criterion": "六 Frame 映射到约定 canonical 字段，并保留 UNKNOWN、ASSUMPTION、KNOWN、CONFLICT 知识分类；AI 建议不得自动成为 KNOWN。",
-      "source": "handoff",
+      "source": "derived",
       "status": "pass",
       "evidence": ["artifacts/acceptance/brainstorm-web-host-test-report.md"]
     },
     {
       "id": "A5",
       "criterion": "运行页表达完整阶段、Governor 合法状态，并允许 NEEDS_INPUT 在同一 session lineage 中补充信息后恢复。",
-      "source": "handoff",
+      "source": "derived",
       "status": "pass",
       "evidence": ["artifacts/acceptance/brainstorm-web-host-test-report.md"]
     },
     {
       "id": "A6",
       "criterion": "External Capability Gate 支持 Council Enable/Skip、至少两个独立 Provider 的校验和调用前显式授权。",
-      "source": "handoff",
+      "source": "derived",
       "status": "pass",
       "evidence": ["artifacts/acceptance/brainstorm-web-host-test-report.md"]
     },
     {
       "id": "A7",
       "criterion": "API key 仅存在于 capability screen 的临时组件状态，不进入持久化、URL、日志、telemetry、manifest、Living Brief、Trace 或真实测试 fixture。",
-      "source": "handoff",
+      "source": "derived",
       "status": "pass",
       "evidence": ["artifacts/acceptance/brainstorm-web-host-test-report.md", "artifacts/acceptance/brainstorm-web-host-security-report.md"]
     },
     {
       "id": "A8",
       "criterion": "Human Gate 支持 Confirm、Request iteration 和 Provide missing input，且只有 Governor COMMIT 才显示正式 Final Handoff。",
-      "source": "handoff",
+      "source": "derived",
       "status": "pass",
       "evidence": ["artifacts/acceptance/brainstorm-web-host-test-report.md"]
     },
     {
       "id": "A9",
       "criterion": "标准跳过、NEEDS_INPUT、Council、Provider failure 和刷新恢复场景均通过行为测试与真实浏览器 E2E。",
-      "source": "handoff",
-      "status": "unverified",
-      "evidence": []
+      "source": "derived",
+      "status": "pass",
+      "evidence": [
+        "artifacts/acceptance/brainstorm-web-host-test-report.md",
+        "artifacts/acceptance/brainstorm-web-host-browser-report.md"
+      ]
     },
     {
       "id": "A10",
       "criterion": "390、768、1280、1440 代表性视口、键盘导航、焦点、标签、错误关联、对比度和 reduced motion 完成验证。",
-      "source": "handoff",
-      "status": "unverified",
-      "evidence": []
+      "source": "derived",
+      "status": "pass",
+      "evidence": [
+        "artifacts/acceptance/brainstorm-web-host-test-report.md",
+        "artifacts/acceptance/brainstorm-web-host-browser-report.md"
+      ]
     },
     {
       "id": "A11",
       "criterion": "前端 typecheck、lint、单元与集成测试、production build、React review、UI review、安全审查、P7 validator 和 P0–P6 regression 全部通过。",
+      "source": "derived",
+      "status": "pass",
+      "evidence": [
+        "artifacts/acceptance/brainstorm-web-host-test-report.md",
+        "artifacts/acceptance/brainstorm-web-host-browser-report.md",
+        "artifacts/acceptance/brainstorm-web-host-security-report.md"
+      ]
+    },
+    {
+      "id": "S1",
+      "criterion": "前后端 typecheck、lint、单元与集成测试、production build、真实 Provider smoke、React/UI/安全审查、P7 validator 和 P0–P6 regression 全部通过。",
       "source": "handoff",
-      "status": "unverified",
-      "evidence": []
+      "status": "pass",
+      "evidence": ["artifacts/acceptance/brainstorm-web-host-deepseek-test-report.md"]
+    },
+    {
+      "id": "S2",
+      "criterion": "终端用户无需查看或编辑 Governor JSON 即可完成 Idea Intake 和六 Frame Wizard。",
+      "source": "handoff",
+      "status": "pass",
+      "evidence": ["artifacts/acceptance/brainstorm-web-host-test-report.md"]
+    },
+    {
+      "id": "S3",
+      "criterion": "四种 Idea stage 选择分别且仅映射到 Shape、Spark、Stress、Decide。",
+      "source": "handoff",
+      "status": "pass",
+      "evidence": ["artifacts/acceptance/brainstorm-web-host-test-report.md"]
+    },
+    {
+      "id": "S4",
+      "criterion": "六 Frame 映射到约定 canonical 字段，并保留 UNKNOWN、ASSUMPTION、KNOWN、CONFLICT 知识分类；AI 建议不得自动成为 KNOWN。",
+      "source": "handoff",
+      "status": "pass",
+      "evidence": ["artifacts/acceptance/brainstorm-web-host-test-report.md", "artifacts/acceptance/brainstorm-web-host-deepseek-test-report.md"]
+    },
+    {
+      "id": "S5",
+      "criterion": "运行页表达完整阶段、Governor 合法状态，并允许 NEEDS_INPUT 在同一 session lineage 中补充信息后恢复。",
+      "source": "handoff",
+      "status": "pass",
+      "evidence": ["artifacts/acceptance/brainstorm-web-host-test-report.md", "artifacts/acceptance/brainstorm-web-host-deepseek-test-report.md"]
+    },
+    {
+      "id": "S6",
+      "criterion": "生产路径通过同源服务端 typed BrainstormApi 调用固定官方 DeepSeek deepseek-v4-pro；DEEPSEEK_API_KEY 只从服务端环境变量解析。",
+      "source": "handoff",
+      "status": "pass",
+      "evidence": ["artifacts/acceptance/brainstorm-web-host-deepseek-test-report.md", "artifacts/acceptance/brainstorm-web-host-deepseek-security-report.md"]
+    },
+    {
+      "id": "S7",
+      "criterion": "浏览器 bundle、sessionStorage、localStorage、URL、日志、telemetry、manifest、Living Brief、Trace、git 和测试 fixture 均不得包含真实 DeepSeek 凭据。",
+      "source": "handoff",
+      "status": "pass",
+      "evidence": ["artifacts/acceptance/brainstorm-web-host-deepseek-security-report.md"]
+    },
+    {
+      "id": "S8",
+      "criterion": "真实 start run 必须产生经 schema 验证的候选、挑战、收敛与 Human Gate review；Provider usage 来自真实响应，缺失时不得估算。",
+      "source": "handoff",
+      "status": "pass",
+      "evidence": ["artifacts/acceptance/brainstorm-web-host-deepseek-test-report.md"]
+    },
+    {
+      "id": "S9",
+      "criterion": "Human Gate Confirm 必须经过独立 bounded evaluator；只有 Governor COMMIT 才显示正式 Final Handoff。",
+      "source": "handoff",
+      "status": "pass",
+      "evidence": ["artifacts/acceptance/brainstorm-web-host-deepseek-test-report.md"]
+    },
+    {
+      "id": "S10",
+      "criterion": "DeepSeek 超时、429、5xx、无效 JSON 或 schema failure 必须返回可恢复且脱敏的错误，不得泄漏响应体、密钥、stack 或内部路径。",
+      "source": "handoff",
+      "status": "pass",
+      "evidence": ["artifacts/acceptance/brainstorm-web-host-deepseek-test-report.md", "artifacts/acceptance/brainstorm-web-host-deepseek-security-report.md"]
+    },
+    {
+      "id": "S11",
+      "criterion": "development mock 仅限 test/development 显式模式，production path 不得回退或伪装成真实 Governor 结果。",
+      "source": "handoff",
+      "status": "pass",
+      "evidence": ["artifacts/acceptance/brainstorm-web-host-deepseek-test-report.md", "artifacts/acceptance/brainstorm-web-host-deepseek-security-report.md"]
+    },
+    {
+      "id": "S12",
+      "criterion": "标准路径、NEEDS_INPUT、真实 DeepSeek run、Provider failure、Human Gate、COMMIT handoff 和刷新恢复均通过自动化与真实浏览器 E2E。",
+      "source": "handoff",
+      "status": "pass",
+      "evidence": ["artifacts/acceptance/brainstorm-web-host-deepseek-test-report.md", "artifacts/acceptance/brainstorm-web-host-deepseek-browser-report.md"]
+    },
+    {
+      "id": "S13",
+      "criterion": "390、768、1280、1440 代表性视口、键盘导航、焦点、标签、错误关联、对比度和 reduced motion 完成验证。",
+      "source": "handoff",
+      "status": "pass",
+      "evidence": ["artifacts/acceptance/brainstorm-web-host-browser-report.md", "artifacts/acceptance/brainstorm-web-host-test-report.md"]
     }
   ],
   "gate": {
-    "status": "DEVELOPING",
-    "summary": "T1-T4 complete and verified; T5 in progress. Web typecheck/lint/unit+integration tests/production build and P0-P6 regression all pass; real-browser E2E and visual/React/UI review remain pending browser tooling."
+    "status": "COMMIT",
+    "summary": "T1-T9 are complete. Local checks, the real DeepSeek P1 and independent P6 calls, COMMIT-only handoff, real-result browser recovery, responsive checks, security controls, and durable evidence all pass."
   }
 }
