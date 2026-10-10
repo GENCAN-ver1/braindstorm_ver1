@@ -9,6 +9,7 @@ import json
 import os
 import sys
 import tempfile
+import time
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Mapping, Sequence
@@ -316,6 +317,18 @@ def detect_reentry_conflicts(
     return conflicts
 
 
+def _replace_with_retry(source, target):
+    """Bound temporary Windows sharing failures; preserve atomic replacement."""
+    for attempt in range(6):
+        try:
+            os.replace(source, target)
+            return
+        except PermissionError as exc:
+            if getattr(exc, 'winerror', None) not in (5, 32, 33) or attempt == 5:
+                raise
+            time.sleep(0.05 * (2 ** attempt))
+
+
 def save_brief(path: str | Path, brief: ConceptBrief) -> bool:
     """Atomically write a canonical Brief; return false when bytes are unchanged."""
     target = Path(path)
@@ -331,7 +344,7 @@ def save_brief(path: str | Path, brief: ConceptBrief) -> bool:
             handle.write(document)
             handle.flush()
             os.fsync(handle.fileno())
-        os.replace(temporary_name, target)
+        _replace_with_retry(temporary_name, target)
     except Exception:
         try:
             os.unlink(temporary_name)

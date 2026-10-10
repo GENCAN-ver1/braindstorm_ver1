@@ -1,13 +1,16 @@
 from __future__ import annotations
 
 import http.client
+import io
 import json
 import threading
 import unittest
 from http.server import ThreadingHTTPServer
 from pathlib import Path
+from unittest.mock import Mock
 
 from web_host.server import MAX_REQUEST_BYTES, make_handler
+from web_host.service import ServiceError
 
 
 class FakeService:
@@ -31,6 +34,21 @@ class FakeService:
 
 
 class WebHostServerTests(unittest.TestCase):
+    def test_oversized_body_drain_is_bounded_and_never_reaches_service(self):
+        handler_type = make_handler(self.service, Path.cwd())
+        handler = handler_type.__new__(handler_type)
+        handler.headers = {'Content-Type': 'application/json', 'Content-Length': str(MAX_REQUEST_BYTES * 4)}
+        handler.rfile = io.BytesIO(b'x' * (MAX_REQUEST_BYTES * 4))
+        handler.connection = Mock()
+        handler.connection.gettimeout.return_value = None
+        before = self.service.create_calls
+        with self.assertRaises(ServiceError):
+            handler._read_json()
+        self.assertEqual(handler.rfile.tell(), MAX_REQUEST_BYTES + 1)
+        self.assertEqual(self.service.create_calls, before)
+        handler.connection.settimeout.assert_any_call(0.25)
+        handler.connection.settimeout.assert_called_with(None)
+
     @classmethod
     def setUpClass(cls) -> None:
         cls.service = FakeService()

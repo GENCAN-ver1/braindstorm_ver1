@@ -26,6 +26,8 @@ from runtime.full_cycle import (  # noqa: E402
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest="command", required=True)
+    storm_parser = subparsers.add_parser("storm", help="open exploration graph and optional model Council")
+    storm_parser.add_argument("storm_args", nargs=argparse.REMAINDER)
     run_parser = subparsers.add_parser("run", help="run to a legal stop or COMMIT")
     run_parser.add_argument(
         "--request",
@@ -41,6 +43,10 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: Sequence[str] | None = None) -> int:
+    effective_argv = list(argv) if argv is not None else sys.argv[1:]
+    if effective_argv and effective_argv[0] == "storm":
+        from scripts.open_storm import main as storm_main
+        return storm_main(effective_argv[1:])
     args = build_parser().parse_args(argv)
     try:
         if args.command != "run":
@@ -80,4 +86,3 @@ def _emit(value: Any) -> None:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

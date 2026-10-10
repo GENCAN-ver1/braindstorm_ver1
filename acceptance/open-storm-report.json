@@ -1,0 +1,126 @@
+{
+  "result": "PASS",
+  "scope": "Open Storm lifecycle",
+  "live_subscription": true,
+  "version_fingerprint": {
+    "schema_version": 1,
+    "aggregate": "version:v1:sha256:b7e1ec915895be9929106c7ee1656eab9c34b2a6509738b6b6425c76ef51ca9f",
+    "dimensions": {
+      "governor_prompt": "version:v1:sha256:b2dc76fc9db23ce6c97715bd7ce1538552ec1aa7fb09db7f1e5dcff9803f23d5",
+      "evaluator_prompt": "version:v1:sha256:7d31b82f9d8eadaf8450c7beec8f67e831740a3009eab0e2b24a30c6b2d5869d",
+      "provider": "version:v1:sha256:a8d87d2bc646c99b683dbb9659e339ec2826bf796467fc3b0e1cd31c27813fae",
+      "model": "version:v1:sha256:5e968013fd79da020df4bf75e2d45f2c4ae59357143dd99832a57371824509d0",
+      "adapter": "version:v1:sha256:1003afb5a5ee2d4c872b38ba65cd7fe3ff2769d643e8f34de61bf1c1249625c8",
+      "citation_checker": "version:v1:sha256:b73d4b6150e3cd3bf258067c39a90ff751386702d79cd30052f3047511a2b00a",
+      "schema": "version:v1:sha256:64cae8166170b7cb5000f39f1cc7221f4aed455e6e47f6006332c30c39fa347a",
+      "pricing": "version:v1:sha256:5ca82fd3702d316d1116688ce2ba16332117b48d1317427b40ad34593764f602"
+    }
+  },
+  "external_api_providers": "NOT_CONFIGURED",
+  "cases": [
+    {
+      "case": "initialize_plain_topic",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "case": "refuse_overwrite",
+      "status": "PASS",
+      "return_code": 2
+    },
+    {
+      "case": "custom_role",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "case": "independent_prompt",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "case": "host_import",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "case": "combine_prompt",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "case": "mutate_prompt",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "case": "invert_prompt",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "case": "stress_prompt",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "case": "generative_question",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "case": "unanswered_does_not_block",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "case": "user_answer",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "case": "explicit_convergence",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "case": "return_to_exploration",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "case": "subscription_round",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "case": "resume_status",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "case": "export",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "case": "refuse_export_overwrite",
+      "status": "PASS",
+      "return_code": 2
+    }
+  ],
+  "reported_usage": [
+    {
+      "input_tokens": 19929,
+      "cached_input_tokens": 12544,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 692,
+      "reasoning_output_tokens": 0
+    }
+  ],
+  "boundaries": [
+    "Single writer; pending calls require manual review before retry.",
+    "Model flagship selection and four external providers are deployment acceptance items.",
+    "Structural acceptance does not establish creative quality."
+  ]
+}

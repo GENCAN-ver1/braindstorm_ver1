@@ -70,7 +70,7 @@
   "execution_mode": "LOCAL_RUNTIME",
   "external_provider_used": false,
   "failing_cases": [],
-  "finished_at": "2026-08-23T04:25:54.958037Z",
+  "finished_at": "2026-10-10T12:01:50.859256Z",
   "metrics": {
     "average_rounds": 0.6666666666666666,
     "average_token_cost": null,
@@ -85,39 +85,39 @@
   "result": "PASS",
   "runner": "evals.local_runtime_scenarios.LocalRuntimeScenarioRunner",
   "schema_version": 1,
-  "started_at": "2026-08-23T04:25:45.374617Z",
+  "started_at": "2026-10-10T12:01:24.666421Z",
   "supplemental_cases": [
     {
       "case_id": "provider-failure",
-      "duration_ms": 257.267,
+      "duration_ms": 625.784,
       "return_code": 0,
       "status": "PASS",
       "test_id": "tests.acceptance.test_research_worker_isolation.ResearchWorkerIsolationAcceptanceTests.test_ac_03_research_and_worker_failures_do_not_pollute_main_state",
-      "transcript_sha256": "93cc882f782f3576c444fdc1ddd42bde5dbaa6be65155815f05d953c5d05509c"
+      "transcript_sha256": "4130e1a188a8090a10b1887905a44c4ba6f22efcc43443e15b36125f1d2737dc"
     },
     {
       "case_id": "resume",
-      "duration_ms": 7026.237,
+      "duration_ms": 23997.904,
       "return_code": 0,
       "status": "PASS",
       "test_id": "tests.acceptance.test_ac02_resume_matrix.ResumeMatrixAcceptanceTests.test_ac_02_every_stage_resumes_to_equivalent_main_state",
-      "transcript_sha256": "337157aae351c7265ec129ae24886f1790ddc8cc387df6620a930d463b596c39"
+      "transcript_sha256": "8156b2b3c3b8e1143c0349daf4391edd6f51d11033024f387ee6e2c924633abe"
     },
     {
       "case_id": "every-stage-park",
-      "duration_ms": 1822.366,
+      "duration_ms": 1155.949,
       "return_code": 0,
       "status": "PASS",
       "test_id": "tests.acceptance.test_budget_park_matrix.BudgetParkMatrixAcceptanceTests.test_ac_05_every_stage_parks_before_work",
-      "transcript_sha256": "a529f4eaed3715c4c6e967f9312710ee24f5d755c822017f5997fb052f64f1d9"
+      "transcript_sha256": "e52f2bc4492dcc5fd609e4989d820dba497374b45e7fe1640acdaee873abe37a"
     },
     {
       "case_id": "artifact-tamper",
-      "duration_ms": 441.114,
+      "duration_ms": 364.578,
       "return_code": 0,
       "status": "PASS",
       "test_id": "tests.acceptance.test_evaluator_artifact_gates.ArtifactGateAcceptanceTests.test_ac_08_only_current_hash_matched_approved_artifact_can_handoff",
-      "transcript_sha256": "d7e83190cd1a377bc7fca2719b0d974cc7c071e9b436436afb286064b22128d3"
+      "transcript_sha256": "8560adfe64e6798968faed65d4bc549c2587e26ca430f98ba91df56e0b65fae5"
     }
   ],
   "threshold_results": {
@@ -143,12 +143,12 @@
     "schema_version": 1
   },
   "version_fingerprint": {
-    "aggregate": "version:v1:sha256:ac6dbed763e5a66115d8cc255db3747427206edec56ac2fe7421477fbb8cd26c",
+    "aggregate": "version:v1:sha256:b7e1ec915895be9929106c7ee1656eab9c34b2a6509738b6b6425c76ef51ca9f",
     "dimensions": {
-      "adapter": "version:v1:sha256:ae9a9968bfde13cb810fd356abf36735e8ec076997f1be46d6868a3a565d4b9b",
+      "adapter": "version:v1:sha256:1003afb5a5ee2d4c872b38ba65cd7fe3ff2769d643e8f34de61bf1c1249625c8",
       "citation_checker": "version:v1:sha256:b73d4b6150e3cd3bf258067c39a90ff751386702d79cd30052f3047511a2b00a",
       "evaluator_prompt": "version:v1:sha256:7d31b82f9d8eadaf8450c7beec8f67e831740a3009eab0e2b24a30c6b2d5869d",
-      "governor_prompt": "version:v1:sha256:638f6dcbf223293afe6cd3a85029a4714ea5b9eae9b9ad520bb2655ffbb95efa",
+      "governor_prompt": "version:v1:sha256:b2dc76fc9db23ce6c97715bd7ce1538552ec1aa7fb09db7f1e5dcff9803f23d5",
       "model": "version:v1:sha256:5e968013fd79da020df4bf75e2d45f2c4ae59357143dd99832a57371824509d0",
       "pricing": "version:v1:sha256:5ca82fd3702d316d1116688ce2ba16332117b48d1317427b40ad34593764f602",
       "provider": "version:v1:sha256:a8d87d2bc646c99b683dbb9659e339ec2826bf796467fc3b0e1cd31c27813fae",

@@ -129,7 +129,7 @@ def save_baseline(path: str | Path, baseline: Mapping[str, Any]) -> Path:
     target.parent.mkdir(parents=True, exist_ok=True)
     payload = json.dumps(baseline, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
     temporary = target.with_name(f".{target.name}.tmp")
-    temporary.write_text(payload, encoding="utf-8")
+    temporary.write_text(payload, encoding="utf-8", newline="\n")
     temporary.replace(target)
     return target
 

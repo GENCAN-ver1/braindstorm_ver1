@@ -1,6 +1,10 @@
 {
   "schema_version": 1,
   "governor_prompt_paths": [
+    ".agents/skills/open-storm/SKILL.md",
+    "runtime/open_storm.py",
+    "scripts/open_storm.py",
+    "scripts/brainstorm.py",
     ".agents/skills/brainstorm-governor/SKILL.md",
     ".agents/skills/brainstorm-governor/references/p1-core-loop.md",
     ".agents/skills/brainstorm-governor/assets/CONCEPT_BRIEF.template.md"
@@ -16,6 +20,9 @@
   "provider_adapter": {
     "version": "fv06-adapters-v1",
     "paths": [
+      "adapters/storm_provider.py",
+      "web_host/server.py",
+      ".agents/skills/brainstorm-governor/scripts/p2_persistence.py",
       "adapters/research_runtime.py",
       "adapters/worker_runtime.py",
       "adapters/evaluator_runtime.py"

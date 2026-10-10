@@ -1,0 +1,17 @@
+{
+  "max_calls_per_round": 5,
+  "providers": {
+    "deepseek": {"enabled": false, "transport": "chat_completions", "base_url": null, "model": null, "credential_env": "DEEPSEEK_API_KEY", "timeout_seconds": 120, "options": {"max_tokens": 4096}},
+    "kimi": {"enabled": false, "transport": "chat_completions", "base_url": null, "model": null, "credential_env": "MOONSHOT_API_KEY", "timeout_seconds": 120, "options": {"max_tokens": 4096}},
+    "glm": {"enabled": false, "transport": "chat_completions", "base_url": null, "model": null, "credential_env": "GLM_API_KEY", "timeout_seconds": 120, "options": {"max_tokens": 4096}},
+    "qwen": {"enabled": false, "transport": "chat_completions", "base_url": null, "model": null, "credential_env": "DASHSCOPE_API_KEY", "timeout_seconds": 120, "options": {"max_tokens": 4096}},
+    "openai": {"enabled": false, "transport": "codex", "model": null, "timeout_seconds": 180}
+  },
+  "members": [
+    {"id": "ds-venture", "provider": "deepseek", "role": "venture"},
+    {"id": "kimi-affected", "provider": "kimi", "role": "affected"},
+    {"id": "glm-bank", "provider": "glm", "role": "bank"},
+    {"id": "qwen-operator", "provider": "qwen", "role": "operator"},
+    {"id": "openai-outsider", "provider": "openai", "role": "outsider"}
+  ]
+}
