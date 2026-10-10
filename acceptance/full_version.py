@@ -361,7 +361,7 @@ def _atomic_write(path: str | Path, text: str) -> Path:
     target = Path(path).resolve()
     target.parent.mkdir(parents=True, exist_ok=True)
     temporary = target.with_name(f".{target.name}.tmp")
-    temporary.write_text(text, encoding="utf-8")
+    temporary.write_text(text, encoding="utf-8", newline="\n")
     temporary.replace(target)
     return target
 

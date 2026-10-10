@@ -1,5 +1,9 @@
 # Brainstorm Governor
 
+## 新版开放探索 · Open Storm
+
+自然语言主题可从 `python scripts/brainstorm.py storm init --topic "你的主题" --session staging/my-storm.json` 启动。支持角色独立发散、问题风暴、接力变异、反转、跨枝组合和用户显式收敛；DS、Kimi、GLM、Qwen API 与本机订阅 Codex 接口见 [使用指南](docs/OPEN_STORM.md) 和 [配置模板](config/open-storm-providers.example.json)。下文描述后续证据和决策审批流程，不作为开放探索的输入前置条件。
+
 > 一个面向 Codex 的质量门禁型头脑风暴 Agent：把开放式创意请求转化为可恢复、可审计、受证据约束且能够被验证的概念决策。
 
 `brainstorm-governor` 不追求无边界地产生点子。它负责定义问题、生成机制不同的候选方向、暴露假设和风险、按需引入外部证据与独立模型，并只在质量门通过后产出受限 handoff。

@@ -149,6 +149,22 @@ def make_handler(
             except ValueError:
                 raise ServiceError("VALIDATION_FAILURE", "Content-Length is invalid.") from None
             if not 0 <= length <= MAX_REQUEST_BYTES:
+                # Closing with unread TCP data can discard the error response on Windows.
+                # Drain only a bounded prefix; never accept or parse an oversized body.
+                if length > MAX_REQUEST_BYTES:
+                    previous_timeout = self.connection.gettimeout()
+                    self.connection.settimeout(0.25)
+                    try:
+                        remaining = min(length, MAX_REQUEST_BYTES + 1)
+                        while remaining:
+                            chunk = self.rfile.read(min(remaining, 8192))
+                            if not chunk:
+                                break
+                            remaining -= len(chunk)
+                    except OSError:
+                        pass
+                    finally:
+                        self.connection.settimeout(previous_timeout)
                 raise ServiceError("VALIDATION_FAILURE", "Request body exceeds the size limit.")
             raw = self.rfile.read(length)
             try:
