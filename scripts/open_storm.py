@@ -8,7 +8,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from runtime.open_storm import Storm, ROLES, OPERATIONS, now
-from adapters.storm_provider import invoke, ProviderError
+from adapters.storm_provider import invoke, credential, ProviderError
+from adapters.storm_credentials import load_credentials
 
 
 def emit(value):
@@ -41,6 +42,7 @@ def parser():
             c.add_argument('--input', required=True, help='JSON supplied by host Codex or another researcher')
         if command == 'round':
             c.add_argument('--config', required=True)
+            c.add_argument('--env-file', help='Local key file, read only for this explicit round; defaults to repo .env if present')
             c.add_argument('--members', nargs='+', required=True, help='Explicit member IDs to call')
         if command == 'answer':
             c.add_argument('--question', required=True)
@@ -116,8 +118,20 @@ def main(argv=None):
             for member_id in args.members:
                 member = members[member_id]
                 provider = config['providers'][member['provider']]
+                if not isinstance(provider, dict):
+                    raise ValueError('provider configuration must be an object')
                 role = member['role']
                 calls.append((member_id, member, provider, s.prompt(role, args.operation, args.parents)))
+            # Host init/prepare/import never read this file or start another model.
+            env_file = Path(args.env_file) if args.env_file else ROOT / '.env'
+            allowed_names = {p.get('credential_env') for _, _, p, _ in calls
+                             if p.get('transport') == 'chat_completions'
+                             and isinstance(p.get('credential_env'), str)}
+            credentials = load_credentials(env_file, allowed_names) if args.env_file or env_file.exists() else {}
+            # Check every enabled API member before the first billable call.
+            for _, _, provider, _ in calls:
+                if provider.get('enabled') and provider.get('transport') == 'chat_completions':
+                    credential(provider, credentials)
             round_id = __import__('uuid').uuid4().hex
             results = []
             for member_id, member, provider, prompt in calls:
@@ -126,7 +140,7 @@ def main(argv=None):
                 s.data['events'].append(event)
                 s.save(path)  # Interrupted pending calls are visible; never automatically replayed.
                 try:
-                    output, usage = invoke(provider, prompt)
+                    output, usage = invoke(provider, prompt, credentials=credentials)
                     ids = s.add_output(member['role'], args.operation, output, args.parents,
                                        member['provider'], provider.get('model'), usage)
                     event['status'] = 'success'

@@ -1,11 +1,11 @@
 {
   "baseline_fingerprint": {
-    "aggregate": "version:v1:sha256:b7e1ec915895be9929106c7ee1656eab9c34b2a6509738b6b6425c76ef51ca9f",
+    "aggregate": "version:v1:sha256:186e4b43ec57b2cc26909aab121f23cb3d74d582991b82a7f049e749bd9cb934",
     "dimensions": {
-      "adapter": "version:v1:sha256:1003afb5a5ee2d4c872b38ba65cd7fe3ff2769d643e8f34de61bf1c1249625c8",
+      "adapter": "version:v1:sha256:549fd52557020ec6dda449ad40d6d2bdb9fb0073787dac1b54be01fdb61af7f0",
       "citation_checker": "version:v1:sha256:b73d4b6150e3cd3bf258067c39a90ff751386702d79cd30052f3047511a2b00a",
       "evaluator_prompt": "version:v1:sha256:7d31b82f9d8eadaf8450c7beec8f67e831740a3009eab0e2b24a30c6b2d5869d",
-      "governor_prompt": "version:v1:sha256:b2dc76fc9db23ce6c97715bd7ce1538552ec1aa7fb09db7f1e5dcff9803f23d5",
+      "governor_prompt": "version:v1:sha256:9065445c508053d641e4a059117460d5ad054fc2944f171bb5545d7f865f8669",
       "model": "version:v1:sha256:5e968013fd79da020df4bf75e2d45f2c4ae59357143dd99832a57371824509d0",
       "pricing": "version:v1:sha256:5ca82fd3702d316d1116688ce2ba16332117b48d1317427b40ad34593764f602",
       "provider": "version:v1:sha256:a8d87d2bc646c99b683dbb9659e339ec2826bf796467fc3b0e1cd31c27813fae",
@@ -16,12 +16,12 @@
   "changed_dimensions": [],
   "cost_delta": null,
   "current_fingerprint": {
-    "aggregate": "version:v1:sha256:b7e1ec915895be9929106c7ee1656eab9c34b2a6509738b6b6425c76ef51ca9f",
+    "aggregate": "version:v1:sha256:186e4b43ec57b2cc26909aab121f23cb3d74d582991b82a7f049e749bd9cb934",
     "dimensions": {
-      "adapter": "version:v1:sha256:1003afb5a5ee2d4c872b38ba65cd7fe3ff2769d643e8f34de61bf1c1249625c8",
+      "adapter": "version:v1:sha256:549fd52557020ec6dda449ad40d6d2bdb9fb0073787dac1b54be01fdb61af7f0",
       "citation_checker": "version:v1:sha256:b73d4b6150e3cd3bf258067c39a90ff751386702d79cd30052f3047511a2b00a",
       "evaluator_prompt": "version:v1:sha256:7d31b82f9d8eadaf8450c7beec8f67e831740a3009eab0e2b24a30c6b2d5869d",
-      "governor_prompt": "version:v1:sha256:b2dc76fc9db23ce6c97715bd7ce1538552ec1aa7fb09db7f1e5dcff9803f23d5",
+      "governor_prompt": "version:v1:sha256:9065445c508053d641e4a059117460d5ad054fc2944f171bb5545d7f865f8669",
       "model": "version:v1:sha256:5e968013fd79da020df4bf75e2d45f2c4ae59357143dd99832a57371824509d0",
       "pricing": "version:v1:sha256:5ca82fd3702d316d1116688ce2ba16332117b48d1317427b40ad34593764f602",
       "provider": "version:v1:sha256:a8d87d2bc646c99b683dbb9659e339ec2826bf796467fc3b0e1cd31c27813fae",
@@ -36,7 +36,7 @@
     "passed": true,
     "return_code": 0,
     "test_count": 108,
-    "transcript_sha256": "1e9199753cab69fb2a3f616cdd72fdf8c2ce759dd652e682eaacaffcb7cc3927"
+    "transcript_sha256": "d3d2b49a121071b783a60ed046035acbcd09fd32ea58311d72d9b3e58f4a4a43"
   },
   "quality_delta": {
     "average_rounds": 0.0,

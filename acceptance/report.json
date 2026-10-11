@@ -3,7 +3,7 @@
     "legal_exit_status": "NEEDS_INPUT",
     "prior_brief": false,
     "root": "tests/acceptance/cleanroom",
-    "transcript_sha256": "cf79778e00c99dff21e76d323680a7a3546abe1ff5848d1e032d551d3928261a"
+    "transcript_sha256": "9374094cd97dd339fef788f50f5c0b05533f0031392ccf9cafe90925d2019366"
   },
   "commands": [
     {
@@ -16,12 +16,12 @@
         "--config",
         "config/brainstorm-governor.example.yaml",
         "--brief",
-        "D:\\gate\\personal_projects\\projects\\brainstorm-fde\\tests\\acceptance\\cleanroom\\.fv08-83a7c51071ca4877a376d71ea8ff70c2-CONCEPT_BRIEF.md"
+        "D:\\gate\\personal_projects\\projects\\brainstorm\\.worktrees\\host-default-update\\tests\\acceptance\\cleanroom\\.fv08-0fce21b4f0d64a10bb92b9a1a4ac9bae-CONCEPT_BRIEF.md"
       ],
-      "duration_ms": 672.868,
+      "duration_ms": 267.102,
       "name": "clean-room-one-command",
       "return_code": 0,
-      "transcript_sha256": "cf79778e00c99dff21e76d323680a7a3546abe1ff5848d1e032d551d3928261a"
+      "transcript_sha256": "9374094cd97dd339fef788f50f5c0b05533f0031392ccf9cafe90925d2019366"
     },
     {
       "command": [
@@ -38,10 +38,10 @@
         "tests.acceptance.test_evaluator_artifact_gates.ArtifactGateAcceptanceTests.test_ac_08_only_current_hash_matched_approved_artifact_can_handoff",
         "-q"
       ],
-      "duration_ms": 15608.648,
+      "duration_ms": 9825.294,
       "name": "ac-01-through-ac-08",
       "return_code": 0,
-      "transcript_sha256": "49799d209089472711c8c8ab9207c53b080bb74998c56a4de0507ab3c0186739"
+      "transcript_sha256": "af63a8141284b5c9353d6893b40bdd8dd678056e75b9db4dafda14f6871b3c83"
     },
     {
       "command": [
@@ -53,10 +53,10 @@
         ".agents/skills/brainstorm-governor/tests",
         "-q"
       ],
-      "duration_ms": 3337.222,
+      "duration_ms": 1444.737,
       "name": "p0-p6-contract-regression",
       "return_code": 0,
-      "transcript_sha256": "b817c2e3d6504b8eb9bf9880177d35700cfb8dbd47919a56618f023d5f0c23d9"
+      "transcript_sha256": "86fb83e4d4155548f5688a2ee725e7002bd2423da176dd2cf3710c3138850914"
     },
     {
       "command": [
@@ -64,18 +64,18 @@
         "ci/regression_gate.py",
         "check"
       ],
-      "duration_ms": 3291.419,
+      "duration_ms": 1605.806,
       "name": "fv07-regression-gate",
       "return_code": 0,
-      "transcript_sha256": "19c6a2ebe3410d2f92b224b2e558011d5aab07228fdaaf5ac76d052e3ab5c9d7"
+      "transcript_sha256": "44fc3a69e2b03cb67fa4a010dd5e5bfaa69e800ad33b27076fbacd2febc71f92"
     },
     {
       "command": [
         "C:\\Users\\lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
         "ci/validate_skill.py",
-        "D:\\gate\\personal_projects\\projects\\brainstorm-fde\\.agents\\skills\\brainstorm-governor"
+        "D:\\gate\\personal_projects\\projects\\brainstorm\\.worktrees\\host-default-update\\.agents\\skills\\brainstorm-governor"
       ],
-      "duration_ms": 168.829,
+      "duration_ms": 68.033,
       "name": "skill-validation",
       "return_code": 0,
       "transcript_sha256": "db349825903d66adffea3ecf1bd8e1803043e8a71cf1a051235dabc5371f5bb0"
@@ -237,7 +237,7 @@
     }
   ],
   "failure_reasons": [],
-  "finished_at": "2026-10-10T12:03:35.970378Z",
+  "finished_at": "2026-10-11T13:08:19.197488Z",
   "gates": {
     "all_acceptance_criteria": true,
     "clean_room": true,
@@ -253,33 +253,33 @@
     },
     {
       "path": "evals/baseline-manifest.json",
-      "sha256": "f16507814f6a50951a26b7024acd5d2da05a603e629f0263af6259a515d15ba2"
+      "sha256": "6a3b3ff2414f264643ba45b09ef86cd0bdc8e7b841ab80af9a99cf35fcf9da9b"
     },
     {
       "path": "evals/live-report.json",
-      "sha256": "4974380ee9d859d4b63138782e4d4531127fd57f6180fb7651d68e700985d136"
+      "sha256": "daefa66b8e7de0987fcda4563320df10f4905d3c733733729243b548cede37fa"
     },
     {
       "path": "evals/gate-report.json",
-      "sha256": "0b87052bd6d7abe5b2a3b70504281ea7cf710915489266d0250984677e85b747"
+      "sha256": "9f123a80e5097078f743e442ac2fec6275620dea2006dbea15968c26db6f3e4d"
     },
     {
       "path": ".agents/skills/brainstorm-governor/SKILL.md",
-      "sha256": "29990398061d2125c734f89fb2fc3cf1abdbc74e5bb1022a6945fbd4371fe4d7"
+      "sha256": "89bf2e44a185af0aacacb9d47be0f259df4c37c2110bb72bd9186bc6f4f403ba"
     }
   ],
   "result": "PASS",
   "schema_version": 1,
-  "started_at": "2026-10-10T12:03:12.869037Z",
+  "started_at": "2026-10-11T13:08:05.964743Z",
   "status": "FULL_VERSION",
   "suite_id": "brainstorm-governor-full-version",
   "version_fingerprint": {
-    "aggregate": "version:v1:sha256:b7e1ec915895be9929106c7ee1656eab9c34b2a6509738b6b6425c76ef51ca9f",
+    "aggregate": "version:v1:sha256:186e4b43ec57b2cc26909aab121f23cb3d74d582991b82a7f049e749bd9cb934",
     "dimensions": {
-      "adapter": "version:v1:sha256:1003afb5a5ee2d4c872b38ba65cd7fe3ff2769d643e8f34de61bf1c1249625c8",
+      "adapter": "version:v1:sha256:549fd52557020ec6dda449ad40d6d2bdb9fb0073787dac1b54be01fdb61af7f0",
       "citation_checker": "version:v1:sha256:b73d4b6150e3cd3bf258067c39a90ff751386702d79cd30052f3047511a2b00a",
       "evaluator_prompt": "version:v1:sha256:7d31b82f9d8eadaf8450c7beec8f67e831740a3009eab0e2b24a30c6b2d5869d",
-      "governor_prompt": "version:v1:sha256:b2dc76fc9db23ce6c97715bd7ce1538552ec1aa7fb09db7f1e5dcff9803f23d5",
+      "governor_prompt": "version:v1:sha256:9065445c508053d641e4a059117460d5ad054fc2944f171bb5545d7f865f8669",
       "model": "version:v1:sha256:5e968013fd79da020df4bf75e2d45f2c4ae59357143dd99832a57371824509d0",
       "pricing": "version:v1:sha256:5ca82fd3702d316d1116688ce2ba16332117b48d1317427b40ad34593764f602",
       "provider": "version:v1:sha256:a8d87d2bc646c99b683dbb9659e339ec2826bf796467fc3b0e1cd31c27813fae",

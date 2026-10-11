@@ -2,14 +2,20 @@
 
 一句话启动探索。角色与模型独立配置；先独立出点，再接力变异、反转、组合或问题风暴。无固定阶段顺序、点子数量或完整 Frame 前置要求。运行时保存模型/用户提出的内容，不以程序模板冒充模型生成。
 
-## 开始
+## 默认启动：当前 Agent，无需仓库 API key
+
+在你当前使用的 Agent 中打开仓库，让它阅读 `README.md`、`AGENTS.md` 和 `.agents/skills/open-storm/SKILL.md`，再直接给出主题。探索由当前会话模型进行；无需启动 Codex 子进程、选择角色阵容或配置 Council。无法读取文件的客户端需要手动提供这些说明。
+
+多角色是可选的思考视角；单个模型也可以直接围绕主题发散和提问。未填写 API key 不阻断此模式。宿主自身的模型订阅/API 由已有客户端负责，本仓库不额外接管。
+
+## 可选：持久化探索
 
 ```powershell
 python scripts/open_storm.py init --topic "如何重新组织小企业融资" --session staging/my-storm.json
 python scripts/open_storm.py prepare --session staging/my-storm.json --role venture --operation expand
 ```
 
-本机 Codex 阅读 prepare 的 prompt，输出 `{"ideas":[{"text":"具体想法","mechanism":"新增机制"}]}`，将 JSON 保存至新文件后导入：
+当前宿主 Agent 阅读 prepare 的 prompt，输出 `{"ideas":[{"text":"具体想法","mechanism":"新增机制"}]}`，将 JSON 保存至新文件后导入：
 
 ```powershell
 python scripts/open_storm.py import --session staging/my-storm.json --role venture --input my-response.json
@@ -28,7 +34,20 @@ python scripts/open_storm.py export --session staging/my-storm.json --output sta
 
 `role --id <new-id> --description <利益/资源/知识/盲区>` 添加活动专属角色；prepare/import 的 role 可以使用该 ID。收敛只记录选择，未经过 Governor 审批的结果不可称为已验证决策。
 
-## 五家模型入口
+## 可选：Council 与模型入口
+
+默认不启用 Council，也不读取密钥文件。使用 `.env.example` 创建被 Git 忽略的 `.env`，填写所选服务的 key；使用配置模板创建被忽略的 `config/open-storm.local.json`，填写 `base_url`、`model` 并启用所选 provider。请由用户在编辑器中填写，不让 Agent 阅读密钥内容。
+
+`.env` 每行使用 `NAME=value`，支持空行、整行 `#` 注释及成对单/双引号。值按原样读取，不展开变量或执行命令；不支持行尾注释，避免截断 key。进程已有环境变量也可使用；本地非空值优先。只有 `round` 读取文件，且不改写进程环境变量。任一启用的所选 API 成员缺少 key 时，在任何模型调用前返回配置错误；用户仍可继续当前宿主探索。
+
+```powershell
+Copy-Item .env.example .env
+Copy-Item config/open-storm-providers.example.json config/open-storm.local.json
+# 在编辑器中填写上述本地文件，再显式调用所选成员：
+python scripts/open_storm.py round --session staging/my-storm.json --config config/open-storm.local.json --env-file .env --members ds-venture kimi-affected
+```
+
+省略 `--env-file` 时，显式 `round` 使用仓库根目录的 `.env`（存在时），否则使用已有进程环境变量；指定不存在的文件会报错。没有自动启动 Council 或自动切换供应商的路径。
 
 使用 `config/open-storm-providers.example.json` 创建个人配置。模型 IDs 和 API base URLs 默认空；按自己账户能访问的旗舰模型填写，避免把可能过时的名称写死。`base_url` 是 HTTPS API 根地址（通常含版本路径），也可以直接填完整 `/chat/completions` 地址。`options` 可传供应商支持的 token 参数、temperature 和思考参数，不能覆盖 model/messages/stream。
 
@@ -39,6 +58,7 @@ python scripts/open_storm.py export --session staging/my-storm.json --output sta
 | glm | Chat Completions compatible | GLM_API_KEY |
 | qwen | Chat Completions compatible | DASHSCOPE_API_KEY |
 | openai | 本机 codex exec / ChatGPT 登录 | 不配置 API key |
+| openai-api | 可选 Chat Completions compatible API | OPENAI_API_KEY |
 
 成员映射只是示例，可让任何模型扮演任何角色。填写配置并设置对应进程环境变量后，将需要的 provider 设为 `enabled: true`。
 

@@ -32,7 +32,17 @@ def parse_output(text):
     return value
 
 
-def invoke(config, prompt):
+def credential(config, credentials=None):
+    name = config.get('credential_env', '')
+    if not isinstance(name, str) or not name:
+        raise ProviderError('configure a credential_env name')
+    key = (credentials or {}).get(name) or os.environ.get(name, '')
+    if not isinstance(key, str) or not key.strip():
+        raise ProviderError('Council key is not configured: ' + name)
+    return key
+
+
+def invoke(config, prompt, *, credentials=None):
     if not isinstance(config, dict):
         raise ProviderError('provider configuration must be an object')
     if not config.get('enabled'):
@@ -56,10 +66,7 @@ def invoke(config, prompt):
         model = config.get('model')
         if not isinstance(model, str) or not model.strip():
             raise ProviderError('configure the desired flagship model ID')
-        env = config.get('credential_env', '')
-        key = os.environ.get(env, '')
-        if not key.strip():
-            raise ProviderError('credential environment variable is not set: ' + env)
+        key = credential(config, credentials)
         options = config.get('options', {})
         if not isinstance(options, dict) or set(options) & {'model', 'messages', 'stream'}:
             raise ProviderError('invalid provider options')

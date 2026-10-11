@@ -7,7 +7,9 @@
     "scripts/brainstorm.py",
     ".agents/skills/brainstorm-governor/SKILL.md",
     ".agents/skills/brainstorm-governor/references/p1-core-loop.md",
-    ".agents/skills/brainstorm-governor/assets/CONCEPT_BRIEF.template.md"
+    ".agents/skills/brainstorm-governor/assets/CONCEPT_BRIEF.template.md",
+    "README.md",
+    "AGENTS.md"
   ],
   "evaluator_prompt_paths": [
     ".agents/skills/brainstorm-governor/references/p6-evaluator-tracing.md"
@@ -25,7 +27,8 @@
       ".agents/skills/brainstorm-governor/scripts/p2_persistence.py",
       "adapters/research_runtime.py",
       "adapters/worker_runtime.py",
-      "adapters/evaluator_runtime.py"
+      "adapters/evaluator_runtime.py",
+      "adapters/storm_credentials.py"
     ]
   },
   "citation_checker": {

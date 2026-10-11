@@ -2,3 +2,7 @@
 __pycache__/
 *.pyc
 var/
+.env
+.env.*
+!.env.example
+config/open-storm.local.json
