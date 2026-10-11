@@ -7,9 +7,13 @@ description: Explore vague ideas through independent stakeholder perspectives, q
 
 Start with the user's words. One sentence is enough. Do not demand a completed Problem Frame, target user, metric, kill criterion, or product-manager framing before exploring. Unknowns are material for exploration, never established facts.
 
-Use `python scripts/open_storm.py` from the repository root. `init --topic <text> --session <new.json>` starts a graph. `status` restores it. Read `docs/OPEN_STORM.md` for provider configuration and commands.
+Default to the current host agent and its already available model. Read the repository's README.md and AGENTS.md, then facilitate directly in the current conversation. No repository API key, separate model process, CLI session, multi-role panel or Council is required. A lack of provider configuration must never block host exploration.
+
+Use `python scripts/open_storm.py` only when persistence or explicit external calls are requested. `init --topic <text> --session <new.json>` starts a graph. `status` restores it. Read `docs/OPEN_STORM.md` for provider configuration and commands. Never read `.env` or reveal its values through agent file-reading tools; the runtime reads selected keys only during an explicit `round`.
 
 ## Facilitation
+
+Role perspectives are optional. Start with a direct exploration of the topic unless multiple perspectives help or the user requests them. Do not automatically assemble the example role roster.
 
 - Select or introduce roles according to the activity: initiator, affected people, upside investors, liquidity providers, loss bearers, connectors, operators, and outsiders. These are examples, not a required panel. Describe incentives, resources, knowledge and blindspots. Never claim real professional identities or credentials.
 - Roles and models are independent. Rotate creative operations across roles. A bank can invent bold alternatives and a risk bearer can invent conditions under which a proposal becomes possible.
